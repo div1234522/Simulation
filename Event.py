@@ -1,10 +1,10 @@
 class Event:
     eventType = ""
 
-    def __init__(self , timestamp , coreId, requestId):
-        self.coreId = coreId
-        self.requestId = requestId
-        self.timestamp  = timestamp
+    def __init__(self , time , core, request):
+        self.coreId = core
+        self.requestId = request
+        self.timestamp  = time
     
     def setEventType(self, event):
         self.eventType = event

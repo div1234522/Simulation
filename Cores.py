@@ -3,9 +3,9 @@ class Cores:
     isBusy = False
     nextQuantumTime = 0
     
-    def __init__(self, coreId = 0,threadId = 0):
-        self.coreId = coreId
-        self.threadId = threadId
+    def __init__(self, core = 0,thread = 0):
+        self.coreId = core
+        self.threadId = thread
 
     def setIsSwitching(self, switching):
         self.isSwithing = switching
