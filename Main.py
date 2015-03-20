@@ -1,4 +1,12 @@
 from Client import Client
+from CoreQueue import CoreQueue
+from Event import Event
+from EventList import EventList
+from Request import Request
+from ServerQueue import ServerQueue
+from Simulation import Simulation
+from System import System
+from ThreadPool import ThreadPool
 
 def main():
 	client = []
@@ -8,8 +16,25 @@ def main():
 			client.append(c)
 		else:
 			break
+	print('Clients:', end = ' ')
 	for i in range(5):
-		print(client[i].clientId)
+		print(str(client[i].clientId), end=' ')
+		
+	#Prompt for input of system variables from user here
+	sys = System();
+		
+	print('')
+	cq_list = []
+	for i in range(sys.noOfCores):
+		cq = CoreQueue()
+		cq_list.append(cq)
+		print('Core Queue ' + str(cq_list.index(cq)) + ' size: ' + str(cq.getsize()))
+	sq = ServerQueue()
+	print('Server Queue size: ' + str(sq.getsize()))
+		
+	ev_list = EventList()
+	print('Event List size: ' + str(ev_list.getsize()))
+	
 		
 if __name__ == "__main__":
 	main()
