@@ -5,9 +5,8 @@ class Request:
     totalServiceTime = 0
     remainingServiceTime = 0
     threadId = 0
-    def __init__ (self):
-        self.inCoreQueue = "false"
-
+    inCoreQueue = False
+    
     def setTimeOutDistribution(self, dis_type = "exponential" , mean = 50, variance = 1):
         self.dis_type = dis_type
         self.mean = mean
@@ -34,3 +33,10 @@ class Request:
     def getServiceTime(self):
         val = 0 #some cal
         return val
+
+    def setInCoreQueue(self, queue):
+        self.inCoreQueue = queue
+
+    def getInCoreQueue(self):
+        return self.inCoreQueue
+        

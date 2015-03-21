@@ -1,5 +1,5 @@
 class Cores:
-    isSwithing = False
+    isSwitching = False
     isBusy = False
     nextQuantumTime = 0
     
@@ -8,10 +8,10 @@ class Cores:
         self.threadId = thread
 
     def setIsSwitching(self, switching):
-        self.isSwithing = switching
+        self.isSwitching = switching
 
     def getIsSwitching(self):
-        return self.isSwithing
+        return self.isSwitching
 
     def setIsBusy(self, busy):
         self.isBusy = busy
