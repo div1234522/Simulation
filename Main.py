@@ -34,6 +34,26 @@ def main():
 		
 	ev_list = EventList()
 	print('Event List size: ' + str(ev_list.getsize()))
+
+	#daulat
+	print("----------")
+	print("----------")
+	print("----------")
+	tp = ThreadPool(50,20,10)
+	print("busy thread " + str(tp.noOfBusyThreads()))
+	print("thread ID " + str(tp.threadId))
+	print("coreID " + str(tp.coreId))
+	print("req Id " + str(tp.requestId))
+	print("----------")
+	print("----------")
+	print("----------")
+	e = Event(2,51,23)
+	print("coreID " + str(e.coreId))
+	print("req Id " + str(e.requestId))
+	print("timestamp " + str(e.timestamp))
+	print("previous type " + e.eventType)
+	e.setEventType("arrival")
+	print("next type " + e.eventType)
 	
 		
 if __name__ == "__main__":

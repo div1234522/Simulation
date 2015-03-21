@@ -1,5 +1,5 @@
 class Event:
-    eventType = ""
+    eventType = "NULL"
 
     def __init__(self , time , core, request):
         self.coreId = core
