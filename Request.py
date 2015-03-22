@@ -5,43 +5,70 @@ class Request:
 	global request
 	request = 0
 	inCoreQueue = False
-	
-	def __init__(self, client, time, tservice, thread):
+	totalServiceTime = 0
+	remainingServiceTime = 0
+	clientId = 0
+	threadId = 0
+	def __init__(self, time):
 		self.requestId = request+1
-		self.clientId = client
 		self.timestamp = time
-		self.totalServiceTime = tservice
-		self.remainingServiceTime = tservice
-		self.threadId = thread
 		global request
 		request +=1
 		
-	def setTimeOutDistribution(self, dis = "exponential" , mean_value = 50, variance_value = 1):
+	def setTimeOutDistribution(self, dis = "exponential" , a = 50, b = 1):
 		self.dis_type = dis
-		self.mean = mean_value
-		self.variance = variance_value
+		if self.dis_type == 'exponential':
+			self.mean = a
+		if self.dis_type == 'uniform':
+			self.low = a
+			self.high = b
+		if self.dis_type == 'constant':
+			self.value = a
+			
 		
 	def getTimeOut(self):
 		if self.dis_type == 'exponential':
 			return math.ceil(numpy.random.exponential(self.mean))
+		if self.dis_type == 'uniform':
+			return math.ceil(numpy.random.uniform(self.low, self.high))
+		if self.dis_type == 'constant':
+			return self.value
 			
-	def setArrivalTimeDistribution(self, dis_type = "exponential" , mean = 50, variance = 1):
-		self.dis_type = dis_type
-		self.mean = mean
-		self.variance = variance
+	def setArrivalTimeDistribution(self, dis = "exponential" , a = 50, b = 1):
+		self.dis_type = dis
+		if self.dis_type == 'exponential':
+			self.mean = a
+		if self.dis_type == 'uniform':
+			self.low = a
+			self.high = b
+		if self.dis_type == 'constant':
+			self.value = a
 	
 	def getArrivalTime(self):
-		val = 0 #some cal
-		return val
+		if self.dis_type == 'exponential':
+			return math.ceil(numpy.random.exponential(self.mean))
+		if self.dis_type == 'uniform':
+			return math.ceil(numpy.random.uniform(self.low, self.high))
+		if self.dis_type == 'constant':
+			return self.value
 		
-	def setserviceTimeDistribution(self, dis_type = "exponential" , mean = 50, variance = 1):
-		self.dis_type = dis_type
-		self.mean = mean
-		self.variance = variance
+	def setServiceTimeDistribution(self, dis = "exponential" , a = 50, b = 1):
+		self.dis_type = dis
+		if self.dis_type == 'exponential':
+			self.mean = a
+		if self.dis_type == 'uniform':
+			self.low = a
+			self.high = b
+		if self.dis_type == 'constant':
+			self.value = a
 		
 	def getServiceTime(self):
-		val = 0 #some cal
-		return val
+		if self.dis_type == 'exponential':
+			return math.ceil(numpy.random.exponential(self.mean))
+		if self.dis_type == 'uniform':
+			return math.ceil(numpy.random.uniform(self.low, self.high))
+		if self.dis_type == 'constant':
+			return self.value
 		
 	def setInCoreQueue(self, queue):
 		self.inCoreQueue = queue
