@@ -8,7 +8,99 @@ from Simulation import Simulation
 from System import System
 from ThreadPool import ThreadPool
 from Cores import Cores
+
 def main():
+	noOfClients = 60
+	
+	def process(event_type):
+		if event_type == 'arrival':
+			if ev.coreId == -2:
+				length = len(r)+1
+				r[length] = Request()
+				r[length].setTimeOutDistribution('exponential',150,1)
+				r[length].setArrivalTimeDistribution('exponential',15,1)
+				r[length].clientId = r[ev.requestId].clientId
+				timeout = r[ev.requestId].getTimeout()
+				
+				r[length].timestamp = r[length-1].timestamp + r[length].getArrivalTime() + timeout
+				r[length].setServiceTimeDistribution('exponential',70,1)
+				r[length].remainingServiceTime = r[length].getServiceTime()
+				r[length].totalServiceTime = r[length].getServiceTime()
+				
+				pushArrival(r[length])
+				
+			elif ev.coreId == -1:
+				if tp.getNoOfBusyThreads() != s.noOfThread:
+					re = sq.dequeue()
+					re.timestamp = ev.timestamp
+					pusharrival(re)
+			
+			else:
+			
+				if r[ev.requestId].remainingServiceTime < s.quantumSize:
+					ts = ev.timestamp + r[ev.requestId].remainingServiceTime
+				else:
+					ts = ev.timestamp + s.quantumSize
+				
+				r[ev.requestId].remainingServiceTime -= ts
+				e = Event(ts, ev.coreId, ev.requestId)
+				e.setEventType('quantumDone')
+				ev_list.insert(e)
+						
+		if event_type == 'departure':
+			length = len(r)+1
+			r[length] = Request()
+			r[length].setTimeOutDistribution('exponential',150,1)
+			r[length].setArrivalTimeDistribution('exponential',15,1)
+			r[length].clientId = r[ev.requestId].clientId
+			thinkTime = c[r[length].clientId].getThinkTimeValue()
+			
+			r[length].timestamp = r[length-1].timestamp + r[length].getArrivalTime() + thinkTime
+			r[length].setServiceTimeDistribution('exponential',70,1)
+			r[length].remainingServiceTime = r[length].getServiceTime()
+			r[length].totalServiceTime = r[length].getServiceTime()
+			thread[r[ev.requestId].threadId][1] = 'free'			
+			t[1].setNoOfBusyThreads(-1)
+			pushArrival(r[length])
+			
+		if event_type == 'quantumDone':
+			if r[ev.requestId].remainingServiceTime == 0:
+				e = Event(ev.timestamp, 0, ev.requestId)
+				e.setEventType('departure')
+				ev_list.insert(e)
+				
+			e = Event(ev.timestamp + s.switchingDelay, ev.coreId, ev.requestId)
+			e.setEventType('switchingDone')
+			ev_list.insert(e)
+			
+		if event_type == 'switchingDone':
+			rr = cq[ev.coreId].dequeue()
+			#implement processing of enqueued request
+			cq[ev.coreId].enqueue(rr)
+			
+	def pushArrival(req):
+		x = Ind()
+		if x == -1:
+			if sq.getsize() >= 100:
+				coreId = -2
+			else:
+				sq.enqueue(req)
+				coreId = -1
+		else:
+			req.inCoreQueue = True
+			thread[x][1] = 'busy'
+			t[x+1].requestId = req.requestId
+			t[x+1].setNoOfBusyThreads(1)
+			coreId = (x % s.noOfCores) + 1
+		#print("Core id: " + str(coreId) + ' for request: ' + str(req.requestId))
+		
+		e = Event(req.timestamp, coreId, req.requestId)
+		#Core Id: -1 - ServerQueue
+		#Core Id: -2 - Dropped
+		#Core Id: 1-5 - CoreQueue Number
+		e.setEventType('arrival')
+		ev_list.insert(e)
+	
 	def Ind():
 		ind = 0
 		for i in thread:				
@@ -20,11 +112,12 @@ def main():
 	sm = Simulation()
 	client = []
 	c = {}
-	for i in range(1,6):
+	for i in range(1,noOfClients+1):
 		c[i] = Client()
-	print('Clients:', end = ' ')
-	for i in range(5):
-		print(str(c[i+1].clientId), end=' ')
+		c[i].setThinkTimeDistribution()
+	#print('Clients:', end = ' ')
+	#for i in range(noOfClients):
+	#	print(str(c[i+1].clientId), end=' ')
 				
 	sys = System(5,50,1,10)
 	cq = {}
@@ -35,80 +128,69 @@ def main():
 	#print('Server Queue size: ' + str(sq.getsize()))
 		
 	ev_list = EventList()
-	print('Event List size: ' + str(ev_list.getsize()))
+	#print('Event List size: ' + str(ev_list.getsize()))
 
 	tp = ThreadPool(50,20,10)
-	print("busy thread " + str(tp.getNoOfBusyThreads()))
-	print("thread ID " + str(tp.threadId))
-	print("coreId " + str(tp.coreId))
-	print("req Id " + str(tp.requestId))
-	
-	"""e = Event(2,51,23)
-	print("coreId " + str(e.coreId))
-	print("req Id " + str(e.requestId))
-	print("timestamp " + str(e.timestamp))
-	print("previous type " + e.eventType)
-	e.setEventType("arrival")
-	print("next type " + e.eventType)"""
-	
-	"""r = Request(1,1,5,1)
-	r.setTimeOutDistribution('exponential',150,1)
-	r.setArrivalTimeDistribution('exponential',15,1)
-	r.setserviceTimeDistribution('exponential',70,1)
-	print('Request1 ID: ' + str(r.requestId))
-	r2 = Request(1,1,5,1)
-	print('Request1 ID: ' + str(r2.requestId))
-	r3 = Request(1,1,5,1)
-	print('Request1 ID: ' + str(r3.requestId))"""
-	
+	#print("busy thread " + str(tp.getNoOfBusyThreads()))
+	#print("thread ID " + str(tp.threadId))
+	#print("coreId " + str(tp.coreId))
+	#print("req Id " + str(tp.requestId))
 	
 	#run
 	s = System(5,50,1,10)
-	c = {}
+	co = {}
 	t = {}
 	count = 0
 	
 	#t = ThreadPool(-1,-1,-1)
 	thread = []
 	for i in range(1,s.noOfCores+1):
-		c[i] = Cores(i,10)
+		co[i] = Cores(i,10)
 		for j in range(1,(int(s.noOfThread/s.noOfCores))+1):
 			count += 1
 			t[count] = ThreadPool(count,(count%s.noOfCores)+1,-1)
 			a = [count,'free']
 			thread.append(a)
-
-	print(c[1].coreId)
-	print(c[2].coreId)
-	print(c[3].coreId)
-	print(c[4].coreId)
-	print(c[5].coreId)
 	
-	
-	maxTime = 151
-	r= {}
-	for i in range(maxTime):
-		r[i] = Request(i)
+	r = {}
+	current_timestamp = 0
+	event_processed = 0
+	for i in range(1, noOfClients+1):
+		r[i] = Request()
 		r[i].setTimeOutDistribution('exponential',150,1)
 		r[i].setArrivalTimeDistribution('exponential',15,1)
+		r[i].timestamp = r[i].getArrivalTime()
 		r[i].setServiceTimeDistribution('exponential',70,1)
 		r[i].remainingServiceTime = r[i].getServiceTime()
 		r[i].totalServiceTime = r[i].getServiceTime()
-		r[i].clientId = (i % 5)+1
-		x = Ind()
-		if x == -1:
+		r[i].clientId = (i % noOfClients)+1
+
+		pushArrival(r[i])
 		
-			if sq.getsize() >= 100:
-				print("request dropped:" + str(r[i].requestId))
-				r[1].requestId = -1
-			else:
-				sq.enqueue(r[i])
+		#print('Event List size: ' + str(ev_list.getsize()))
+		
+	while(event_processed < 150):
+		if ev_list.getsize() == 0:
+			print("Simulation ended")
+			break
 		else:
-			r[i].inCoreQueue = True
-			thread[x][1] = 'busy'
-			t[x+1].requestId = r[i].requestId
-			t[x+1].setNoOfBusyThreads(1)
-		
-		
+			ev = ev_list.extract()
+			if ev.eventType == 'arrival':
+				process('arrival')
+				event_processed += 1
+			if ev.eventType == 'quantumDone':
+				process('quantumDone')
+				event_processed += 1
+			if ev.eventType == 'switchingDone':
+				process('switchingDone')
+				event_processed += 1
+			if ev.eventType == 'departure':
+				process('departure')
+				event_processed += 1
+			
+			print('Events Processed: ' + str(event_processed))
+			print('Timestamp: ' + str(ev.timestamp) + ' type: ' + ev.eventType + ' coreID: ' + str(ev.coreId))
+				
+	
 if __name__ == "__main__":
 	main()

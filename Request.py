@@ -9,9 +9,8 @@ class Request:
 	remainingServiceTime = 0
 	clientId = 0
 	threadId = 0
-	def __init__(self, time):
+	def __init__(self):
 		self.requestId = request+1
-		self.timestamp = time
 		global request
 		request +=1
 		

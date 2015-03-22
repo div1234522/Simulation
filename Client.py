@@ -1,3 +1,6 @@
+import numpy
+import math
+
 class Client:
 	maxNoOfClients = 5
 	currentNoOfClients = 0
@@ -7,14 +10,23 @@ class Client:
 		self.clientId = Client.currentNoOfClients
 		self.setIsThinking(False)
 		
-	def setThinkTimeDistribution(self, dis_type="exponential", mean=5, variance=1):
-		self.type = dis_type
-		self.mean = mean
-		self.variance = variance
+	def setThinkTimeDistribution(self, dis = "uniform" , a = 5, b = 10):
+		self.dis_type = dis
+		if self.dis_type == 'exponential':
+			self.mean = a
+		if self.dis_type == 'uniform':
+			self.low = a
+			self.high = b
+		if self.dis_type == 'constant':
+			self.value = a
 		
 	def getThinkTimeValue(self):
-		#ToDo: Implement this method
-		return 5
+		if self.dis_type == 'exponential':
+			return math.ceil(numpy.random.exponential(self.mean))
+		if self.dis_type == 'uniform':
+			return math.ceil(numpy.random.uniform(self.low, self.high))
+		if self.dis_type == 'constant':
+			return self.value
 		
 	def setIsThinking(self, value):
 		self.isThinking = value

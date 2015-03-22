@@ -10,7 +10,7 @@ class ServerQueue:
 		if self.q.full() == False: 
 			self.q.put(req)
 		
-	def dequeue(self, req):
+	def dequeue(self):
 		if self.q.empty() == False:
 			return self.q.get()
 	
