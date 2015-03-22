@@ -1,11 +1,14 @@
 class Request:
-    clientId = 0
-    requestId = 0
-    timestamp = 0
-    totalServiceTime = 0
-    remainingServiceTime = 0
-    threadId = 0
     inCoreQueue = False
+    global request = 0
+    def __init__(self, client,time,tservice,rservice,thread)
+        self.requestId = Request.request+1
+        self.clientId = client
+        self.timestamp = time
+        self.totalServiceTime = tservice
+        self.remainingServiceTime = rservice
+        self.threadId = thread
+        Request.request +=1
     
     def setTimeOutDistribution(self, dis_type = "exponential" , mean = 50, variance = 1):
         self.dis_type = dis_type

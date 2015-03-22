@@ -40,7 +40,7 @@ def main():
 	print("----------")
 	print("----------")
 	tp = ThreadPool(50,20,10)
-	print("busy thread " + str(tp.noOfBusyThreads()))
+	print("busy thread " + str(tp.getNoOfBusyThreads()))
 	print("thread ID " + str(tp.threadId))
 	print("coreID " + str(tp.coreId))
 	print("req Id " + str(tp.requestId))
