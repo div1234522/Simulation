@@ -1,13 +1,13 @@
 class ThreadPool:
-	noOfBusyThreads = 0
+    noOfBusyThreads = 0
+	
+    def __init__(self, thread , core ,request):
+        self.threadId = thread
+        self.coreId = core
+        self.requestId = request
+    
+    def setNoOfBusyThreads(self, no):
+        self.noOfBusyThreads = no
 
-	def __init__(self, thread , core ,request):
-		self.threadId = thread
-		self.coreId = core
-		self.requestId = request
-		
-	def setNoOfBusyThreads(self, no):
-		self.noOfBusyThreads = no
-
-	def getNoOfBusyThreads(self):
-		return self.noOfBusyThreads 
+    def getNoOfBusyThreads(self):
+        return self.noOfBusyThreads 

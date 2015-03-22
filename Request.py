@@ -2,14 +2,18 @@ import numpy
 import math
 
 class Request:
-	clientId = 0
-	requestId = 0
-	timestamp = 0
-	totalServiceTime = 0
-	remainingServiceTime = 0
-	threadId = 0
+    global request = 0
 	inCoreQueue = False
-
+	
+	def __init__(self, client,time,tservice,rservice,thread)
+        self.requestId = Request.request+1
+        self.clientId = client
+        self.timestamp = time
+        self.totalServiceTime = tservice
+        self.remainingServiceTime = rservice
+        self.threadId = thread
+        Request.request +=1
+	
 	def setTimeOutDistribution(self, dis = "exponential" , mean_value = 50, variance_value = 1):
 		self.dis_type = dis
 		self.mean = mean_value
