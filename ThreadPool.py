@@ -1,15 +1,15 @@
 class ThreadPool:
-	global noOfBusyThreads
+	global noOfBusyThreads #Keeps track of number of busy threads
 	noOfBusyThreads = 0
 	
-	def __init__(self, thread , core ,request = -1):
+	def __init__(self, thread , core ,request = -1): #Class constructor
 		self.threadId = thread
 		self.coreId = core
 		self.requestId = request
 	
-	def setNoOfBusyThreads(self, no):
+	def setNoOfBusyThreads(self, no): #Assign value of current number of busy threads
 		global noOfBusyThreads
 		noOfBusyThreads += no
 
-	def getNoOfBusyThreads(self):
+	def getNoOfBusyThreads(self): #Get value of number of busy threads
 		return noOfBusyThreads

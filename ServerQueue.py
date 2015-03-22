@@ -1,19 +1,19 @@
-import queue
+import queue #For using queue functions
 
 class ServerQueue:
 	
-	def __init__(self):
-		self.queueLength = 100
+	def __init__(self): #Class constructor
+		self.queueLength = 100 #Max Queue length
 		self.q = queue.Queue(maxsize=self.queueLength)
 		
-	def enqueue(self, req):
+	def enqueue(self, req): #Add to the end of the queue
 		if self.q.full() == False: 
 			self.q.put(req)
 		
-	def dequeue(self):
+	def dequeue(self): #Extract from the front of the queue
 		if self.q.empty() == False:
 			return self.q.get()
 	
-	def getsize(self):
+	def getsize(self): #Returns current size of queue
 		return self.q.qsize()
 		

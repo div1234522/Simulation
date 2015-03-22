@@ -12,9 +12,9 @@ from Cores import Cores
 def main():
 	noOfClients = 60
 	
-	def process(event_type):
-		if event_type == 'arrival':
-			if ev.coreId == -2:
+	def process(event_type): #Function for Event Handling
+		if event_type == 'arrival': #Handle arrivals
+			if ev.coreId == -2: #In Core Queue
 				length = len(r)+1
 				r[length] = Request()
 				r[length].setTimeOutDistribution('exponential',150,1)
@@ -27,16 +27,15 @@ def main():
 				r[length].remainingServiceTime = r[length].getServiceTime()
 				r[length].totalServiceTime = r[length].getServiceTime()
 				
-				pushArrival(r[length])
+				pushArrival(r[length]) #Schedule an arrival
 				
-			elif ev.coreId == -1:
+			elif ev.coreId == -1: #In Server Queue
 				if tp.getNoOfBusyThreads() != s.noOfThread:
 					re = sq.dequeue()
 					re.timestamp = ev.timestamp
 					pusharrival(re)
 			
-			else:
-			
+			else: #Request Discarded
 				if r[ev.requestId].remainingServiceTime < s.quantumSize:
 					ts = ev.timestamp + r[ev.requestId].remainingServiceTime
 				else:
@@ -47,7 +46,7 @@ def main():
 				e.setEventType('quantumDone')
 				ev_list.insert(e)
 						
-		if event_type == 'departure':
+		if event_type == 'departure': #Handle departures
 			length = len(r)+1
 			r[length] = Request()
 			r[length].setTimeOutDistribution('exponential',150,1)
@@ -61,9 +60,9 @@ def main():
 			r[length].totalServiceTime = r[length].getServiceTime()
 			thread[r[ev.requestId].threadId][1] = 'free'			
 			t[1].setNoOfBusyThreads(-1)
-			pushArrival(r[length])
+			pushArrival(r[length]) #Schedule a new arrival
 			
-		if event_type == 'quantumDone':
+		if event_type == 'quantumDone': #Handle quantum done
 			if r[ev.requestId].remainingServiceTime == 0:
 				e = Event(ev.timestamp, 0, ev.requestId)
 				e.setEventType('departure')
@@ -73,13 +72,13 @@ def main():
 			e.setEventType('switchingDone')
 			ev_list.insert(e)
 			
-		if event_type == 'switchingDone':
+		if event_type == 'switchingDone': #Handle Switching done
 			rr = cq[ev.coreId].dequeue()
-			#implement processing of enqueued request
+			#TD implement processing of enqueued request
 			cq[ev.coreId].enqueue(rr)
 			
-	def pushArrival(req):
-		x = Ind()
+	def pushArrival(req): #Function to schedule and push a new arrival
+		x = Ind() #Return index of free thread
 		if x == -1:
 			if sq.getsize() >= 100:
 				coreId = -2
@@ -101,7 +100,7 @@ def main():
 		e.setEventType('arrival')
 		ev_list.insert(e)
 	
-	def Ind():
+	def Ind(): #Return index of free thread
 		ind = 0
 		for i in thread:				
 			if i[1] == 'free':
@@ -115,35 +114,23 @@ def main():
 	for i in range(1,noOfClients+1):
 		c[i] = Client()
 		c[i].setThinkTimeDistribution()
-	#print('Clients:', end = ' ')
-	#for i in range(noOfClients):
-	#	print(str(c[i+1].clientId), end=' ')
 				
 	sys = System(5,50,1,10)
 	cq = {}
 	for i in range(sys.noOfCores):
 		cq[i+1] = CoreQueue()
-		#print('Core Queue ' + str(cq.index(cq)) + ' size: ' + str(cq.getsize()))
 	sq = ServerQueue()
-	#print('Server Queue size: ' + str(sq.getsize()))
 		
 	ev_list = EventList()
-	#print('Event List size: ' + str(ev_list.getsize()))
 
 	tp = ThreadPool(50,20,10)
-	#print("busy thread " + str(tp.getNoOfBusyThreads()))
-	#print("thread ID " + str(tp.threadId))
-	#print("coreId " + str(tp.coreId))
-	#print("req Id " + str(tp.requestId))
 	
-	#run
 	s = System(5,50,1,10)
 	co = {}
 	t = {}
 	count = 0
 	
-	#t = ThreadPool(-1,-1,-1)
-	thread = []
+	thread = [] #Create free threads
 	for i in range(1,s.noOfCores+1):
 		co[i] = Cores(i,10)
 		for j in range(1,(int(s.noOfThread/s.noOfCores))+1):
@@ -155,7 +142,7 @@ def main():
 	r = {}
 	current_timestamp = 0
 	event_processed = 0
-	for i in range(1, noOfClients+1):
+	for i in range(1, noOfClients+1): #Generate requests by clients
 		r[i] = Request()
 		r[i].setTimeOutDistribution('exponential',150,1)
 		r[i].setArrivalTimeDistribution('exponential',15,1)
@@ -165,15 +152,13 @@ def main():
 		r[i].totalServiceTime = r[i].getServiceTime()
 		r[i].clientId = (i % noOfClients)+1
 
-		pushArrival(r[i])
+		pushArrival(r[i]) #Schedule an arrival event
 		
-		#print('Event List size: ' + str(ev_list.getsize()))
-		
-	while(event_processed < 150):
+	while(event_processed < 150): #Stopping criteria for simulation
 		if ev_list.getsize() == 0:
 			print("Simulation ended")
 			break
-		else:
+		else: #Call appropriate event handler
 			ev = ev_list.extract()
 			if ev.eventType == 'arrival':
 				process('arrival')
@@ -191,6 +176,5 @@ def main():
 			print('Events Processed: ' + str(event_processed))
 			print('Timestamp: ' + str(ev.timestamp) + ' type: ' + ev.eventType + ' coreID: ' + str(ev.coreId))
 				
-	
-if __name__ == "__main__":
+if __name__ == "__main__": #Placeholder for calling main function
 	main()
