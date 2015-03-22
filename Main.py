@@ -49,9 +49,13 @@ def main():
 	e.setEventType("arrival")
 	print("next type " + e.eventType)
 	
-	r = Request()
+	r = Request(1,1,5,1)
 	r.setTimeOutDistribution('exponential')
-	print(r.getTimeOut())
+	print('Request1 ID: ' + str(r.requestId))
+	r2 = Request(1,1,5,1)
+	print('Request1 ID: ' + str(r2.requestId))
+	r3 = Request(1,1,5,1)
+	print('Request1 ID: ' + str(r3.requestId))
 	
 		
 if __name__ == "__main__":
