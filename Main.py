@@ -12,38 +12,37 @@ from Cores import Cores
 def main():
 	noOfClients = 60
 	
-	def process_arrival(): #Function for Handling arrivals
-		if ev.coreId == -2: #Request Discarded
-			length = len(r)+1
-			r[length] = Request()
-			r[length].setTimeOutDistribution('exponential',150,1)
-			r[length].setArrivalTimeDistribution('exponential',15,1)
-			r[length].clientId = r[ev.requestId].clientId
-			timeout = r[ev.requestId].getTimeout()
-			
-			r[length].timestamp = r[length-1].timestamp + r[length].getArrivalTime() + timeout
-			r[length].setServiceTimeDistribution('exponential',70,1)
-			r[length].remainingServiceTime = r[length].getServiceTime()
-			r[length].totalServiceTime = r[length].getServiceTime()
-			
-			pushArrival(r[length]) #Schedule an arrival
-			
-		elif ev.coreId == -1: #In Server Queue
-			if tp.getNoOfBusyThreads() != s.noOfThread:
-				re = sq.dequeue()
-				re.timestamp = ev.timestamp
-				pusharrival(re)
+	def process_arrival_if_queues_full(): #Function for Handling arrivals if queues are full
+		length = len(r)+1
+		r[length] = Request()
+		r[length].setTimeOutDistribution('exponential',150,1)
+		r[length].setArrivalTimeDistribution('exponential',15,1)
+		r[length].clientId = r[ev.requestId].clientId
+		timeout = r[ev.requestId].getTimeout()
 		
-		else: #In Core Queue
-			if r[ev.requestId].remainingServiceTime < s.quantumSize:
-				ts = ev.timestamp + r[ev.requestId].remainingServiceTime
-			else:
-				ts = ev.timestamp + s.quantumSize
-			
-			r[ev.requestId].remainingServiceTime -= ts
-			e = Event(ts, ev.coreId, ev.requestId)
-			e.setEventType('quantumDone')
-			ev_list.insert(e)
+		r[length].timestamp = r[length-1].timestamp + r[length].getArrivalTime() + timeout
+		r[length].setServiceTimeDistribution('exponential',70,1)
+		r[length].remainingServiceTime = r[length].getServiceTime()
+		r[length].totalServiceTime = r[length].getServiceTime()
+		
+		pushArrival(r[length]) #Schedule an arrival
+	
+	def process_arrival_if_threads_busy(): #Function for Handling arrivals if all threads are busy
+		if tp.getNoOfBusyThreads() != s.noOfThread:
+			re = sq.dequeue()
+			re.timestamp = ev.timestamp
+			pushArrival(re)
+	
+	def process_arrival_if_threads_free(): #Function for Handling arrivals if some threads are free
+		if r[ev.requestId].remainingServiceTime < s.quantumSize:
+			ts = ev.timestamp + r[ev.requestId].remainingServiceTime
+		else:
+			ts = ev.timestamp + s.quantumSize
+		
+		r[ev.requestId].remainingServiceTime -= ts
+		e = Event(ts, ev.coreId, ev.requestId)
+		e.setEventType('quantumDone')
+		ev_list.insert(e)
 						
 	def process_departure(): #Function for Handling departures
 		length = len(r)+1
@@ -76,20 +75,20 @@ def main():
 			
 	def process_switchingDone(): #Function for Handling switchingDone
 		rr = cq[ev.coreId].dequeue()
-		#TD implement processing of enqueued request
+		#Todo implement processing of enqueued request
 		cq[ev.coreId].enqueue(rr)
 			
 	def process_scheduleArrival(): #Function for Handling arrival of thinking requests
-			pushArrival(r[ev.requestId]) #Schedule a new arrival
+			pushArrival(r[ev.requestId])
 		
-	def pushArrival(req): #Function to schedule and push a new arrival
+	def pushArrival(req): #Function to push a new arrival
 		x = Ind() #Return index of free thread
-		if x == -1:
+		if x == -1: #No free thread found
 			if sq.getsize() >= 100:
-				coreId = -2
+				coreId = 'discarded'
 			else:
 				sq.enqueue(req)
-				coreId = -1
+				coreId = 'serverQueue'
 		else:
 			req.inCoreQueue = True
 			thread[x][1] = 'busy'
@@ -99,8 +98,6 @@ def main():
 		#print("Core id: " + str(coreId) + ' for request: ' + str(req.requestId))
 		
 		e = Event(req.timestamp, coreId, req.requestId)
-		#Core Id: -1 - ServerQueue
-		#Core Id: -2 - Dropped
 		#Core Id: 1-5 - CoreQueue Number
 		e.setEventType('arrival')
 		ev_list.insert(e)
@@ -111,7 +108,7 @@ def main():
 			if i[1] == 'free':
 				return ind
 			ind += 1
-		return -1
+		return -1 #No free thread found
 	
 	sm = Simulation()
 	client = []
@@ -159,14 +156,19 @@ def main():
 
 		pushArrival(r[i]) #Schedule an arrival event
 		
-	while(event_processed < 150): #Stopping criteria for simulation
+	while(event_processed < 1000): #Stopping criteria for simulation
 		if ev_list.getsize() == 0:
 			print("Simulation ended")
 			break
 		else: #Call appropriate event handler
 			ev = ev_list.extract()
 			if ev.eventType == 'arrival':
-				process_arrival()
+				if ev.coreId == 'discarded': #Request Discarded
+					process_arrival_if_queues_full()
+				elif ev.coreId == 'serverQueue': #In Server Queue
+					process_arrival_if_threads_busy()
+				else: #In Core Queue
+					process_arrival_if_threads_free()
 				event_processed += 1
 			if ev.eventType == 'quantumDone':
 				process_quantumDone()
@@ -182,7 +184,10 @@ def main():
 				event_processed += 1
 			
 			print('Events Processed: ' + str(event_processed))
-			print('Timestamp: ' + str(ev.timestamp) + ' type: ' + ev.eventType + ' coreID: ' + str(ev.coreId))
+			if ev.coreId in range(6):
+				print('Timestamp: ' + str(ev.timestamp) + ' type: ' + ev.eventType + ' in core ' + str(ev.coreId))
+			else:
+				print('Timestamp: ' + str(ev.timestamp) + ' type: ' + ev.eventType + ' in ' + str(ev.coreId))
 				
 if __name__ == "__main__": #Place holder for calling main function
 	main()

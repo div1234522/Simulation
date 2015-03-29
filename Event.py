@@ -1,5 +1,5 @@
 class Event:
-    eventType = "NULL"
+    eventType = 'NULL'
 	
 	#class constructor
     def __init__(self , time , core, request):
