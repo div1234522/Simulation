@@ -12,16 +12,66 @@ from Cores import Cores
 def main():
 	noOfClients = 60
 	
+	inputFile = open('inputFile.txt','r')
+	for row in inputFile:
+		a = row.split('=')
+		if a[0] == 'No. of cores':
+			cores = int(a[1])
+		if a[0] == 'No. of threads':
+			threads = int(a[1])
+		if a[0] == 'Switching delay':
+			delay = int(a[1])
+		if a[0] == 'Quantum size':
+			quantum = int(a[1])
+		if a[0] == 'Service Time Distribution':
+			aa = a[1].split(',')
+			stype = aa[0]
+			shigh = 1
+			if stype == 'exponential' or 'constant':
+				smean = int(aa[1])
+			else:
+				shigh = int(aa[2])
+			
+		if a[0] == 'Arrival Time Distribution':
+			aa = a[1].split(',')
+			atype = aa[0]
+			ahigh = 1
+			if atype == 'exponential' or 'constant':
+				amean = int(aa[1])
+			else:
+				ahigh = int(aa[2])
+		if a[0] == 'Thinking Time Distribution':
+			aa = a[1].split(',')
+			thtype = aa[0]
+			thhigh = 1
+			if thtype == 'exponential' or 'constant':
+				thmean = int(aa[1])
+			else:
+				thhigh = int(aa[2])
+		if a[0] == 'Timeout Distribution':
+			aa = a[1].split(',')
+			ttype = aa[0]
+			thigh = 1
+			if ttype == 'exponential' or 'constant':
+				tmean = int(aa[1])
+			else:
+				thigh = int(aa[2])
+		if a[0] == 'No. of simulation runs':
+			runs = int(a[1])
+		if a[0] == 'Stopping criteria for runs(departure)':
+			departure = int(a[1])
+		#if a[0] == 'Stream/Seed values for every run'
+	
 	def process_arrival_if_queues_full(): #Function for Handling arrivals if queues are full
 		length = len(r)+1
 		r[length] = Request()
-		r[length].setTimeOutDistribution('exponential',150,1)
-		r[length].setArrivalTimeDistribution('exponential',15,1)
+		r[length].setTimeOutDistribution(ttype,tmean,)
+		r[length].setArrivalTimeDistribution(atype,amean,ahigh)
 		r[length].clientId = r[ev.requestId].clientId
 		timeout = r[ev.requestId].getTimeout()
 		
 		r[length].timestamp = r[length-1].timestamp + r[length].getArrivalTime() + timeout
-		r[length].setServiceTimeDistribution('exponential',70,1)
+		r[length].setServiceTimeDistribution(stype,smean,shigh)
 		r[length].remainingServiceTime = r[length].getServiceTime()
 		r[length].totalServiceTime = r[length].getServiceTime()
 		
@@ -47,13 +97,13 @@ def main():
 	def process_departure(): #Function for Handling departures
 		length = len(r)+1
 		r[length] = Request()
-		r[length].setTimeOutDistribution('exponential',150,1)
-		r[length].setArrivalTimeDistribution('exponential',15,1)
+		r[length].setTimeOutDistribution(ttype,tmean,thigh)
+		r[length].setArrivalTimeDistribution(atype,amean,ahigh)
 		r[length].clientId = r[ev.requestId].clientId
 		thinkTime = c[r[length].clientId].getThinkTimeValue()
 		
 		r[length].timestamp = r[length-1].timestamp + r[length].getArrivalTime() + thinkTime
-		r[length].setServiceTimeDistribution('exponential',70,1)
+		r[length].setServiceTimeDistribution(stype,smean,shigh)
 		r[length].remainingServiceTime = r[length].getServiceTime()
 		r[length].totalServiceTime = r[length].getServiceTime()
 		thread[r[ev.requestId].threadId][1] = 'free'			
@@ -115,9 +165,9 @@ def main():
 	c = {}
 	for i in range(1,noOfClients+1):
 		c[i] = Client()
-		c[i].setThinkTimeDistribution()
+		c[i].setThinkTimeDistribution(thtype,thmean,thhigh)
 				
-	sys = System(5,50,1,10)
+	sys = System(cores,threads,delay,quantum)
 	cq = {}
 	for i in range(sys.noOfCores):
 		cq[i+1] = CoreQueue()
@@ -146,10 +196,10 @@ def main():
 	event_processed = 0
 	for i in range(1, noOfClients+1): #Generate requests by clients
 		r[i] = Request()
-		r[i].setTimeOutDistribution('exponential',150,1)
-		r[i].setArrivalTimeDistribution('exponential',15,1)
+		r[i].setTimeOutDistribution(ttype,tmean,thigh)
+		r[i].setArrivalTimeDistribution(atype,amean,ahigh)
 		r[i].timestamp = r[i].getArrivalTime()
-		r[i].setServiceTimeDistribution('exponential',70,1)
+		r[i].setServiceTimeDistribution(stype,smean,shigh)
 		r[i].remainingServiceTime = r[i].getServiceTime()
 		r[i].totalServiceTime = r[i].getServiceTime()
 		r[i].clientId = (i % noOfClients)+1
