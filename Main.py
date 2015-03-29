@@ -184,6 +184,7 @@ def main():
 				event_processed += 1
 			
 			print('Events Processed: ' + str(event_processed))
+			print('Core Queue sizes: ' + str(cq[1].getsize()) + ' ' + str(cq[2].getsize()) + ' ' + str(cq[3].getsize()) + ' ' + str(cq[4].getsize()) + ' ' + str(cq[5].getsize()) + ' ')
 			if ev.coreId in range(6):
 				print('Timestamp: ' + str(ev.timestamp) + ' type: ' + ev.eventType + ' in core ' + str(ev.coreId))
 			else:
