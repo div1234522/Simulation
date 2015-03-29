@@ -42,3 +42,6 @@ Network Trash Folder
 Temporary Items
 .apdisk
 assmt2_code_Divyanshu_Daulat.zip
+*.pyc
+__pycache__/Client.cpython-34.pyc
+*.pyc

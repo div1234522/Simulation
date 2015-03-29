@@ -4,6 +4,7 @@ import math #For ceiling function
 class Request:
 	global request #Stores requestID count
 	request = 0
+	timestamp = 0
 	inCoreQueue = False
 	totalServiceTime = 0
 	remainingServiceTime = 0
