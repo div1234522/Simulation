@@ -12,71 +12,76 @@ from Cores import Cores
 def main():
 	noOfClients = 60
 	
-	def process(event_type): #Function for Event Handling
-		if event_type == 'arrival': #Handle arrivals
-			if ev.coreId == -2: #In Core Queue
-				length = len(r)+1
-				r[length] = Request()
-				r[length].setTimeOutDistribution('exponential',150,1)
-				r[length].setArrivalTimeDistribution('exponential',15,1)
-				r[length].clientId = r[ev.requestId].clientId
-				timeout = r[ev.requestId].getTimeout()
-				
-				r[length].timestamp = r[length-1].timestamp + r[length].getArrivalTime() + timeout
-				r[length].setServiceTimeDistribution('exponential',70,1)
-				r[length].remainingServiceTime = r[length].getServiceTime()
-				r[length].totalServiceTime = r[length].getServiceTime()
-				
-				pushArrival(r[length]) #Schedule an arrival
-				
-			elif ev.coreId == -1: #In Server Queue
-				if tp.getNoOfBusyThreads() != s.noOfThread:
-					re = sq.dequeue()
-					re.timestamp = ev.timestamp
-					pusharrival(re)
-			
-			else: #Request Discarded
-				if r[ev.requestId].remainingServiceTime < s.quantumSize:
-					ts = ev.timestamp + r[ev.requestId].remainingServiceTime
-				else:
-					ts = ev.timestamp + s.quantumSize
-				
-				r[ev.requestId].remainingServiceTime -= ts
-				e = Event(ts, ev.coreId, ev.requestId)
-				e.setEventType('quantumDone')
-				ev_list.insert(e)
-						
-		if event_type == 'departure': #Handle departures
+	def process_arrival(): #Function for Handling arrivals
+		if ev.coreId == -2: #Request Discarded
 			length = len(r)+1
 			r[length] = Request()
 			r[length].setTimeOutDistribution('exponential',150,1)
 			r[length].setArrivalTimeDistribution('exponential',15,1)
 			r[length].clientId = r[ev.requestId].clientId
-			thinkTime = c[r[length].clientId].getThinkTimeValue()
+			timeout = r[ev.requestId].getTimeout()
 			
-			r[length].timestamp = r[length-1].timestamp + r[length].getArrivalTime() + thinkTime
+			r[length].timestamp = r[length-1].timestamp + r[length].getArrivalTime() + timeout
 			r[length].setServiceTimeDistribution('exponential',70,1)
 			r[length].remainingServiceTime = r[length].getServiceTime()
 			r[length].totalServiceTime = r[length].getServiceTime()
-			thread[r[ev.requestId].threadId][1] = 'free'			
-			t[1].setNoOfBusyThreads(-1)
-			pushArrival(r[length]) #Schedule a new arrival
 			
-		if event_type == 'quantumDone': #Handle quantum done
-			if r[ev.requestId].remainingServiceTime == 0:
-				e = Event(ev.timestamp, 0, ev.requestId)
-				e.setEventType('departure')
-				ev_list.insert(e)
-				
-			e = Event(ev.timestamp + s.switchingDelay, ev.coreId, ev.requestId)
-			e.setEventType('switchingDone')
+			pushArrival(r[length]) #Schedule an arrival
+			
+		elif ev.coreId == -1: #In Server Queue
+			if tp.getNoOfBusyThreads() != s.noOfThread:
+				re = sq.dequeue()
+				re.timestamp = ev.timestamp
+				pusharrival(re)
+		
+		else: #In Core Queue
+			if r[ev.requestId].remainingServiceTime < s.quantumSize:
+				ts = ev.timestamp + r[ev.requestId].remainingServiceTime
+			else:
+				ts = ev.timestamp + s.quantumSize
+			
+			r[ev.requestId].remainingServiceTime -= ts
+			e = Event(ts, ev.coreId, ev.requestId)
+			e.setEventType('quantumDone')
+			ev_list.insert(e)
+						
+	def process_departure(): #Function for Handling departures
+		length = len(r)+1
+		r[length] = Request()
+		r[length].setTimeOutDistribution('exponential',150,1)
+		r[length].setArrivalTimeDistribution('exponential',15,1)
+		r[length].clientId = r[ev.requestId].clientId
+		thinkTime = c[r[length].clientId].getThinkTimeValue()
+		
+		r[length].timestamp = r[length-1].timestamp + r[length].getArrivalTime() + thinkTime
+		r[length].setServiceTimeDistribution('exponential',70,1)
+		r[length].remainingServiceTime = r[length].getServiceTime()
+		r[length].totalServiceTime = r[length].getServiceTime()
+		thread[r[ev.requestId].threadId][1] = 'free'			
+		t[1].setNoOfBusyThreads(-1)
+		
+		e = Event(r[length].timestamp, 0, r[length].requestId) #Set event for arrival after thinking
+		e.setEventType('scheduleArrival')
+		ev_list.insert(e)
+			
+	def process_quantumDone(): #Function for Handling quantumDone
+		if r[ev.requestId].remainingServiceTime == 0:
+			e = Event(ev.timestamp, 0, ev.requestId)
+			e.setEventType('departure')
 			ev_list.insert(e)
 			
-		if event_type == 'switchingDone': #Handle Switching done
-			rr = cq[ev.coreId].dequeue()
-			#TD implement processing of enqueued request
-			cq[ev.coreId].enqueue(rr)
+		e = Event(ev.timestamp + s.switchingDelay, ev.coreId, ev.requestId)
+		e.setEventType('switchingDone')
+		ev_list.insert(e)
 			
+	def process_switchingDone(): #Function for Handling switchingDone
+		rr = cq[ev.coreId].dequeue()
+		#TD implement processing of enqueued request
+		cq[ev.coreId].enqueue(rr)
+			
+	def process_scheduleArrival(): #Function for Handling arrival of thinking requests
+			pushArrival(r[ev.requestId]) #Schedule a new arrival
+		
 	def pushArrival(req): #Function to schedule and push a new arrival
 		x = Ind() #Return index of free thread
 		if x == -1:
@@ -161,20 +166,23 @@ def main():
 		else: #Call appropriate event handler
 			ev = ev_list.extract()
 			if ev.eventType == 'arrival':
-				process('arrival')
+				process_arrival()
 				event_processed += 1
 			if ev.eventType == 'quantumDone':
-				process('quantumDone')
+				process_quantumDone()
 				event_processed += 1
 			if ev.eventType == 'switchingDone':
-				process('switchingDone')
+				process_switchingDone()
 				event_processed += 1
 			if ev.eventType == 'departure':
-				process('departure')
+				process_departure()
+				event_processed += 1
+			if ev.eventType == 'scheduleArrival':
+				process_scheduleArrival()
 				event_processed += 1
 			
 			print('Events Processed: ' + str(event_processed))
 			print('Timestamp: ' + str(ev.timestamp) + ' type: ' + ev.eventType + ' coreID: ' + str(ev.coreId))
 				
-if __name__ == "__main__": #Placeholder for calling main function
+if __name__ == "__main__": #Place holder for calling main function
 	main()
