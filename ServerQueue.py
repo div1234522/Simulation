@@ -17,3 +17,11 @@ class ServerQueue:
 	def getsize(self): #Returns current size of queue
 		return self.q.qsize()
 		
+	def getTopElement(self):
+		re = self.dequeue()
+		self.enqueue(re)
+		for i in range(self.getsize() - 1):
+			temp = self.dequeue()
+			self.enqueue(temp)
+		return re
+		

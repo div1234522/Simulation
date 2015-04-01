@@ -2,7 +2,7 @@ import numpy
 import math
 
 class Client:
-	maxNoOfClients = 5
+	maxNoOfClients = 60
 	currentNoOfClients = 0
 	#class constructor 
 	def __init__(self):

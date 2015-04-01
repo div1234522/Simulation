@@ -14,6 +14,10 @@ class Request:
 		self.requestId = request+1
 		global request
 		request +=1
+	
+	def zero(self):
+		global request
+		request = 0
 		
 	def setTimeOutDistribution(self, dis = "exponential" , a = 50, b = 1): #Set type of distribution
 		self.dis_type = dis
