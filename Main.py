@@ -10,7 +10,7 @@ from ThreadPool import ThreadPool
 from Cores import Cores
 
 def main():
-	
+	#prev_size = 0
 	# no of clients, thread pool, stream/seed
 	inputFile = open('inputFile.txt','r')
 	for row in inputFile:
@@ -72,7 +72,7 @@ def main():
 		r[length].setTimeOutDistribution(ttype,tmean,)
 		r[length].setArrivalTimeDistribution(atype,amean,ahigh)
 		r[length].clientId = r[ev.requestId].clientId
-		timeout = r[ev.requestId].getTimeout()
+		timeout = r[ev.requestId].getTimeOut()
 		
 		r[length].timestamp = r[length-1].timestamp + r[length].getArrivalTime() + timeout
 		r[length].setServiceTimeDistribution(stype,smean,shigh)
@@ -173,17 +173,17 @@ def main():
 		x = Ind() #Return index of free thread
 		if x == -1: #No free thread found
 			if sq.getsize() >= 100:
-				coreId = 'discarded'
+				coreId = -2 #'discarded'
 			else:
 				sq.enqueue(req)
-				coreId = 'serverQueue'
+				coreId = -1 #'serverQueue'
 		else:
 			req.inCoreQueue = True
 			thread[x][1] = 'busy'
 			t[x+1].requestId = req.requestId
 			t[x+1].setNoOfBusyThreads(1)
-			coreId = str((x % s.noOfCores) + 1)
-			cq[int(coreId)].enqueue(req)
+			coreId = (x % s.noOfCores) + 1
+			cq[coreId].enqueue(req)
 		#print("Core id: " + str(coreId) + ' for request: ' + str(req.requestId))
 		
 		e = Event(req.timestamp, coreId, req.requestId)
@@ -264,9 +264,9 @@ def main():
 				ev = ev_list.extract()
 				
 				if ev.eventType == 'arrival':
-					if ev.coreId == 'discarded': #Request Discarded
+					if ev.coreId == -2: #'discarded': #Request Discarded
 						process_arrival_if_queues_full()
-					elif ev.coreId == 'serverQueue': #In Server Queue
+					elif ev.coreId == -1: #'serverQueue': #In Server Queue
 						process_arrival_if_threads_busy()
 					else: #In Core Queue
 						process_arrival_if_threads_free()
@@ -290,8 +290,11 @@ def main():
 				if ev.eventType == 'service':
 					process_service()
 				
-				print('Processing event: ' + ev.eventType + ' timestamp: ' +str(ev.timestamp) + ' requestId: ' +str(ev.requestId) +' coreId: '+ str(ev.coreId))
-				#print('no of busy thread: '+str(tp.getNoOfBusyThreads()))
+				# if sq.getsize() in range(2,60): #!= prev_size: 
+					# #prev_size = sq.getsize()
+					# print('Server queue size: ' + str(sq.getsize()))
+					# print('Processing event: ' + ev.eventType + ' timestamp: ' +str(ev.timestamp) + ' requestId: ' +str(ev.requestId) +' coreId: '+ str(ev.coreId))
+				# #print('no of busy thread: '+str(tp.getNoOfBusyThreads()))
 		print('Time of departure ' + str(depart_limit) + ' for run ' + str(runs) + ' : ' + str(ev.timestamp))
 		
 if __name__ == "__main__": #Place holder for calling main function

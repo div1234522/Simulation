@@ -5,7 +5,7 @@ class Cores:
     nextQuantumTime = 0
     
 	#class constructor
-    def __init__(self, core = str(0),thread = 0):
+    def __init__(self, core = 0,thread = 0):
         self.coreId = core
         self.threadId = thread
 	
