@@ -60,11 +60,9 @@ def main():
 				thigh = int(aa[2])
 		if a[0] == 'No. of simulation runs':
 			simulationRuns = int(a[1])
-			print('No. of runs: ' + str(simulationRuns))
+			#print('No. of runs: ' + str(simulationRuns))
 		if a[0] == 'Stopping criteria for runs(departure)':
 			depart = int(a[1])
-			#print(depart)
-		#if a[0] == 'Stream/Seed values for every run'
 	
 	def process_arrival_if_queues_full(): #Function for Handling arrivals if queues are full
 		length = len(r)+1
@@ -93,6 +91,7 @@ def main():
 		if tp.getNoOfBusyThreads() != s.noOfThread:
 			re = sq.dequeue()
 			re.timestamp = ev.timestamp
+			timestampTrue[re.requestId] = ev.timestamp
 			pushArrival(re)
 	
 	def process_arrival_if_threads_free(): #Function for Handling arrivals if some threads are free
@@ -211,10 +210,27 @@ def main():
 	rq = Request()
 	tp = ThreadPool(50,20,10)
 		
+	#global metrics
+	global_no_of_reqs = 0
+	global_total_time_of_sim = 0
+	global_throughput = 0
+	global_no_of_busy_threads = 0
+	global_no_of_reqs_in_server_queue = 0
+	global_no_of_reqs_in_core_queue = {}
+	for i in range(s.noOfCores):
+		global_no_of_reqs_in_core_queue[i+1] = 0
+	global_no_of_reqs_dropped = 0
+	global_waiting_time = 0
+	global_service_time = 0
+	global_response_time = 0
+	global_time_spent_in_switching = 0
+	global_cpu_util = 0
+	#global metrics
 	for runs in range(1,sm.no_of_runs + 1):
-		#matrics 
+		#metrics 
 		timestamp = {}
 		counter = 0
+		req_drop = 0
 		reqInServerQueue = 0
 		reqInCoreQueue = {}
 		departure = {}
@@ -225,11 +241,13 @@ def main():
 		switchCounter = 0
 		for i in range(s.noOfCores):
 			reqInCoreQueue[i+1] = 0
-		#matrics 
+		last_cpu_busy_time = 0
+		cpu_util = 0
+		#metrics 
 		
 		rq.zero()
 		tp.zero()
-		#print(runs
+		#print(runs)
 		client = []
 		c = {}
 		for i in range(1,noOfClients+1):
@@ -286,6 +304,11 @@ def main():
 				ev = ev_list.extract()
 				total += ((ev.timestamp-oldTimestamp)*tp.getNoOfBusyThreads())
 				oldTimestamp = ev.timestamp
+				if cq[1].getsize() == 0 and cq[2].getsize() == 0 and cq[3].getsize() == 0 and cq[4].getsize() == 0 and cq[5].getsize() == 0:
+					last_cpu_busy_time = ev.timestamp
+				else:
+					cpu_util += ev.timestamp - last_cpu_busy_time
+					last_cpu_busy_time = ev.timestamp
 				
 				if ev.eventType == 'arrival':
 					counter += 1
@@ -295,6 +318,7 @@ def main():
 					
 					if ev.coreId == -2: #'discarded': #Request Discarded
 						process_arrival_if_queues_full()
+						req_drop += 1
 					elif ev.coreId == -1: #'serverQueue': #In Server Queue
 						process_arrival_if_threads_busy()
 					else: #In Core Queue
@@ -346,22 +370,73 @@ def main():
 					# print('Server queue size: ' + str(sq.getsize()))
 					# print('Processing event: ' + ev.eventType + ' timestamp: ' +str(ev.timestamp) + ' requestId: ' +str(ev.requestId) +' coreId: '+ str(ev.coreId))
 				# #print('no of busy thread: '+str(tp.getNoOfBusyThreads()))
-		
-		print('Time of departure ' + str(depart_limit) + ' for run ' + str(runs) + ' : ' + str(ev.timestamp))
-		print('Avg number of busy threads:'+ str(float(total)/ev.timestamp))
-		print('avg no of request in server queue: '+str(float(reqInServerQueue/counter)))
+		print(80*'-')
+		print('RUN NO: ' + str(runs))
+		print('Total number of requests: ' + str(len(waitTime)))
+		print('Total time of simulation: ' + str(ev.timestamp))
+		print('Throughput: ' + str(sm.stop/ev.timestamp) + ' reqs/sec')
+		print('Avg number of busy threads:'+ str(float(total)/ev.timestamp) + ' out of max ' + str(s.noOfThread))
+		print('avg no of request in server queue: '+str(float(reqInServerQueue/counter)) + ' out of max ' + str(sq.queueLength))
+				
+		avg_wait = sum(waitTime)/len(waitTime)
+		avg_res = sum(resTime)/len(resTime)
+		avg_serv = sum(serviceTime)/len(serviceTime)
 		
 		for i in range(s.noOfCores):
-			print('avg no of request in client queue '+str(i+1)+ ' : '+str(float(reqInCoreQueue[i+1]/counter)))
+			print('avg no of request in core queue '+str(i+1)+ ' : '+str(float(reqInCoreQueue[i+1]/counter)) + ' out of max ' + str(cq[i+1].queueLength))
+	
+		print('Number of reqs dropped: ' + str(req_drop))
+		print("waiting time: ", end = '')
+		print(avg_wait)
+		print("service time: ", end = '')
+		print(avg_serv)
+		print("response time: ", end = '')
+		print(str(avg_wait+avg_serv))
+		print("Time spent in switching: ", end= '')
+		print(str(switchCounter*s.switchingDelay))
+		print('CPU Util: ' + str(cpu_util/ev.timestamp))
 		
-		print("response time: ")
-		print(resTime)
-		print("waiting time: ")
-		print(waitTime)
-		print("resvice time: ")
-		print(serviceTime)
-		print("switching Counter: ")
-		print(str(switchCounter*10))
+		
+		global_no_of_reqs += len(waitTime)
+		global_total_time_of_sim += ev.timestamp
+		global_throughput += sm.stop/ev.timestamp
+		global_no_of_busy_threads += float(total)/ev.timestamp
+		global_no_of_reqs_in_server_queue += float(reqInServerQueue/counter)
+		for i in range(s.noOfCores):
+			global_no_of_reqs_in_core_queue[i+1] += float(reqInCoreQueue[i+1]/counter)
+		global_no_of_reqs_dropped += req_drop
+		global_waiting_time += avg_wait
+		global_service_time += avg_serv
+		global_response_time += avg_wait+avg_serv
+		global_time_spent_in_switching += switchCounter*s.switchingDelay
+		global_cpu_util += cpu_util/ev.timestamp
+		
+	print(80*'-')
+	print(80*'-')
+	print('No of clients: ' + str(noOfClients))
+	print('No of departures: ' + str(sm.stop))
+	print('AVERAGE METRICS FOR ALL RUNS:')
+	print('Total number of requests: ' + str(global_no_of_reqs/sm.no_of_runs))
+	print('Total time of simulation: ' + str(global_total_time_of_sim/sm.no_of_runs))
+	print('Throughput: ' + str(global_throughput/sm.no_of_runs) + ' reqs/sec')
+	print('Avg number of busy threads: '+ str(global_no_of_busy_threads/sm.no_of_runs) + ' out of max ' + str(s.noOfThread))
+	print('avg no of request in server queue: '+str(global_no_of_reqs_in_server_queue/sm.no_of_runs) + ' out of max ' + str(sq.queueLength))
+	
+	for i in range(s.noOfCores):
+		print('avg no of request in core queue '+str(i+1)+ ' : '+str(global_no_of_reqs_in_core_queue[i+1]/sm.no_of_runs) + ' out of max ' + str(cq[i+1].queueLength))
+
+	print('Number of reqs dropped: ' + str(global_no_of_reqs_dropped/sm.no_of_runs))
+	print("waiting time: ", end = '')
+	print(global_waiting_time/sm.no_of_runs)
+	print("service time: ", end = '')
+	print(global_service_time/sm.no_of_runs)
+	print("response time: ", end = '')
+	print(str(global_response_time/sm.no_of_runs))
+	print("Time spent in switching: ", end= '')
+	print(str(global_time_spent_in_switching/sm.no_of_runs))
+	print('CPU Util: ' + str(global_cpu_util/sm.no_of_runs))		
+	print(80*'-')
+	print(80*'-')
 		
 if __name__ == "__main__": #Place holder for calling main function
 	main()
