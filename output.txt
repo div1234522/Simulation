@@ -1,0 +1,13 @@
+No of requests timed out
+No of requests dropped
+Avg no of reqs in server queue
+Avg no of reqs in each core queue
+Avg response time = departure time - initial timestamp of request (only if departure happens)*
+Avg Waiting time = time when incorequeue=true - initial timestamp
+Avg Service time = time when incorequeue=false(set this during departure) - time when incorequeue=true
+Avg CPU Utilization for each core = keep summing the time difference between isbusy=false to isbusy=true for each core. then divide by last departure timestamp to get fraction
+Avg time spent in switching = put a counter in the switching done event handler, and in the end multiply by switching delay
+Avg number of busy threads = after every event call a function calculate metrics - keep summing (time difference between prev event and this event)*(current no of busy threads). in the end divide by last departure timestamp
+Time spent by each client on thinking (optional)
+
+*Request timestamp is modified in code, create an initial requestId-timestamp dictionary and get the value from that if departure happens
