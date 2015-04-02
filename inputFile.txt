@@ -9,4 +9,4 @@ Thinking Time Distribution=uniform,5,10
 Timeout Distribution=exponential,150, 1
 No. of simulation runs=10
 Stream/Seed values for every run=
-Stopping criteria for runs(departure)=100
+Stopping criteria for runs(departure)=3000
