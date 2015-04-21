@@ -10,6 +10,9 @@ class Request:
 	remainingServiceTime = 0
 	clientId = 0
 	threadId = 0
+	req_timeout = 0
+	req_arrival = 0
+	req_service = 0
 	def __init__(self): #Class constructor
 		self.requestId = request+1
 		global request
@@ -23,56 +26,49 @@ class Request:
 		self.dis_type = dis
 		if self.dis_type == 'exponential':
 			self.mean = a
+			self.req_timeout = math.ceil(numpy.random.exponential(self.mean))
 		if self.dis_type == 'uniform':
 			self.low = a
 			self.high = b
+			self.req_timeout = math.ceil(numpy.random.uniform(self.low, self.high))
 		if self.dis_type == 'constant':
 			self.value = a
-			
+			self.req_timeout = self.value
 		
 	def getTimeOut(self): #Get value according to distribution
-		if self.dis_type == 'exponential':
-			return math.ceil(numpy.random.exponential(self.mean))
-		if self.dis_type == 'uniform':
-			return math.ceil(numpy.random.uniform(self.low, self.high))
-		if self.dis_type == 'constant':
-			return self.value
+		return self.req_timeout
 			
 	def setArrivalTimeDistribution(self, dis = "exponential" , a = 50, b = 1): #Set type of distribution
 		self.dis_type = dis
 		if self.dis_type == 'exponential':
 			self.mean = a
+			self.req_arrival = math.ceil(numpy.random.exponential(self.mean))
 		if self.dis_type == 'uniform':
 			self.low = a
 			self.high = b
+			self.req_arrival = math.ceil(numpy.random.uniform(self.low, self.high))
 		if self.dis_type == 'constant':
 			self.value = a
+			self.req_arrival = self.value
 	
 	def getArrivalTime(self): #Get value according to distribution
-		if self.dis_type == 'exponential':
-			return math.ceil(numpy.random.exponential(self.mean))
-		if self.dis_type == 'uniform':
-			return math.ceil(numpy.random.uniform(self.low, self.high))
-		if self.dis_type == 'constant':
-			return self.value
+		return self.req_arrival
 		
 	def setServiceTimeDistribution(self, dis = "exponential" , a = 50, b = 1): #Set type of distribution
 		self.dis_type = dis
 		if self.dis_type == 'exponential':
 			self.mean = a
+			self.req_service = math.ceil(numpy.random.exponential(self.mean))
 		if self.dis_type == 'uniform':
 			self.low = a
 			self.high = b
+			self.req_service = math.ceil(numpy.random.uniform(self.low, self.high))
 		if self.dis_type == 'constant':
 			self.value = a
+			self.req_service = self.value
 		
 	def getServiceTime(self): #Get value according to distribution
-		if self.dis_type == 'exponential':
-			return math.ceil(numpy.random.exponential(self.mean))
-		if self.dis_type == 'uniform':
-			return math.ceil(numpy.random.uniform(self.low, self.high))
-		if self.dis_type == 'constant':
-			return self.value
+		return self.req_service
 		
 	def setInCoreQueue(self, queue): #Set whether the request is in core queue or not
 		self.inCoreQueue = queue

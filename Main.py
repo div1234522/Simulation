@@ -8,11 +8,14 @@ from Simulation import Simulation
 from System import System
 from ThreadPool import ThreadPool
 from Cores import Cores
-
+good_put = 0
+bad_put = 0
 def main():
 	#prev_size = 0
 	# no of clients, thread pool, stream/seed
 	inputFile = open('inputFile.txt','r')
+	good_put = 0
+	
 	for row in inputFile:
 		a = row.split('=')
 		if a[0] == 'No. of clients':
@@ -61,7 +64,7 @@ def main():
 		if a[0] == 'No. of simulation runs':
 			simulationRuns = int(a[1])
 			#print('No. of runs: ' + str(simulationRuns))
-		if a[0] == 'Stopping criteria for runs(departure)':
+		if a[0] == 'Stopping criteria for runs(time)':
 			depart = int(a[1])
 	
 	def process_arrival_if_queues_full(): #Function for Handling arrivals if queues are full
@@ -84,23 +87,33 @@ def main():
 		ev_list.insert(e)
 	
 	def process_arrival_if_threads_busy(): #Function for Handling arrivals if all threads are busy
-		if ev.requestId == sq.getTopElement().requestId: #Check if it is the first element of server queue
+		if sq.getsize() == 0:
 			push_from_server_queue()
+			#print('here1')
+		elif sq.getsize() > 0:
+			#print('here2')
+			if ev.requestId == sq.getTopElement().requestId: #Check if it is the first element of server queue
+				#print('here3')
+				push_from_server_queue()
 			
 	def push_from_server_queue():
-		if tp.getNoOfBusyThreads() != s.noOfThread:
+		#if tp.getNoOfBusyThreads() != s.noOfThread:
+		x = Ind() #Return index of free thread
+		if x != -1: #Free thread found
 			re = sq.dequeue()
+			#print('here4')
 			re.timestamp = ev.timestamp
 			timestampTrue[re.requestId] = ev.timestamp
 			pushArrival(re)
 	
 	def process_arrival_if_threads_free(): #Function for Handling arrivals if some threads are free
 		ci = ev.coreId
-		if ev.requestId == cq[int(ci)].getTopElement().requestId: #Check if it is the first element of this core queue
-			#print('Processing scheduled for requestId: ' + str(ev.requestId))
-			e = Event(ev.timestamp, ci, ev.requestId)
-			e.setEventType('service')
-			ev_list.insert(e)
+		if cq[int(ci)].getsize() > 0:
+			if ev.requestId == cq[int(ci)].getTopElement().requestId: #Check if it is the first element of this core queue
+				#print('Processing scheduled for requestId: ' + str(ev.requestId))
+				e = Event(ev.timestamp, ci, ev.requestId)
+				e.setEventType('service')
+				ev_list.insert(e)
 		
 	def process_service(): #CPU Processing
 		#print('Processing req: ' + str(ev.requestId) +  ' Time: ' + str(ev.timestamp) + ' remaining Service: ' + str(r[ev.requestId].remainingServiceTime) + ' (before)')
@@ -147,18 +160,34 @@ def main():
 		ev_list.insert(e)
 		
 		if sq.getsize() > 0:
+			#print('here5')
 			push_from_server_queue() #Push a new element from server queue to core queue empty place
 			
 	def process_quantumDone(): #Function for Handling quantumDone
-		if r[ev.requestId].remainingServiceTime == 0:
-			e = Event(ev.timestamp, ev.coreId, ev.requestId)
-			e.setEventType('departure')
-			ev_list.insert(e)
-			resTime[ev.requestId] = ev.timestamp - timestamp[ev.requestId]
+		if r[ev.requestId].getTimeOut() + timestamp[ev.requestId] < ev.timestamp:
+			global bad_put
+			bad_put += 1
+			#print(bad_put)
+			#print('Req ' + str(ev.requestId) + ' timedout.')
+			rr = cq[int(ev.coreId)].dequeue()
+			thread[r[ev.requestId].threadId][1] = 'free'			
+			t[1].setNoOfBusyThreads(-1)
+			if cq[int(ev.coreId)].getsize() > 0:
+				r_next = cq[int(ev.coreId)].getTopElement()
+				e = Event(ev.timestamp + s.switchingDelay, ev.coreId, r_next.requestId)
+				e.setEventType('service')
+				ev_list.insert(e)
+			process_arrival_if_queues_full()
 		else:
-			e = Event(ev.timestamp + s.switchingDelay, ev.coreId, ev.requestId)
-			e.setEventType('switchingDone')
-			ev_list.insert(e)
+			if r[ev.requestId].remainingServiceTime == 0:
+				e = Event(ev.timestamp, ev.coreId, ev.requestId)
+				e.setEventType('departure')
+				ev_list.insert(e)
+				resTime[ev.requestId] = ev.timestamp - timestamp[ev.requestId]
+			else:
+				e = Event(ev.timestamp + s.switchingDelay, ev.coreId, ev.requestId)
+				e.setEventType('switchingDone')
+				ev_list.insert(e)
 			
 	def process_switchingDone(): #Function for Handling switchingDone
 		rr = cq[int(ev.coreId)].dequeue()
@@ -173,11 +202,14 @@ def main():
 		
 	def pushArrival(req): #Function to push a new arrival
 		x = Ind() #Return index of free thread
+		#print('Ind: ' + str(x))
 		if x == -1: #No free thread found
 			if sq.getsize() >= 100:
+				#print('here7')
 				coreId = -2 #'discarded'
 			else:
 				sq.enqueue(req)
+				#print('here6')
 				coreId = -1 #'serverQueue'
 		else:
 			req.inCoreQueue = True
@@ -196,11 +228,9 @@ def main():
 		ev_list.insert(e)
 	
 	def Ind(): #Return index of free thread
-		ind = 0
-		for i in thread:				
-			if i[1] == 'free':
-				return ind
-			ind += 1
+		for i in range(50):				
+			if thread[i][1] == 'free':
+				return i
 		return -1 #No free thread found
 	
 	s = System(cores,threads,delay,quantum)
@@ -213,7 +243,8 @@ def main():
 	#global metrics
 	global_no_of_reqs = 0
 	global_total_time_of_sim = 0
-	global_throughput = 0
+	global_bad_put = 0
+	global_good_put = 0
 	global_no_of_busy_threads = 0
 	global_no_of_reqs_in_server_queue = 0
 	global_no_of_reqs_in_core_queue = {}
@@ -239,6 +270,10 @@ def main():
 		timestampTrue ={}
 		serviceTime= {}
 		switchCounter = 0
+		good_put = 0
+		global bad_put
+		bad_put = 0
+		
 		for i in range(s.noOfCores):
 			reqInCoreQueue[i+1] = 0
 		last_cpu_busy_time = 0
@@ -295,8 +330,8 @@ def main():
 			ev_list.insert(e)
 		oldTimestamp = 0
 		total = 0
-		depart_limit = 0
-		while(depart_limit < sm.stop): #Stopping criteria for simulation
+		init_time = 0
+		while(init_time < sm.stop): #Stopping criteria for simulation
 			if ev_list.getsize() == 0:
 				print("Simulation ended")
 				break
@@ -346,7 +381,7 @@ def main():
 					for i in range(s.noOfCores):
 						reqInCoreQueue[i+1] += cq[i+1].getsize()
 					process_departure()
-					depart_limit += 1
+					good_put += 1
 					# if depart_limit == sm.stop:
 						# print('departure time of last departure for run ' + str(runs) + ' : ' + str(ev.timestamp))			
 					#print('Time of departure ' + str(depart_limit) + ' for run ' + str(runs) + ' : ' + str(ev.timestamp))			
@@ -365,16 +400,25 @@ def main():
 						reqInCoreQueue[i+1] += cq[i+1].getsize()
 					process_service()
 				
+				init_time = ev.timestamp
 				# if sq.getsize() in range(2,60): #!= prev_size: 
-					# #prev_size = sq.getsize()
+					# prev_size = sq.getsize()
 					# print('Server queue size: ' + str(sq.getsize()))
-					# print('Processing event: ' + ev.eventType + ' timestamp: ' +str(ev.timestamp) + ' requestId: ' +str(ev.requestId) +' coreId: '+ str(ev.coreId))
-				# #print('no of busy thread: '+str(tp.getNoOfBusyThreads()))
+				#if ev.eventType not in ['arrival', 'scheduleArrival']:
+				#print('Size of server queue: ' + str(sq.getsize()))
+				#print('Size of core queues: ' + str(cq[1].getsize()) + ' ' + str(cq[2].getsize()) + ' ' + str(cq[3].getsize()) + ' ' + str(cq[4].getsize()) + ' ' + str(cq[5].getsize()) + ' ')
+					#print('Processing event: ' + ev.eventType + ' timestamp: ' +str(ev.timestamp) + ' requestId: ' +str(ev.requestId) +' coreId: '+ str(ev.coreId))
+				# print('Size of event list: ' + str(ev_list.getsize()))
+				# print('no of busy thread: '+str(tp.getNoOfBusyThreads()))
 		print(80*'-')
 		print('RUN NO: ' + str(runs))
 		print('Total number of requests: ' + str(len(waitTime)))
-		print('Total time of simulation: ' + str(ev.timestamp))
-		print('Throughput: ' + str(sm.stop/ev.timestamp) + ' reqs/sec')
+		print('Total time of simulation: ' + str(ev.timestamp/1000) + ' secs')
+		print('Good Put: ' + str((1000*good_put)/ev.timestamp) + ' reqs/sec') #For msec to sec
+		global bad_put
+		bad = bad_put
+		print('Bad Put: ' + str((1000*bad)/ev.timestamp) + ' reqs/sec') #For msec to sec
+		print('Throughput: ' + str((1000*(good_put + bad))/ev.timestamp) + ' reqs/sec') #For msec to sec
 		print('Avg number of busy threads:'+ str(float(total)/ev.timestamp) + ' out of max ' + str(s.noOfThread))
 		print('avg no of request in server queue: '+str(float(reqInServerQueue/counter)) + ' out of max ' + str(sq.queueLength))
 				
@@ -387,19 +431,22 @@ def main():
 	
 		print('Number of reqs dropped: ' + str(req_drop))
 		print("waiting time: ", end = '')
-		print(avg_wait)
+		print(str(avg_wait/1000) + ' secs')
 		print("service time: ", end = '')
-		print(avg_serv)
+		print(str(avg_serv/1000) + ' secs')
 		print("response time: ", end = '')
-		print(str(avg_wait+avg_serv))
+		print(str((avg_wait+avg_serv)/1000) + ' secs')
 		print("Time spent in switching: ", end= '')
-		print(str(switchCounter*s.switchingDelay))
+		print(str((switchCounter*s.switchingDelay)/1000) + ' secs')
 		print('CPU Util: ' + str(cpu_util/ev.timestamp))
 		
 		
 		global_no_of_reqs += len(waitTime)
 		global_total_time_of_sim += ev.timestamp
-		global_throughput += sm.stop/ev.timestamp
+		global bad_put
+		bad = bad_put
+		global_bad_put += bad/ev.timestamp
+		global_good_put += good_put/ev.timestamp
 		global_no_of_busy_threads += float(total)/ev.timestamp
 		global_no_of_reqs_in_server_queue += float(reqInServerQueue/counter)
 		for i in range(s.noOfCores):
@@ -414,11 +461,21 @@ def main():
 	print(80*'-')
 	print(80*'-')
 	print('No of clients: ' + str(noOfClients))
-	print('No of departures: ' + str(sm.stop))
+	print('No of threads: ' + str(threads))
+	print('Switching delay: ' + str(delay/1000) + ' sec')
+	print('Quantum size: ' + str(quantum/1000) + ' sec')
+	print('Service Time Mean: ' + str(smean/1000) + ' sec')
+	print('Arrival Time Mean: ' + str(amean/1000) + ' sec')
+	print('Thinking Time Mean: ' + str(thmean/1000) + ' sec')
+	print('Timeout Mean: ' + str(tmean/1000) + ' sec')		
+	print(80*'-')
+	print(80*'-')
 	print('AVERAGE METRICS FOR ALL RUNS:')
 	print('Total number of requests: ' + str(global_no_of_reqs/sm.no_of_runs))
-	print('Total time of simulation: ' + str(global_total_time_of_sim/sm.no_of_runs))
-	print('Throughput: ' + str(global_throughput/sm.no_of_runs) + ' reqs/sec')
+	print('Total time of simulation: ' + str(global_total_time_of_sim/(1000*sm.no_of_runs)))
+	print('Good put: ' + str((1000*global_bad_put)/sm.no_of_runs) + ' reqs/sec')
+	print('Bad put: ' + str((1000*global_bad_put)/sm.no_of_runs) + ' reqs/sec')
+	print('Throughput: ' + str((1000*(global_good_put + global_bad_put))/sm.no_of_runs))
 	print('Avg number of busy threads: '+ str(global_no_of_busy_threads/sm.no_of_runs) + ' out of max ' + str(s.noOfThread))
 	print('avg no of request in server queue: '+str(global_no_of_reqs_in_server_queue/sm.no_of_runs) + ' out of max ' + str(sq.queueLength))
 	
@@ -427,13 +484,13 @@ def main():
 
 	print('Number of reqs dropped: ' + str(global_no_of_reqs_dropped/sm.no_of_runs))
 	print("waiting time: ", end = '')
-	print(global_waiting_time/sm.no_of_runs)
+	print(str(global_waiting_time/(1000*sm.no_of_runs)) + ' secs')
 	print("service time: ", end = '')
-	print(global_service_time/sm.no_of_runs)
+	print(str(global_service_time/(1000*sm.no_of_runs)) + ' secs')
 	print("response time: ", end = '')
-	print(str(global_response_time/sm.no_of_runs))
+	print(str(global_response_time/(1000*sm.no_of_runs)) + ' secs')
 	print("Time spent in switching: ", end= '')
-	print(str(global_time_spent_in_switching/sm.no_of_runs))
+	print(str(global_time_spent_in_switching/(1000*sm.no_of_runs)) + ' secs')
 	print('CPU Util: ' + str(global_cpu_util/sm.no_of_runs))		
 	print(80*'-')
 	print(80*'-')
