@@ -73,9 +73,9 @@ def main():
 		r[length].setTimeOutDistribution(ttype,tmean,)
 		r[length].setArrivalTimeDistribution(atype,amean,ahigh)
 		r[length].clientId = r[ev.requestId].clientId
-		timeout[length] = r[ev.requestId].getTimeOut()
+		timeout[length] = r[length].getTimeOut()
 		
-		r[length].timestamp = ev.timestamp + r[length].getArrivalTime() + timeout[length]
+		r[length].timestamp = ev.timestamp + r[length].getArrivalTime() + timeout[ev.requestId]
 		r[length].setServiceTimeDistribution(stype,smean,shigh)
 		serv_time = r[length].getServiceTime()
 		r[length].remainingServiceTime = serv_time
@@ -142,6 +142,7 @@ def main():
 		length = len(r)+1
 		r[length] = Request()
 		r[length].setTimeOutDistribution(ttype,tmean,thigh)
+		timeout[length] = r[length].getTimeOut()
 		r[length].setArrivalTimeDistribution(atype,amean,ahigh)
 		r[length].clientId = r[ev.requestId].clientId
 		thinkTime = c[r[length].clientId].getThinkTimeValue()
@@ -203,7 +204,7 @@ def main():
 		
 	def pushArrival(req): #Function to push a new arrival
 		x = Ind() #Return index of free thread
-		#print('Ind: ' + str(x))
+		print('Ind: ' + str(x))
 		if x == -1: #No free thread found
 			if sq.getsize() >= 100:
 				#print('here7')
@@ -316,6 +317,7 @@ def main():
 		for i in range(1, noOfClients+1): #Generate requests by clients
 			r[i] = Request()
 			r[i].setTimeOutDistribution(ttype,tmean,thigh)
+			timeout[i] = r[i].getTimeOut()
 			r[i].setArrivalTimeDistribution(atype,amean,ahigh)
 			r[i].timestamp = r[i].getArrivalTime()
 			r[i].setServiceTimeDistribution(stype,smean,shigh)
@@ -334,6 +336,7 @@ def main():
 		total = 0
 		init_time = 0
 		while(init_time < sm.stop): #Stopping criteria for simulation
+			print(ev_list.getsize())
 			# if ev_list.getsize() == 0:
 				# print("Simulation ended")
 				# break

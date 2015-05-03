@@ -1,13 +1,6099 @@
-No of requests timed out
-No of requests dropped
-Avg no of reqs in server queue
-Avg no of reqs in each core queue
-Avg response time = departure time - initial timestamp of request (only if departure happens)*
-Avg Waiting time = time when incorequeue=true - initial timestamp
-Avg Service time = time when incorequeue=false(set this during departure) - time when incorequeue=true
-Avg CPU Utilization for each core = keep summing the time difference between isbusy=false to isbusy=true for each core. then divide by last departure timestamp to get fraction
-Avg time spent in switching = put a counter in the switching done event handler, and in the end multiply by switching delay
-Avg number of busy threads = after every event call a function calculate metrics - keep summing (time difference between prev event and this event)*(current no of busy threads). in the end divide by last departure timestamp
-Time spent by each client on thinking (optional)
-
-*Request timestamp is modified in code, create an initial requestId-timestamp dictionary and get the value from that if departure happens
+200
+Ind: 0
+Timestamp: 1 Size of core queues: 1 0 0 0 0 
+200
+Timestamp: 1 Size of core queues: 1 0 0 0 0 
+200
+Timestamp: 1 Size of core queues: 1 0 0 0 0 
+200
+Ind: 1
+Timestamp: 1 Size of core queues: 1 1 0 0 0 
+200
+Timestamp: 1 Size of core queues: 1 1 0 0 0 
+200
+Timestamp: 1 Size of core queues: 1 1 0 0 0 
+200
+Ind: 2
+Timestamp: 2 Size of core queues: 1 1 1 0 0 
+200
+Timestamp: 2 Size of core queues: 1 1 1 0 0 
+200
+Timestamp: 2 Size of core queues: 1 1 1 0 0 
+200
+Ind: 3
+Timestamp: 2 Size of core queues: 1 1 1 1 0 
+200
+Timestamp: 2 Size of core queues: 1 1 1 1 0 
+200
+Timestamp: 2 Size of core queues: 1 1 1 1 0 
+200
+Ind: 4
+Timestamp: 2 Size of core queues: 1 1 1 1 1 
+200
+Timestamp: 2 Size of core queues: 1 1 1 1 1 
+200
+Timestamp: 2 Size of core queues: 1 1 1 1 1 
+200
+Ind: 5
+Timestamp: 3 Size of core queues: 2 1 1 1 1 
+200
+Timestamp: 3 Size of core queues: 2 1 1 1 1 
+199
+Ind: 6
+Timestamp: 3 Size of core queues: 2 2 1 1 1 
+199
+Timestamp: 3 Size of core queues: 2 2 1 1 1 
+198
+Ind: 7
+Timestamp: 3 Size of core queues: 2 2 2 1 1 
+198
+Timestamp: 3 Size of core queues: 2 2 2 1 1 
+197
+Ind: 8
+Timestamp: 3 Size of core queues: 2 2 2 2 1 
+197
+Timestamp: 3 Size of core queues: 2 2 2 2 1 
+196
+Ind: 9
+Timestamp: 4 Size of core queues: 2 2 2 2 2 
+196
+Timestamp: 4 Size of core queues: 2 2 2 2 2 
+195
+Ind: 10
+Timestamp: 4 Size of core queues: 3 2 2 2 2 
+195
+Timestamp: 4 Size of core queues: 3 2 2 2 2 
+194
+Ind: 11
+Timestamp: 4 Size of core queues: 3 3 2 2 2 
+194
+Timestamp: 4 Size of core queues: 3 3 2 2 2 
+193
+Ind: 12
+Timestamp: 4 Size of core queues: 3 3 3 2 2 
+193
+Timestamp: 4 Size of core queues: 3 3 3 2 2 
+192
+Timestamp: 5 Size of core queues: 3 3 3 2 2 
+192
+Timestamp: 5 Size of core queues: 3 3 3 1 2 
+193
+Ind: 0
+Timestamp: 5 Size of core queues: 4 3 3 1 2 
+193
+Timestamp: 5 Size of core queues: 4 3 3 1 2 
+192
+Ind: 13
+Timestamp: 5 Size of core queues: 4 3 3 2 2 
+192
+Timestamp: 5 Size of core queues: 4 3 3 2 2 
+191
+Ind: 14
+Timestamp: 5 Size of core queues: 4 3 3 2 3 
+191
+Timestamp: 5 Size of core queues: 4 3 3 2 3 
+190
+Ind: 15
+Timestamp: 5 Size of core queues: 5 3 3 2 3 
+190
+Timestamp: 5 Size of core queues: 5 3 3 2 3 
+189
+Timestamp: 6 Size of core queues: 5 3 3 2 3 
+189
+Ind: 16
+Timestamp: 6 Size of core queues: 5 4 3 2 3 
+189
+Timestamp: 6 Size of core queues: 5 4 3 2 3 
+188
+Ind: 17
+Timestamp: 6 Size of core queues: 5 4 4 2 3 
+188
+Timestamp: 6 Size of core queues: 5 4 4 2 3 
+187
+Ind: 18
+Timestamp: 6 Size of core queues: 5 4 4 3 3 
+187
+Timestamp: 6 Size of core queues: 5 4 4 3 3 
+186
+Ind: 19
+Timestamp: 6 Size of core queues: 5 4 4 3 4 
+186
+Timestamp: 6 Size of core queues: 5 4 4 3 4 
+185
+Ind: 20
+Timestamp: 6 Size of core queues: 6 4 4 3 4 
+185
+Timestamp: 6 Size of core queues: 6 4 4 3 4 
+184
+Ind: 21
+Timestamp: 7 Size of core queues: 6 5 4 3 4 
+184
+Timestamp: 7 Size of core queues: 6 5 4 3 4 
+183
+Ind: 22
+Timestamp: 7 Size of core queues: 6 5 5 3 4 
+183
+Timestamp: 7 Size of core queues: 6 5 5 3 4 
+182
+Ind: 23
+Timestamp: 7 Size of core queues: 6 5 5 4 4 
+182
+Timestamp: 7 Size of core queues: 6 5 5 4 4 
+181
+Ind: 24
+Timestamp: 8 Size of core queues: 6 5 5 4 5 
+181
+Timestamp: 8 Size of core queues: 6 5 5 4 5 
+180
+Ind: 25
+Timestamp: 8 Size of core queues: 7 5 5 4 5 
+180
+Timestamp: 8 Size of core queues: 7 5 5 4 5 
+179
+Ind: 26
+Timestamp: 8 Size of core queues: 7 6 5 4 5 
+179
+Timestamp: 8 Size of core queues: 7 6 5 4 5 
+178
+Ind: 27
+Timestamp: 8 Size of core queues: 7 6 6 4 5 
+178
+Timestamp: 8 Size of core queues: 7 6 6 4 5 
+177
+Ind: 28
+Timestamp: 9 Size of core queues: 7 6 6 5 5 
+177
+Timestamp: 9 Size of core queues: 7 6 6 5 5 
+176
+Ind: 29
+Timestamp: 9 Size of core queues: 7 6 6 5 6 
+176
+Timestamp: 9 Size of core queues: 7 6 6 5 6 
+175
+Ind: 30
+Timestamp: 9 Size of core queues: 8 6 6 5 6 
+175
+Timestamp: 9 Size of core queues: 8 6 6 5 6 
+174
+Ind: 31
+Timestamp: 9 Size of core queues: 8 7 6 5 6 
+174
+Timestamp: 9 Size of core queues: 8 7 6 5 6 
+173
+Ind: 32
+Timestamp: 9 Size of core queues: 8 7 7 5 6 
+173
+Timestamp: 9 Size of core queues: 8 7 7 5 6 
+172
+Ind: 33
+Timestamp: 9 Size of core queues: 8 7 7 6 6 
+172
+Timestamp: 9 Size of core queues: 8 7 7 6 6 
+171
+Ind: 34
+Timestamp: 10 Size of core queues: 8 7 7 6 7 
+171
+Timestamp: 10 Size of core queues: 8 7 7 6 7 
+170
+Ind: 35
+Timestamp: 10 Size of core queues: 9 7 7 6 7 
+170
+Timestamp: 10 Size of core queues: 9 7 7 6 7 
+169
+Ind: 36
+Timestamp: 10 Size of core queues: 9 8 7 6 7 
+169
+Timestamp: 10 Size of core queues: 9 8 7 6 7 
+168
+Ind: 37
+Timestamp: 10 Size of core queues: 9 8 8 6 7 
+168
+Timestamp: 10 Size of core queues: 9 8 8 6 7 
+167
+Ind: 38
+Timestamp: 10 Size of core queues: 9 8 8 7 7 
+167
+Timestamp: 10 Size of core queues: 9 8 8 7 7 
+166
+Ind: 39
+Timestamp: 10 Size of core queues: 9 8 8 7 8 
+166
+Timestamp: 10 Size of core queues: 9 8 8 7 8 
+165
+Ind: 40
+Timestamp: 11 Size of core queues: 10 8 8 7 8 
+165
+Timestamp: 11 Size of core queues: 10 8 8 7 8 
+164
+Ind: 41
+Timestamp: 11 Size of core queues: 10 9 8 7 8 
+164
+Timestamp: 11 Size of core queues: 10 9 8 7 8 
+163
+Ind: 42
+Timestamp: 12 Size of core queues: 10 9 9 7 8 
+163
+Timestamp: 12 Size of core queues: 10 9 9 7 8 
+162
+Ind: 43
+Timestamp: 12 Size of core queues: 10 9 9 8 8 
+162
+Timestamp: 12 Size of core queues: 10 9 9 8 8 
+161
+Ind: 44
+Timestamp: 12 Size of core queues: 10 9 9 8 9 
+161
+Timestamp: 12 Size of core queues: 10 9 9 8 9 
+160
+Timestamp: 13 Size of core queues: 10 9 9 8 9 
+160
+Timestamp: 13 Size of core queues: 10 9 8 8 9 
+161
+Ind: 0
+Timestamp: 13 Size of core queues: 10 9 8 8 9 
+161
+Timestamp: 13 Size of core queues: 10 9 8 8 9 
+160
+Ind: 45
+Timestamp: 13 Size of core queues: 10 9 8 8 9 
+160
+Timestamp: 13 Size of core queues: 10 9 8 8 9 
+159
+Ind: 46
+Timestamp: 13 Size of core queues: 10 10 8 8 9 
+159
+Timestamp: 13 Size of core queues: 10 10 8 8 9 
+158
+Ind: 47
+Timestamp: 13 Size of core queues: 10 10 9 8 9 
+158
+Timestamp: 13 Size of core queues: 10 10 9 8 9 
+157
+Timestamp: 14 Size of core queues: 10 10 9 8 9 
+157
+Ind: 48
+Timestamp: 14 Size of core queues: 10 10 9 9 9 
+157
+Timestamp: 14 Size of core queues: 10 10 9 9 9 
+156
+Ind: 49
+Timestamp: 14 Size of core queues: 10 10 9 9 10 
+156
+Timestamp: 14 Size of core queues: 10 10 9 9 10 
+155
+Ind: -1
+Timestamp: 14 Size of core queues: 10 10 9 9 10 
+155
+Timestamp: 14 Size of core queues: 10 10 9 9 10 
+154
+Ind: -1
+Timestamp: 15 Size of core queues: 10 10 9 9 10 
+154
+Timestamp: 15 Size of core queues: 10 10 9 9 10 
+153
+Ind: -1
+Timestamp: 15 Size of core queues: 10 10 9 9 10 
+153
+Timestamp: 15 Size of core queues: 10 10 9 9 10 
+152
+Ind: -1
+Timestamp: 15 Size of core queues: 10 10 9 9 10 
+152
+Timestamp: 15 Size of core queues: 10 10 9 9 10 
+151
+Ind: -1
+Timestamp: 15 Size of core queues: 10 10 9 9 10 
+151
+Timestamp: 15 Size of core queues: 10 10 9 9 10 
+150
+Ind: -1
+Timestamp: 15 Size of core queues: 10 10 9 9 10 
+150
+Timestamp: 15 Size of core queues: 10 10 9 9 10 
+149
+Ind: -1
+Timestamp: 15 Size of core queues: 10 10 9 9 10 
+149
+Timestamp: 15 Size of core queues: 10 10 9 9 10 
+148
+Ind: -1
+Timestamp: 15 Size of core queues: 10 10 9 9 10 
+148
+Timestamp: 15 Size of core queues: 10 10 9 9 10 
+147
+Ind: -1
+Timestamp: 15 Size of core queues: 10 10 9 9 10 
+147
+Timestamp: 15 Size of core queues: 10 10 9 9 10 
+146
+Ind: -1
+Timestamp: 16 Size of core queues: 10 10 9 9 10 
+146
+Timestamp: 16 Size of core queues: 10 10 9 9 10 
+145
+Ind: -1
+Timestamp: 16 Size of core queues: 10 10 9 9 10 
+145
+Timestamp: 16 Size of core queues: 10 10 9 9 10 
+144
+Ind: -1
+Timestamp: 16 Size of core queues: 10 10 9 9 10 
+144
+Timestamp: 16 Size of core queues: 10 10 9 9 10 
+143
+Ind: -1
+Timestamp: 16 Size of core queues: 10 10 9 9 10 
+143
+Timestamp: 16 Size of core queues: 10 10 9 9 10 
+142
+Ind: -1
+Timestamp: 16 Size of core queues: 10 10 9 9 10 
+142
+Timestamp: 16 Size of core queues: 10 10 9 9 10 
+141
+Ind: -1
+Timestamp: 17 Size of core queues: 10 10 9 9 10 
+141
+Timestamp: 17 Size of core queues: 10 10 9 9 10 
+140
+Ind: -1
+Timestamp: 17 Size of core queues: 10 10 9 9 10 
+140
+Timestamp: 17 Size of core queues: 10 10 9 9 10 
+139
+Ind: -1
+Timestamp: 17 Size of core queues: 10 10 9 9 10 
+139
+Timestamp: 17 Size of core queues: 10 10 9 9 10 
+138
+Ind: -1
+Timestamp: 18 Size of core queues: 10 10 9 9 10 
+138
+Timestamp: 18 Size of core queues: 10 10 9 9 10 
+137
+Ind: -1
+Timestamp: 18 Size of core queues: 10 10 9 9 10 
+137
+Timestamp: 18 Size of core queues: 10 10 9 9 10 
+136
+Ind: -1
+Timestamp: 18 Size of core queues: 10 10 9 9 10 
+136
+Timestamp: 18 Size of core queues: 10 10 9 9 10 
+135
+Ind: -1
+Timestamp: 19 Size of core queues: 10 10 9 9 10 
+135
+Timestamp: 19 Size of core queues: 10 10 9 9 10 
+134
+Ind: -1
+Timestamp: 19 Size of core queues: 10 10 9 9 10 
+134
+Timestamp: 19 Size of core queues: 10 10 9 9 10 
+133
+Ind: -1
+Timestamp: 19 Size of core queues: 10 10 9 9 10 
+133
+Timestamp: 19 Size of core queues: 10 10 9 9 10 
+132
+Ind: -1
+Timestamp: 19 Size of core queues: 10 10 9 9 10 
+132
+Timestamp: 19 Size of core queues: 10 10 9 9 10 
+131
+Ind: -1
+Timestamp: 20 Size of core queues: 10 10 9 9 10 
+131
+Timestamp: 20 Size of core queues: 10 10 9 9 10 
+130
+Ind: -1
+Timestamp: 20 Size of core queues: 10 10 9 9 10 
+130
+Timestamp: 20 Size of core queues: 10 10 9 9 10 
+129
+Ind: -1
+Timestamp: 20 Size of core queues: 10 10 9 9 10 
+129
+Timestamp: 20 Size of core queues: 10 10 9 9 10 
+128
+Ind: -1
+Timestamp: 20 Size of core queues: 10 10 9 9 10 
+128
+Timestamp: 20 Size of core queues: 10 10 9 9 10 
+127
+Ind: -1
+Timestamp: 21 Size of core queues: 10 10 9 9 10 
+127
+Timestamp: 21 Size of core queues: 10 10 9 9 10 
+126
+Ind: -1
+Timestamp: 21 Size of core queues: 10 10 9 9 10 
+126
+Timestamp: 21 Size of core queues: 10 10 9 9 10 
+125
+Ind: -1
+Timestamp: 21 Size of core queues: 10 10 9 9 10 
+125
+Timestamp: 21 Size of core queues: 10 10 9 9 10 
+124
+Ind: -1
+Timestamp: 21 Size of core queues: 10 10 9 9 10 
+124
+Timestamp: 21 Size of core queues: 10 10 9 9 10 
+123
+Ind: -1
+Timestamp: 22 Size of core queues: 10 10 9 9 10 
+123
+Timestamp: 22 Size of core queues: 10 10 9 9 10 
+122
+Ind: -1
+Timestamp: 23 Size of core queues: 10 10 9 9 10 
+122
+Timestamp: 23 Size of core queues: 10 10 9 9 10 
+121
+Ind: -1
+Timestamp: 23 Size of core queues: 10 10 9 9 10 
+121
+Timestamp: 23 Size of core queues: 10 10 9 9 10 
+120
+Ind: -1
+Timestamp: 24 Size of core queues: 10 10 9 9 10 
+120
+Timestamp: 24 Size of core queues: 10 10 9 9 10 
+119
+Ind: -1
+Timestamp: 25 Size of core queues: 10 10 9 9 10 
+119
+Timestamp: 25 Size of core queues: 10 10 9 9 10 
+118
+Timestamp: 26 Size of core queues: 10 10 9 9 10 
+118
+Ind: 0
+Timestamp: 26 Size of core queues: 10 10 9 9 9 
+120
+Timestamp: 26 Size of core queues: 10 10 9 9 9 
+119
+Ind: -1
+Timestamp: 26 Size of core queues: 10 10 9 9 9 
+119
+Timestamp: 26 Size of core queues: 10 10 9 9 9 
+118
+Ind: -1
+Timestamp: 26 Size of core queues: 10 10 9 9 9 
+118
+Timestamp: 26 Size of core queues: 10 10 9 9 9 
+117
+Ind: -1
+Timestamp: 26 Size of core queues: 10 10 9 9 9 
+117
+Timestamp: 26 Size of core queues: 10 10 9 9 9 
+116
+Ind: -1
+Timestamp: 26 Size of core queues: 10 10 9 9 9 
+116
+Timestamp: 26 Size of core queues: 10 10 9 9 9 
+115
+Ind: -1
+Timestamp: 26 Size of core queues: 10 10 9 9 9 
+115
+Timestamp: 26 Size of core queues: 10 10 9 9 9 
+114
+Timestamp: 27 Size of core queues: 10 10 9 9 9 
+114
+Ind: -1
+Timestamp: 27 Size of core queues: 10 10 9 9 9 
+114
+Timestamp: 27 Size of core queues: 10 10 9 9 9 
+113
+Ind: -1
+Timestamp: 27 Size of core queues: 10 10 9 9 9 
+113
+Timestamp: 27 Size of core queues: 10 10 9 9 9 
+112
+Ind: -1
+Timestamp: 29 Size of core queues: 10 10 9 9 9 
+112
+Timestamp: 29 Size of core queues: 10 10 9 9 9 
+111
+Ind: -1
+Timestamp: 30 Size of core queues: 10 10 9 9 9 
+111
+Timestamp: 30 Size of core queues: 10 10 9 9 9 
+110
+Ind: -1
+Timestamp: 30 Size of core queues: 10 10 9 9 9 
+110
+Timestamp: 30 Size of core queues: 10 10 9 9 9 
+109
+Ind: -1
+Timestamp: 30 Size of core queues: 10 10 9 9 9 
+109
+Timestamp: 30 Size of core queues: 10 10 9 9 9 
+108
+Ind: -1
+Timestamp: 30 Size of core queues: 10 10 9 9 9 
+108
+Timestamp: 30 Size of core queues: 10 10 9 9 9 
+107
+Ind: -1
+Timestamp: 31 Size of core queues: 10 10 9 9 9 
+107
+Timestamp: 31 Size of core queues: 10 10 9 9 9 
+106
+Ind: -1
+Timestamp: 31 Size of core queues: 10 10 9 9 9 
+106
+Timestamp: 31 Size of core queues: 10 10 9 9 9 
+105
+Ind: -1
+Timestamp: 31 Size of core queues: 10 10 9 9 9 
+105
+Timestamp: 31 Size of core queues: 10 10 9 9 9 
+104
+Ind: -1
+Timestamp: 31 Size of core queues: 10 10 9 9 9 
+104
+Timestamp: 31 Size of core queues: 10 10 9 9 9 
+103
+Ind: -1
+Timestamp: 32 Size of core queues: 10 10 9 9 9 
+103
+Timestamp: 32 Size of core queues: 10 10 9 9 9 
+102
+Ind: -1
+Timestamp: 32 Size of core queues: 10 10 9 9 9 
+102
+Timestamp: 32 Size of core queues: 10 10 9 9 9 
+101
+Ind: -1
+Timestamp: 32 Size of core queues: 10 10 9 9 9 
+101
+Timestamp: 32 Size of core queues: 10 10 9 9 9 
+100
+Ind: -1
+Timestamp: 32 Size of core queues: 10 10 9 9 9 
+100
+Timestamp: 32 Size of core queues: 10 10 9 9 9 
+99
+Ind: -1
+Timestamp: 33 Size of core queues: 10 10 9 9 9 
+99
+Timestamp: 33 Size of core queues: 10 10 9 9 9 
+98
+Timestamp: 33 Size of core queues: 10 10 9 9 9 
+98
+Ind: 0
+Timestamp: 33 Size of core queues: 10 10 8 9 9 
+100
+Timestamp: 33 Size of core queues: 10 10 8 9 9 
+99
+Ind: -1
+Timestamp: 33 Size of core queues: 10 10 8 9 9 
+99
+Timestamp: 33 Size of core queues: 10 10 8 9 9 
+98
+Ind: -1
+Timestamp: 33 Size of core queues: 10 10 8 9 9 
+98
+Timestamp: 33 Size of core queues: 10 10 8 9 9 
+97
+Timestamp: 34 Size of core queues: 10 10 8 9 9 
+97
+Timestamp: 34 Size of core queues: 10 10 8 9 9 
+97
+Ind: 0
+Timestamp: 34 Size of core queues: 10 10 8 8 9 
+99
+Timestamp: 34 Size of core queues: 10 10 8 8 9 
+98
+Ind: -1
+Timestamp: 34 Size of core queues: 10 10 8 8 9 
+98
+Timestamp: 34 Size of core queues: 10 10 8 8 9 
+97
+Ind: -1
+Timestamp: 34 Size of core queues: 10 10 8 8 9 
+97
+Timestamp: 34 Size of core queues: 10 10 8 8 9 
+96
+Timestamp: 35 Size of core queues: 10 10 8 8 9 
+96
+Timestamp: 35 Size of core queues: 10 10 8 8 9 
+96
+Ind: 0
+Timestamp: 35 Size of core queues: 10 10 8 8 9 
+98
+Timestamp: 35 Size of core queues: 10 10 8 8 9 
+97
+Ind: -1
+Timestamp: 35 Size of core queues: 10 10 8 8 9 
+97
+Timestamp: 35 Size of core queues: 10 10 8 8 9 
+96
+Timestamp: 36 Size of core queues: 10 10 8 8 9 
+96
+Ind: -1
+Timestamp: 36 Size of core queues: 10 10 8 8 9 
+96
+Timestamp: 36 Size of core queues: 10 10 8 8 9 
+95
+Timestamp: 37 Size of core queues: 10 10 8 8 9 
+95
+Ind: 0
+Timestamp: 37 Size of core queues: 10 10 8 7 9 
+97
+Timestamp: 37 Size of core queues: 10 10 8 7 9 
+96
+Ind: -1
+Timestamp: 37 Size of core queues: 10 10 8 7 9 
+96
+Timestamp: 37 Size of core queues: 10 10 8 7 9 
+95
+Timestamp: 38 Size of core queues: 10 10 8 7 9 
+95
+Ind: -1
+Timestamp: 38 Size of core queues: 10 10 8 7 9 
+95
+Timestamp: 38 Size of core queues: 10 10 8 7 9 
+94
+Ind: -1
+Timestamp: 38 Size of core queues: 10 10 8 7 9 
+94
+Timestamp: 38 Size of core queues: 10 10 8 7 9 
+93
+Ind: -1
+Timestamp: 38 Size of core queues: 10 10 8 7 9 
+93
+Timestamp: 38 Size of core queues: 10 10 8 7 9 
+92
+Ind: -1
+Timestamp: 39 Size of core queues: 10 10 8 7 9 
+92
+Timestamp: 39 Size of core queues: 10 10 8 7 9 
+91
+Ind: -1
+Timestamp: 40 Size of core queues: 10 10 8 7 9 
+91
+Timestamp: 40 Size of core queues: 10 10 8 7 9 
+90
+Ind: -1
+Timestamp: 40 Size of core queues: 10 10 8 7 9 
+90
+Timestamp: 40 Size of core queues: 10 10 8 7 9 
+89
+Ind: -1
+Timestamp: 43 Size of core queues: 10 10 8 7 9 
+89
+Timestamp: 43 Size of core queues: 10 10 8 7 9 
+88
+Ind: -1
+Timestamp: 43 Size of core queues: 10 10 8 7 9 
+88
+Timestamp: 43 Size of core queues: 10 10 8 7 9 
+87
+Ind: -1
+Timestamp: 44 Size of core queues: 10 10 8 7 9 
+87
+Timestamp: 44 Size of core queues: 10 10 8 7 9 
+86
+Ind: -1
+Timestamp: 44 Size of core queues: 10 10 8 7 9 
+86
+Timestamp: 44 Size of core queues: 10 10 8 7 9 
+85
+Ind: -1
+Timestamp: 44 Size of core queues: 10 10 8 7 9 
+85
+Timestamp: 44 Size of core queues: 10 10 8 7 9 
+84
+Ind: -1
+Timestamp: 45 Size of core queues: 10 10 8 7 9 
+84
+Timestamp: 45 Size of core queues: 10 10 8 7 9 
+83
+Ind: -1
+Timestamp: 46 Size of core queues: 10 10 8 7 9 
+83
+Timestamp: 46 Size of core queues: 10 10 8 7 9 
+82
+Ind: -1
+Timestamp: 46 Size of core queues: 10 10 8 7 9 
+82
+Timestamp: 46 Size of core queues: 10 10 8 7 9 
+81
+Ind: -1
+Timestamp: 46 Size of core queues: 10 10 8 7 9 
+81
+Timestamp: 46 Size of core queues: 10 10 8 7 9 
+80
+Ind: -1
+Timestamp: 48 Size of core queues: 10 10 8 7 9 
+80
+Timestamp: 48 Size of core queues: 10 10 8 7 9 
+79
+Ind: -1
+Timestamp: 48 Size of core queues: 10 10 8 7 9 
+79
+Timestamp: 48 Size of core queues: 10 10 8 7 9 
+78
+Ind: -1
+Timestamp: 50 Size of core queues: 10 10 8 7 9 
+78
+Timestamp: 50 Size of core queues: 10 10 8 7 9 
+77
+Ind: -1
+Timestamp: 50 Size of core queues: 10 10 8 7 9 
+77
+Timestamp: 50 Size of core queues: 10 10 8 7 9 
+76
+Timestamp: 51 Size of core queues: 10 10 8 7 9 
+76
+Ind: -1
+Timestamp: 51 Size of core queues: 10 10 8 7 9 
+76
+Timestamp: 51 Size of core queues: 10 10 8 7 9 
+75
+Ind: -1
+Timestamp: 51 Size of core queues: 10 10 8 7 9 
+75
+Timestamp: 51 Size of core queues: 10 10 8 7 9 
+74
+Timestamp: 52 Size of core queues: 10 10 8 7 9 
+74
+Timestamp: 53 Size of core queues: 10 10 8 7 9 
+74
+Ind: -1
+Timestamp: 53 Size of core queues: 10 10 8 7 9 
+74
+Timestamp: 53 Size of core queues: 10 10 8 7 9 
+73
+Ind: -1
+Timestamp: 53 Size of core queues: 10 10 8 7 9 
+73
+Timestamp: 53 Size of core queues: 10 10 8 7 9 
+72
+Ind: -1
+Timestamp: 54 Size of core queues: 10 10 8 7 9 
+72
+Timestamp: 54 Size of core queues: 10 10 8 7 9 
+71
+Ind: -1
+Timestamp: 55 Size of core queues: 10 10 8 7 9 
+71
+Timestamp: 55 Size of core queues: 10 10 8 7 9 
+70
+Ind: -1
+Timestamp: 55 Size of core queues: 10 10 8 7 9 
+70
+Timestamp: 55 Size of core queues: 10 10 8 7 9 
+69
+Ind: -1
+Timestamp: 56 Size of core queues: 10 10 8 7 9 
+69
+Timestamp: 56 Size of core queues: 10 10 8 7 9 
+68
+Ind: -1
+Timestamp: 57 Size of core queues: 10 10 8 7 9 
+68
+Timestamp: 57 Size of core queues: 10 10 8 7 9 
+67
+Ind: -1
+Timestamp: 58 Size of core queues: 10 10 8 7 9 
+67
+Timestamp: 58 Size of core queues: 10 10 8 7 9 
+66
+Ind: -1
+Timestamp: 59 Size of core queues: 10 10 8 7 9 
+66
+Timestamp: 59 Size of core queues: 10 10 8 7 9 
+65
+Ind: -1
+Timestamp: 62 Size of core queues: 10 10 8 7 9 
+65
+Timestamp: 62 Size of core queues: 10 10 8 7 9 
+64
+Ind: -1
+Timestamp: 62 Size of core queues: 10 10 8 7 9 
+64
+Timestamp: 62 Size of core queues: 10 10 8 7 9 
+63
+Ind: -1
+Timestamp: 62 Size of core queues: 10 10 8 7 9 
+63
+Timestamp: 62 Size of core queues: 10 10 8 7 9 
+62
+Ind: -1
+Timestamp: 63 Size of core queues: 10 10 8 7 9 
+62
+Timestamp: 63 Size of core queues: 10 10 8 7 9 
+61
+Ind: -1
+Timestamp: 65 Size of core queues: 10 10 8 7 9 
+61
+Timestamp: 65 Size of core queues: 10 10 8 7 9 
+60
+Ind: -1
+Timestamp: 68 Size of core queues: 10 10 8 7 9 
+60
+Timestamp: 68 Size of core queues: 10 10 8 7 9 
+59
+Ind: -1
+Timestamp: 68 Size of core queues: 10 10 8 7 9 
+59
+Timestamp: 68 Size of core queues: 10 10 8 7 9 
+58
+Ind: -1
+Timestamp: 68 Size of core queues: 10 10 8 7 9 
+58
+Timestamp: 68 Size of core queues: 10 10 8 7 9 
+57
+Ind: -1
+Timestamp: 69 Size of core queues: 10 10 8 7 9 
+57
+Timestamp: 69 Size of core queues: 10 10 8 7 9 
+56
+Ind: -1
+Timestamp: 69 Size of core queues: 10 10 8 7 9 
+56
+Timestamp: 69 Size of core queues: 10 10 8 7 9 
+55
+Ind: -1
+Timestamp: 69 Size of core queues: 10 10 8 7 9 
+55
+Timestamp: 69 Size of core queues: 10 10 8 7 9 
+55
+Ind: -1
+Timestamp: 71 Size of core queues: 10 10 8 7 9 
+55
+Timestamp: 71 Size of core queues: 10 10 8 7 9 
+55
+Ind: -1
+Timestamp: 71 Size of core queues: 10 10 8 7 9 
+55
+Timestamp: 71 Size of core queues: 10 10 8 7 9 
+55
+Ind: -1
+Timestamp: 71 Size of core queues: 10 10 8 7 9 
+55
+Timestamp: 71 Size of core queues: 10 10 8 7 9 
+55
+Ind: -1
+Timestamp: 71 Size of core queues: 10 10 8 7 9 
+55
+Timestamp: 71 Size of core queues: 10 10 8 7 9 
+55
+Ind: -1
+Timestamp: 73 Size of core queues: 10 10 8 7 9 
+55
+Timestamp: 73 Size of core queues: 10 10 8 7 9 
+55
+Ind: -1
+Timestamp: 73 Size of core queues: 10 10 8 7 9 
+55
+Timestamp: 73 Size of core queues: 10 10 8 7 9 
+55
+Ind: -1
+Timestamp: 74 Size of core queues: 10 10 8 7 9 
+55
+Timestamp: 74 Size of core queues: 10 10 8 7 9 
+55
+Timestamp: 76 Size of core queues: 10 10 8 7 9 
+55
+Ind: 0
+Timestamp: 76 Size of core queues: 10 9 8 7 9 
+57
+Timestamp: 76 Size of core queues: 10 9 8 7 9 
+56
+Ind: -1
+Timestamp: 76 Size of core queues: 10 9 8 7 9 
+56
+Timestamp: 76 Size of core queues: 10 9 8 7 9 
+55
+Timestamp: 77 Size of core queues: 10 9 8 7 9 
+55
+Timestamp: 77 Size of core queues: 10 9 8 7 9 
+55
+Ind: 0
+Timestamp: 77 Size of core queues: 10 9 8 7 8 
+57
+Timestamp: 77 Size of core queues: 10 9 8 7 8 
+56
+Timestamp: 78 Size of core queues: 10 9 8 7 8 
+56
+Ind: -1
+Timestamp: 79 Size of core queues: 10 9 8 7 8 
+56
+Timestamp: 79 Size of core queues: 10 9 8 7 8 
+55
+Ind: -1
+Timestamp: 81 Size of core queues: 10 9 8 7 8 
+55
+Timestamp: 81 Size of core queues: 10 9 8 7 8 
+55
+Ind: -1
+Timestamp: 81 Size of core queues: 10 9 8 7 8 
+55
+Timestamp: 81 Size of core queues: 10 9 8 7 8 
+55
+Ind: -1
+Timestamp: 82 Size of core queues: 10 9 8 7 8 
+55
+Timestamp: 82 Size of core queues: 10 9 8 7 8 
+55
+Ind: -1
+Timestamp: 83 Size of core queues: 10 9 8 7 8 
+55
+Timestamp: 83 Size of core queues: 10 9 8 7 8 
+55
+Timestamp: 84 Size of core queues: 10 9 8 7 8 
+55
+Ind: -1
+Timestamp: 84 Size of core queues: 10 9 8 7 8 
+55
+Timestamp: 84 Size of core queues: 10 9 8 7 8 
+55
+Timestamp: 85 Size of core queues: 10 9 8 7 8 
+55
+Timestamp: 86 Size of core queues: 10 9 8 7 8 
+55
+Timestamp: 86 Size of core queues: 10 9 8 7 8 
+55
+Ind: -1
+Timestamp: 86 Size of core queues: 10 9 8 7 8 
+55
+Timestamp: 86 Size of core queues: 10 9 8 7 8 
+55
+Ind: -1
+Timestamp: 86 Size of core queues: 10 9 8 7 8 
+55
+Timestamp: 86 Size of core queues: 10 9 8 7 8 
+55
+Timestamp: 87 Size of core queues: 10 9 8 7 8 
+55
+Timestamp: 88 Size of core queues: 10 9 8 7 8 
+55
+Ind: 0
+Timestamp: 88 Size of core queues: 10 9 8 6 8 
+56
+Timestamp: 88 Size of core queues: 10 9 8 6 8 
+55
+Ind: -1
+Timestamp: 88 Size of core queues: 10 9 8 6 8 
+55
+Timestamp: 88 Size of core queues: 10 9 8 6 8 
+54
+Timestamp: 89 Size of core queues: 10 9 8 6 8 
+54
+Timestamp: 89 Size of core queues: 10 9 8 6 8 
+54
+Ind: 0
+Timestamp: 89 Size of core queues: 10 9 7 6 8 
+56
+Timestamp: 89 Size of core queues: 10 9 7 6 8 
+55
+Timestamp: 90 Size of core queues: 10 9 7 6 8 
+55
+Ind: -1
+Timestamp: 90 Size of core queues: 10 9 7 6 8 
+55
+Timestamp: 90 Size of core queues: 10 9 7 6 8 
+54
+Ind: -1
+Timestamp: 93 Size of core queues: 10 9 7 6 8 
+54
+Timestamp: 93 Size of core queues: 10 9 7 6 8 
+54
+Ind: -1
+Timestamp: 94 Size of core queues: 10 9 7 6 8 
+54
+Timestamp: 94 Size of core queues: 10 9 7 6 8 
+54
+Ind: -1
+Timestamp: 95 Size of core queues: 10 9 7 6 8 
+54
+Timestamp: 95 Size of core queues: 10 9 7 6 8 
+54
+Ind: -1
+Timestamp: 100 Size of core queues: 10 9 7 6 8 
+54
+Timestamp: 100 Size of core queues: 10 9 7 6 8 
+54
+Ind: -1
+Timestamp: 100 Size of core queues: 10 9 7 6 8 
+54
+Timestamp: 100 Size of core queues: 10 9 7 6 8 
+54
+Ind: -1
+Timestamp: 104 Size of core queues: 10 9 7 6 8 
+54
+Timestamp: 104 Size of core queues: 10 9 7 6 8 
+54
+Ind: -1
+Timestamp: 104 Size of core queues: 10 9 7 6 8 
+54
+Timestamp: 104 Size of core queues: 10 9 7 6 8 
+54
+Ind: -1
+Timestamp: 105 Size of core queues: 10 9 7 6 8 
+54
+Timestamp: 105 Size of core queues: 10 9 7 6 8 
+54
+Timestamp: 112 Size of core queues: 10 9 7 6 8 
+54
+Ind: 0
+Timestamp: 112 Size of core queues: 10 9 6 6 8 
+56
+Timestamp: 112 Size of core queues: 10 9 6 6 8 
+55
+Timestamp: 113 Size of core queues: 10 9 6 6 8 
+55
+Ind: -1
+Timestamp: 116 Size of core queues: 10 9 6 6 8 
+55
+Timestamp: 116 Size of core queues: 10 9 6 6 8 
+54
+Ind: -1
+Timestamp: 117 Size of core queues: 10 9 6 6 8 
+54
+Timestamp: 117 Size of core queues: 10 9 6 6 8 
+54
+Ind: -1
+Timestamp: 119 Size of core queues: 10 9 6 6 8 
+54
+Timestamp: 119 Size of core queues: 10 9 6 6 8 
+54
+Ind: -1
+Timestamp: 123 Size of core queues: 10 9 6 6 8 
+54
+Timestamp: 123 Size of core queues: 10 9 6 6 8 
+54
+Timestamp: 126 Size of core queues: 10 9 6 6 8 
+54
+Ind: 0
+Timestamp: 126 Size of core queues: 10 9 6 5 8 
+56
+Timestamp: 126 Size of core queues: 10 9 6 5 8 
+55
+Ind: -1
+Timestamp: 126 Size of core queues: 10 9 6 5 8 
+55
+Timestamp: 126 Size of core queues: 10 9 6 5 8 
+54
+Timestamp: 127 Size of core queues: 10 9 6 5 8 
+54
+Timestamp: 127 Size of core queues: 10 9 6 5 8 
+54
+Ind: -1
+Timestamp: 127 Size of core queues: 10 9 6 5 8 
+54
+Timestamp: 127 Size of core queues: 10 9 6 5 8 
+54
+Timestamp: 128 Size of core queues: 10 9 6 5 8 
+54
+Timestamp: 128 Size of core queues: 10 9 6 5 8 
+54
+Ind: 0
+Timestamp: 128 Size of core queues: 10 9 5 5 8 
+56
+Timestamp: 128 Size of core queues: 10 9 5 5 8 
+55
+Timestamp: 128 Size of core queues: 10 9 5 5 8 
+55
+Timestamp: 129 Size of core queues: 10 9 5 5 8 
+55
+Timestamp: 129 Size of core queues: 10 9 5 5 8 
+55
+Timestamp: 129 Size of core queues: 10 9 5 5 8 
+55
+Timestamp: 130 Size of core queues: 10 9 5 5 8 
+55
+Timestamp: 132 Size of core queues: 10 9 5 5 8 
+55
+Ind: 0
+Timestamp: 132 Size of core queues: 10 9 4 5 8 
+57
+Timestamp: 132 Size of core queues: 10 9 4 5 8 
+56
+Ind: -1
+Timestamp: 132 Size of core queues: 10 9 4 5 8 
+56
+Timestamp: 132 Size of core queues: 10 9 4 5 8 
+55
+Timestamp: 133 Size of core queues: 10 9 4 5 8 
+55
+Ind: -1
+Timestamp: 135 Size of core queues: 10 9 4 5 8 
+55
+Timestamp: 135 Size of core queues: 10 9 4 5 8 
+54
+Ind: -1
+Timestamp: 136 Size of core queues: 10 9 4 5 8 
+54
+Timestamp: 136 Size of core queues: 10 9 4 5 8 
+54
+Timestamp: 138 Size of core queues: 10 9 4 5 8 
+54
+Timestamp: 139 Size of core queues: 10 9 4 5 8 
+54
+Timestamp: 140 Size of core queues: 10 9 4 5 8 
+54
+Ind: -1
+Timestamp: 140 Size of core queues: 10 9 4 5 8 
+54
+Timestamp: 140 Size of core queues: 10 9 4 5 8 
+54
+Ind: -1
+Timestamp: 141 Size of core queues: 10 9 4 5 8 
+54
+Timestamp: 141 Size of core queues: 10 9 4 5 8 
+54
+Ind: -1
+Timestamp: 144 Size of core queues: 10 9 4 5 8 
+54
+Timestamp: 144 Size of core queues: 10 9 4 5 8 
+54
+Ind: -1
+Timestamp: 146 Size of core queues: 10 9 4 5 8 
+54
+Timestamp: 146 Size of core queues: 10 9 4 5 8 
+54
+Ind: -1
+Timestamp: 146 Size of core queues: 10 9 4 5 8 
+54
+Timestamp: 146 Size of core queues: 10 9 4 5 8 
+54
+Ind: -1
+Timestamp: 150 Size of core queues: 10 9 4 5 8 
+54
+Timestamp: 150 Size of core queues: 10 9 4 5 8 
+54
+Ind: -1
+Timestamp: 150 Size of core queues: 10 9 4 5 8 
+54
+Timestamp: 150 Size of core queues: 10 9 4 5 8 
+54
+Ind: -1
+Timestamp: 154 Size of core queues: 10 9 4 5 8 
+54
+Timestamp: 154 Size of core queues: 10 9 4 5 8 
+54
+Timestamp: 155 Size of core queues: 10 9 4 5 8 
+54
+Ind: 0
+Timestamp: 155 Size of core queues: 10 9 4 5 8 
+56
+Timestamp: 155 Size of core queues: 10 9 4 5 8 
+55
+Ind: -1
+Timestamp: 155 Size of core queues: 10 9 4 5 8 
+55
+Timestamp: 155 Size of core queues: 10 9 4 5 8 
+54
+Timestamp: 156 Size of core queues: 10 9 4 5 8 
+54
+Ind: -1
+Timestamp: 156 Size of core queues: 10 9 4 5 8 
+54
+Timestamp: 156 Size of core queues: 10 9 4 5 8 
+54
+Ind: -1
+Timestamp: 157 Size of core queues: 10 9 4 5 8 
+54
+Timestamp: 157 Size of core queues: 10 9 4 5 8 
+54
+Timestamp: 163 Size of core queues: 10 9 4 5 8 
+54
+Ind: 0
+Timestamp: 163 Size of core queues: 10 8 4 5 8 
+56
+Timestamp: 163 Size of core queues: 10 8 4 5 8 
+55
+Timestamp: 164 Size of core queues: 10 8 4 5 8 
+55
+Ind: -1
+Timestamp: 165 Size of core queues: 10 8 4 5 8 
+55
+Timestamp: 165 Size of core queues: 10 8 4 5 8 
+54
+Timestamp: 167 Size of core queues: 10 8 4 5 8 
+54
+Ind: 0
+Timestamp: 167 Size of core queues: 10 8 3 5 8 
+56
+Timestamp: 167 Size of core queues: 10 8 3 5 8 
+55
+Timestamp: 168 Size of core queues: 10 8 3 5 8 
+55
+Ind: -1
+Timestamp: 171 Size of core queues: 10 8 3 5 8 
+55
+Timestamp: 171 Size of core queues: 10 8 3 5 8 
+54
+Ind: -1
+Timestamp: 171 Size of core queues: 10 8 3 5 8 
+54
+Timestamp: 171 Size of core queues: 10 8 3 5 8 
+54
+Timestamp: 172 Size of core queues: 10 8 3 5 8 
+54
+Ind: 0
+Timestamp: 172 Size of core queues: 10 7 3 5 8 
+56
+Timestamp: 172 Size of core queues: 10 7 3 5 8 
+55
+Timestamp: 173 Size of core queues: 10 7 3 5 8 
+55
+Timestamp: 173 Size of core queues: 10 7 3 5 8 
+55
+Ind: 0
+Timestamp: 173 Size of core queues: 10 7 2 5 8 
+57
+Timestamp: 173 Size of core queues: 10 7 2 5 8 
+56
+Timestamp: 174 Size of core queues: 10 7 2 5 8 
+56
+Timestamp: 177 Size of core queues: 10 7 2 5 8 
+56
+Timestamp: 178 Size of core queues: 10 7 2 5 8 
+56
+Timestamp: 179 Size of core queues: 10 7 2 5 8 
+56
+Timestamp: 180 Size of core queues: 10 7 2 5 8 
+56
+Timestamp: 181 Size of core queues: 10 7 2 5 8 
+56
+Timestamp: 182 Size of core queues: 10 7 2 5 8 
+56
+Ind: -1
+Timestamp: 183 Size of core queues: 10 7 2 5 8 
+56
+Timestamp: 183 Size of core queues: 10 7 2 5 8 
+55
+Ind: -1
+Timestamp: 183 Size of core queues: 10 7 2 5 8 
+55
+Timestamp: 183 Size of core queues: 10 7 2 5 8 
+54
+Timestamp: 190 Size of core queues: 10 7 2 5 8 
+54
+Ind: 0
+Timestamp: 190 Size of core queues: 10 7 2 4 8 
+56
+Timestamp: 190 Size of core queues: 10 7 2 4 8 
+55
+Timestamp: 191 Size of core queues: 10 7 2 4 8 
+55
+Ind: -1
+Timestamp: 192 Size of core queues: 10 7 2 4 8 
+55
+Timestamp: 192 Size of core queues: 10 7 2 4 8 
+54
+Ind: -1
+Timestamp: 198 Size of core queues: 10 7 2 4 8 
+54
+Timestamp: 198 Size of core queues: 10 7 2 4 8 
+54
+Ind: -1
+Timestamp: 204 Size of core queues: 10 7 2 4 8 
+54
+Timestamp: 204 Size of core queues: 10 7 2 4 8 
+54
+Ind: -1
+Timestamp: 204 Size of core queues: 10 7 2 4 8 
+54
+Timestamp: 204 Size of core queues: 10 7 2 4 8 
+54
+Timestamp: 206 Size of core queues: 10 7 2 4 8 
+54
+Timestamp: 207 Size of core queues: 10 7 2 4 8 
+54
+Timestamp: 208 Size of core queues: 10 7 2 4 8 
+54
+Ind: -1
+Timestamp: 208 Size of core queues: 10 7 2 4 8 
+54
+Timestamp: 208 Size of core queues: 10 7 2 4 8 
+54
+Ind: -1
+Timestamp: 209 Size of core queues: 10 7 2 4 8 
+54
+Timestamp: 209 Size of core queues: 10 7 2 4 8 
+54
+Timestamp: 213 Size of core queues: 10 7 2 4 8 
+54
+Ind: 0
+Timestamp: 213 Size of core queues: 10 7 2 3 8 
+56
+Timestamp: 213 Size of core queues: 10 7 2 3 8 
+55
+Timestamp: 214 Size of core queues: 10 7 2 3 8 
+55
+Timestamp: 215 Size of core queues: 10 7 2 3 8 
+55
+Ind: 0
+Timestamp: 215 Size of core queues: 10 7 2 2 8 
+57
+Timestamp: 215 Size of core queues: 10 7 2 2 8 
+56
+Ind: -1
+Timestamp: 215 Size of core queues: 10 7 2 2 8 
+56
+Timestamp: 215 Size of core queues: 10 7 2 2 8 
+55
+Timestamp: 216 Size of core queues: 10 7 2 2 8 
+55
+Timestamp: 222 Size of core queues: 10 7 2 2 8 
+55
+Ind: 0
+Timestamp: 222 Size of core queues: 10 7 2 1 8 
+57
+Timestamp: 222 Size of core queues: 10 7 2 1 8 
+56
+Timestamp: 223 Size of core queues: 10 7 2 1 8 
+56
+Timestamp: 223 Size of core queues: 10 7 2 1 8 
+56
+Ind: -1
+Timestamp: 223 Size of core queues: 10 7 2 1 8 
+56
+Timestamp: 223 Size of core queues: 10 7 2 1 8 
+55
+Timestamp: 224 Size of core queues: 10 7 2 1 8 
+55
+Timestamp: 224 Size of core queues: 10 7 2 1 8 
+55
+Timestamp: 225 Size of core queues: 10 7 2 1 8 
+55
+Timestamp: 225 Size of core queues: 10 7 2 1 8 
+55
+Ind: -1
+Timestamp: 225 Size of core queues: 10 7 2 1 8 
+55
+Timestamp: 225 Size of core queues: 10 7 2 1 8 
+54
+Timestamp: 226 Size of core queues: 10 7 2 1 8 
+54
+Ind: -1
+Timestamp: 227 Size of core queues: 10 7 2 1 8 
+54
+Timestamp: 227 Size of core queues: 10 7 2 1 8 
+54
+Ind: -1
+Timestamp: 227 Size of core queues: 10 7 2 1 8 
+54
+Timestamp: 227 Size of core queues: 10 7 2 1 8 
+54
+Timestamp: 231 Size of core queues: 10 7 2 1 8 
+54
+Ind: 0
+Timestamp: 231 Size of core queues: 10 7 2 0 8 
+55
+Timestamp: 231 Size of core queues: 10 7 2 0 8 
+54
+Ind: -1
+Timestamp: 232 Size of core queues: 10 7 2 0 8 
+54
+Timestamp: 232 Size of core queues: 10 7 2 0 8 
+53
+Ind: 0
+Timestamp: 232 Size of core queues: 10 7 2 0 7 
+54
+Timestamp: 232 Size of core queues: 10 7 2 0 7 
+53
+Timestamp: 233 Size of core queues: 10 7 2 0 7 
+53
+Ind: -1
+Timestamp: 238 Size of core queues: 10 7 2 0 7 
+53
+Timestamp: 238 Size of core queues: 10 7 2 0 7 
+52
+Ind: -1
+Timestamp: 239 Size of core queues: 10 7 2 0 7 
+52
+Timestamp: 239 Size of core queues: 10 7 2 0 7 
+52
+Timestamp: 247 Size of core queues: 10 7 2 0 7 
+52
+Ind: 0
+Timestamp: 247 Size of core queues: 10 7 2 0 7 
+54
+Timestamp: 247 Size of core queues: 10 7 2 0 7 
+53
+Timestamp: 248 Size of core queues: 10 7 2 0 7 
+53
+Ind: -1
+Timestamp: 253 Size of core queues: 10 7 2 0 7 
+53
+Timestamp: 253 Size of core queues: 10 7 2 0 7 
+52
+Ind: 0
+Timestamp: 264 Size of core queues: 10 7 2 0 7 
+53
+Timestamp: 264 Size of core queues: 10 7 2 0 7 
+52
+Timestamp: 265 Size of core queues: 10 7 2 0 7 
+52
+Ind: 0
+Timestamp: 266 Size of core queues: 10 6 2 0 7 
+53
+Timestamp: 266 Size of core queues: 10 6 2 0 7 
+52
+Timestamp: 267 Size of core queues: 10 6 2 0 7 
+52
+Timestamp: 273 Size of core queues: 10 6 2 0 7 
+52
+Ind: 0
+Timestamp: 273 Size of core queues: 10 6 2 0 6 
+54
+Timestamp: 273 Size of core queues: 10 6 2 0 6 
+53
+Timestamp: 274 Size of core queues: 10 6 2 0 6 
+53
+Ind: -1
+Timestamp: 275 Size of core queues: 10 6 2 0 6 
+53
+Timestamp: 275 Size of core queues: 10 6 2 0 6 
+52
+Timestamp: 276 Size of core queues: 10 6 2 0 6 
+52
+Timestamp: 277 Size of core queues: 10 6 2 0 6 
+52
+Timestamp: 278 Size of core queues: 10 6 2 0 6 
+52
+Ind: -1
+Timestamp: 278 Size of core queues: 10 6 2 0 6 
+52
+Timestamp: 278 Size of core queues: 10 6 2 0 6 
+51
+Ind: -1
+Timestamp: 283 Size of core queues: 10 6 2 0 6 
+51
+Timestamp: 283 Size of core queues: 10 6 2 0 6 
+50
+Ind: 0
+Timestamp: 284 Size of core queues: 10 6 1 0 6 
+51
+Timestamp: 284 Size of core queues: 10 6 1 0 6 
+50
+Timestamp: 285 Size of core queues: 10 6 1 0 6 
+50
+Timestamp: 289 Size of core queues: 10 6 1 0 6 
+50
+Ind: 0
+Timestamp: 289 Size of core queues: 10 5 1 0 6 
+52
+Timestamp: 289 Size of core queues: 10 5 1 0 6 
+51
+Timestamp: 290 Size of core queues: 10 5 1 0 6 
+51
+Ind: -1
+Timestamp: 293 Size of core queues: 10 5 1 0 6 
+51
+Timestamp: 293 Size of core queues: 10 5 1 0 6 
+50
+Ind: -1
+Timestamp: 312 Size of core queues: 10 5 1 0 6 
+50
+Timestamp: 312 Size of core queues: 10 5 1 0 6 
+49
+Timestamp: 315 Size of core queues: 10 5 1 0 6 
+49
+Timestamp: 316 Size of core queues: 10 5 1 0 6 
+49
+Timestamp: 317 Size of core queues: 10 5 1 0 6 
+49
+Timestamp: 323 Size of core queues: 10 5 1 0 6 
+49
+Ind: 0
+Timestamp: 323 Size of core queues: 10 5 0 0 6 
+50
+Timestamp: 323 Size of core queues: 10 5 0 0 6 
+49
+Timestamp: 324 Size of core queues: 10 5 0 0 6 
+49
+Timestamp: 325 Size of core queues: 10 5 0 0 6 
+49
+Timestamp: 326 Size of core queues: 10 5 0 0 6 
+49
+Ind: -1
+Timestamp: 328 Size of core queues: 10 5 0 0 6 
+49
+Timestamp: 328 Size of core queues: 10 5 0 0 6 
+48
+Timestamp: 329 Size of core queues: 10 5 0 0 6 
+48
+Ind: 0
+Timestamp: 329 Size of core queues: 10 4 0 0 6 
+50
+Timestamp: 329 Size of core queues: 10 4 0 0 6 
+49
+Timestamp: 330 Size of core queues: 10 4 0 0 6 
+49
+Ind: -1
+Timestamp: 339 Size of core queues: 10 4 0 0 6 
+49
+Timestamp: 339 Size of core queues: 10 4 0 0 6 
+48
+Ind: -1
+Timestamp: 344 Size of core queues: 10 4 0 0 6 
+48
+Timestamp: 344 Size of core queues: 10 4 0 0 6 
+48
+Ind: -1
+Timestamp: 360 Size of core queues: 10 4 0 0 6 
+48
+Timestamp: 360 Size of core queues: 10 4 0 0 6 
+48
+Timestamp: 366 Size of core queues: 10 4 0 0 6 
+48
+Ind: 0
+Timestamp: 366 Size of core queues: 10 3 0 0 6 
+50
+Timestamp: 366 Size of core queues: 10 3 0 0 6 
+49
+Timestamp: 367 Size of core queues: 10 3 0 0 6 
+49
+Timestamp: 367 Size of core queues: 10 3 0 0 6 
+49
+Timestamp: 368 Size of core queues: 10 3 0 0 6 
+49
+Timestamp: 369 Size of core queues: 10 3 0 0 6 
+49
+Timestamp: 376 Size of core queues: 10 3 0 0 6 
+49
+Timestamp: 377 Size of core queues: 10 3 0 0 6 
+49
+Timestamp: 378 Size of core queues: 10 3 0 0 6 
+49
+Ind: -1
+Timestamp: 387 Size of core queues: 10 3 0 0 6 
+49
+Timestamp: 387 Size of core queues: 10 3 0 0 6 
+48
+Ind: -1
+Timestamp: 389 Size of core queues: 10 3 0 0 6 
+48
+Timestamp: 389 Size of core queues: 10 3 0 0 6 
+48
+Ind: -1
+Timestamp: 394 Size of core queues: 10 3 0 0 6 
+48
+Timestamp: 394 Size of core queues: 10 3 0 0 6 
+48
+Ind: -1
+Timestamp: 410 Size of core queues: 10 3 0 0 6 
+48
+Timestamp: 410 Size of core queues: 10 3 0 0 6 
+48
+Timestamp: 417 Size of core queues: 10 3 0 0 6 
+48
+Timestamp: 418 Size of core queues: 10 3 0 0 6 
+48
+Timestamp: 419 Size of core queues: 10 3 0 0 6 
+48
+Timestamp: 419 Size of core queues: 10 3 0 0 6 
+48
+Timestamp: 420 Size of core queues: 10 3 0 0 6 
+48
+Timestamp: 421 Size of core queues: 10 3 0 0 6 
+48
+Ind: 0
+Timestamp: 428 Size of core queues: 10 3 0 0 5 
+49
+Timestamp: 428 Size of core queues: 10 3 0 0 5 
+48
+Timestamp: 429 Size of core queues: 10 3 0 0 5 
+48
+Ind: -1
+Timestamp: 433 Size of core queues: 10 3 0 0 5 
+48
+Timestamp: 433 Size of core queues: 10 3 0 0 5 
+47
+Ind: 0
+Timestamp: 469 Size of core queues: 10 2 0 0 5 
+48
+Timestamp: 469 Size of core queues: 10 2 0 0 5 
+47
+Timestamp: 470 Size of core queues: 10 2 0 0 5 
+47
+Timestamp: 471 Size of core queues: 10 2 0 0 5 
+47
+Timestamp: 472 Size of core queues: 10 2 0 0 5 
+47
+Timestamp: 473 Size of core queues: 10 2 0 0 5 
+47
+Timestamp: 479 Size of core queues: 10 2 0 0 5 
+47
+Timestamp: 480 Size of core queues: 10 2 0 0 5 
+47
+Timestamp: 481 Size of core queues: 10 2 0 0 5 
+47
+Timestamp: 498 Size of core queues: 10 2 0 0 5 
+47
+Ind: 0
+Timestamp: 498 Size of core queues: 10 2 0 0 4 
+49
+Timestamp: 498 Size of core queues: 10 2 0 0 4 
+48
+Timestamp: 499 Size of core queues: 10 2 0 0 4 
+48
+Timestamp: 505 Size of core queues: 10 2 0 0 4 
+48
+Ind: 0
+Timestamp: 505 Size of core queues: 10 2 0 0 4 
+50
+Timestamp: 505 Size of core queues: 10 2 0 0 4 
+49
+Timestamp: 506 Size of core queues: 10 2 0 0 4 
+49
+Timestamp: 508 Size of core queues: 10 2 0 0 4 
+49
+Ind: 0
+Timestamp: 508 Size of core queues: 10 1 0 0 4 
+51
+Timestamp: 508 Size of core queues: 10 1 0 0 4 
+50
+Timestamp: 509 Size of core queues: 10 1 0 0 4 
+50
+Timestamp: 520 Size of core queues: 10 1 0 0 4 
+50
+Ind: 0
+Timestamp: 520 Size of core queues: 10 0 0 0 4 
+51
+Timestamp: 520 Size of core queues: 10 0 0 0 4 
+50
+Ind: -1
+Timestamp: 529 Size of core queues: 10 0 0 0 4 
+50
+Timestamp: 529 Size of core queues: 10 0 0 0 4 
+49
+Timestamp: 537 Size of core queues: 10 0 0 0 4 
+49
+Ind: 0
+Timestamp: 537 Size of core queues: 10 0 0 0 3 
+51
+Timestamp: 537 Size of core queues: 10 0 0 0 3 
+50
+Timestamp: 538 Size of core queues: 10 0 0 0 3 
+50
+Ind: -1
+Timestamp: 544 Size of core queues: 10 0 0 0 3 
+50
+Timestamp: 544 Size of core queues: 10 0 0 0 3 
+49
+Ind: -1
+Timestamp: 554 Size of core queues: 10 0 0 0 3 
+49
+Timestamp: 554 Size of core queues: 10 0 0 0 3 
+48
+Timestamp: 556 Size of core queues: 10 0 0 0 3 
+48
+Timestamp: 557 Size of core queues: 10 0 0 0 3 
+48
+Timestamp: 558 Size of core queues: 10 0 0 0 3 
+48
+Ind: -1
+Timestamp: 579 Size of core queues: 10 0 0 0 3 
+48
+Timestamp: 579 Size of core queues: 10 0 0 0 3 
+47
+Ind: -1
+Timestamp: 587 Size of core queues: 10 0 0 0 3 
+47
+Timestamp: 587 Size of core queues: 10 0 0 0 3 
+46
+Timestamp: 588 Size of core queues: 10 0 0 0 3 
+46
+Timestamp: 589 Size of core queues: 10 0 0 0 3 
+46
+Timestamp: 590 Size of core queues: 10 0 0 0 3 
+46
+Timestamp: 603 Size of core queues: 10 0 0 0 3 
+46
+Ind: 0
+Timestamp: 603 Size of core queues: 10 0 0 0 2 
+48
+Timestamp: 603 Size of core queues: 10 0 0 0 2 
+47
+Timestamp: 604 Size of core queues: 10 0 0 0 2 
+47
+Timestamp: 608 Size of core queues: 10 0 0 0 2 
+47
+Timestamp: 609 Size of core queues: 10 0 0 0 2 
+47
+Timestamp: 610 Size of core queues: 10 0 0 0 2 
+47
+Timestamp: 612 Size of core queues: 10 0 0 0 2 
+47
+Ind: 0
+Timestamp: 612 Size of core queues: 10 0 0 0 1 
+49
+Timestamp: 612 Size of core queues: 10 0 0 0 1 
+48
+Timestamp: 613 Size of core queues: 10 0 0 0 1 
+48
+Ind: -1
+Timestamp: 617 Size of core queues: 10 0 0 0 1 
+48
+Timestamp: 617 Size of core queues: 10 0 0 0 1 
+47
+Ind: -1
+Timestamp: 641 Size of core queues: 10 0 0 0 1 
+47
+Timestamp: 641 Size of core queues: 10 0 0 0 1 
+46
+Timestamp: 650 Size of core queues: 10 0 0 0 1 
+46
+Ind: 0
+Timestamp: 650 Size of core queues: 10 0 0 0 0 
+47
+Timestamp: 650 Size of core queues: 10 0 0 0 0 
+46
+Ind: -1
+Timestamp: 650 Size of core queues: 10 0 0 0 0 
+46
+Timestamp: 650 Size of core queues: 10 0 0 0 0 
+45
+Timestamp: 660 Size of core queues: 10 0 0 0 0 
+45
+Timestamp: 661 Size of core queues: 10 0 0 0 0 
+45
+Timestamp: 662 Size of core queues: 10 0 0 0 0 
+45
+Ind: -1
+Timestamp: 663 Size of core queues: 10 0 0 0 0 
+45
+Timestamp: 663 Size of core queues: 10 0 0 0 0 
+44
+Ind: -1
+Timestamp: 677 Size of core queues: 10 0 0 0 0 
+44
+Timestamp: 677 Size of core queues: 10 0 0 0 0 
+44
+Ind: -1
+Timestamp: 693 Size of core queues: 10 0 0 0 0 
+44
+Timestamp: 693 Size of core queues: 10 0 0 0 0 
+44
+Ind: 0
+Timestamp: 705 Size of core queues: 10 0 0 0 0 
+45
+Timestamp: 705 Size of core queues: 10 0 0 0 0 
+44
+Timestamp: 706 Size of core queues: 10 0 0 0 0 
+44
+Timestamp: 728 Size of core queues: 10 0 0 0 0 
+44
+Ind: 0
+Timestamp: 728 Size of core queues: 10 0 0 0 0 
+46
+Timestamp: 728 Size of core queues: 10 0 0 0 0 
+45
+Timestamp: 729 Size of core queues: 10 0 0 0 0 
+45
+Ind: 0
+Timestamp: 730 Size of core queues: 10 0 0 0 0 
+46
+Timestamp: 730 Size of core queues: 10 0 0 0 0 
+45
+Timestamp: 731 Size of core queues: 10 0 0 0 0 
+45
+Ind: 0
+Timestamp: 743 Size of core queues: 10 0 0 0 0 
+46
+Timestamp: 743 Size of core queues: 10 0 0 0 0 
+45
+Timestamp: 744 Size of core queues: 10 0 0 0 0 
+45
+Ind: -1
+Timestamp: 747 Size of core queues: 10 0 0 0 0 
+45
+Timestamp: 747 Size of core queues: 10 0 0 0 0 
+44
+Ind: -1
+Timestamp: 750 Size of core queues: 10 0 0 0 0 
+44
+Timestamp: 750 Size of core queues: 10 0 0 0 0 
+43
+Ind: -1
+Timestamp: 764 Size of core queues: 10 0 0 0 0 
+43
+Timestamp: 764 Size of core queues: 10 0 0 0 0 
+42
+Ind: -1
+Timestamp: 770 Size of core queues: 10 0 0 0 0 
+42
+Timestamp: 770 Size of core queues: 10 0 0 0 0 
+41
+Ind: -1
+Timestamp: 777 Size of core queues: 10 0 0 0 0 
+41
+Timestamp: 777 Size of core queues: 10 0 0 0 0 
+41
+Ind: 0
+Timestamp: 794 Size of core queues: 10 0 0 0 0 
+42
+Timestamp: 794 Size of core queues: 10 0 0 0 0 
+41
+Timestamp: 795 Size of core queues: 10 0 0 0 0 
+41
+Ind: -1
+Timestamp: 798 Size of core queues: 10 0 0 0 0 
+41
+Timestamp: 798 Size of core queues: 10 0 0 0 0 
+40
+Timestamp: 845 Size of core queues: 10 0 0 0 0 
+40
+Timestamp: 846 Size of core queues: 10 0 0 0 0 
+40
+Timestamp: 847 Size of core queues: 10 0 0 0 0 
+40
+Ind: 0
+Timestamp: 872 Size of core queues: 10 0 0 0 0 
+41
+Timestamp: 872 Size of core queues: 10 0 0 0 0 
+40
+Timestamp: 873 Size of core queues: 10 0 0 0 0 
+40
+Timestamp: 903 Size of core queues: 10 0 0 0 0 
+40
+Ind: 0
+Timestamp: 903 Size of core queues: 10 0 0 0 0 
+42
+Timestamp: 903 Size of core queues: 10 0 0 0 0 
+41
+Timestamp: 904 Size of core queues: 10 0 0 0 0 
+41
+Ind: -1
+Timestamp: 905 Size of core queues: 10 0 0 0 0 
+41
+Timestamp: 905 Size of core queues: 10 0 0 0 0 
+40
+Ind: -1
+Timestamp: 911 Size of core queues: 10 0 0 0 0 
+40
+Timestamp: 911 Size of core queues: 10 0 0 0 0 
+39
+Ind: -1
+Timestamp: 922 Size of core queues: 10 0 0 0 0 
+39
+Timestamp: 922 Size of core queues: 10 0 0 0 0 
+39
+Ind: -1
+Timestamp: 946 Size of core queues: 10 0 0 0 0 
+39
+Timestamp: 946 Size of core queues: 10 0 0 0 0 
+39
+Ind: -1
+Timestamp: 952 Size of core queues: 10 0 0 0 0 
+39
+Timestamp: 952 Size of core queues: 10 0 0 0 0 
+39
+Timestamp: 954 Size of core queues: 10 0 0 0 0 
+39
+Timestamp: 955 Size of core queues: 10 0 0 0 0 
+39
+Timestamp: 956 Size of core queues: 10 0 0 0 0 
+39
+Ind: -1
+Timestamp: 962 Size of core queues: 10 0 0 0 0 
+39
+Timestamp: 962 Size of core queues: 10 0 0 0 0 
+39
+Timestamp: 1006 Size of core queues: 10 0 0 0 0 
+39
+Timestamp: 1007 Size of core queues: 10 0 0 0 0 
+39
+Timestamp: 1008 Size of core queues: 10 0 0 0 0 
+39
+Ind: 0
+Timestamp: 1058 Size of core queues: 10 0 0 0 0 
+40
+Timestamp: 1058 Size of core queues: 10 0 0 0 0 
+39
+Timestamp: 1059 Size of core queues: 10 0 0 0 0 
+39
+Ind: -1
+Timestamp: 1080 Size of core queues: 10 0 0 0 0 
+39
+Timestamp: 1080 Size of core queues: 10 0 0 0 0 
+38
+Timestamp: 1109 Size of core queues: 10 0 0 0 0 
+38
+Timestamp: 1110 Size of core queues: 10 0 0 0 0 
+38
+Timestamp: 1111 Size of core queues: 10 0 0 0 0 
+38
+Ind: -1
+Timestamp: 1138 Size of core queues: 10 0 0 0 0 
+38
+Timestamp: 1138 Size of core queues: 10 0 0 0 0 
+38
+Timestamp: 1154 Size of core queues: 10 0 0 0 0 
+38
+Ind: 0
+Timestamp: 1154 Size of core queues: 10 0 0 0 0 
+40
+Timestamp: 1154 Size of core queues: 10 0 0 0 0 
+39
+Timestamp: 1155 Size of core queues: 10 0 0 0 0 
+39
+Ind: -1
+Timestamp: 1176 Size of core queues: 10 0 0 0 0 
+39
+Timestamp: 1176 Size of core queues: 10 0 0 0 0 
+38
+Ind: 0
+Timestamp: 1205 Size of core queues: 10 0 0 0 0 
+39
+Timestamp: 1205 Size of core queues: 10 0 0 0 0 
+38
+Timestamp: 1206 Size of core queues: 10 0 0 0 0 
+38
+Ind: -1
+Timestamp: 1216 Size of core queues: 10 0 0 0 0 
+38
+Timestamp: 1216 Size of core queues: 10 0 0 0 0 
+37
+Ind: 0
+Timestamp: 1218 Size of core queues: 10 0 0 0 0 
+38
+Timestamp: 1218 Size of core queues: 10 0 0 0 0 
+37
+Timestamp: 1219 Size of core queues: 10 0 0 0 0 
+37
+Ind: -1
+Timestamp: 1222 Size of core queues: 10 0 0 0 0 
+37
+Timestamp: 1222 Size of core queues: 10 0 0 0 0 
+36
+Ind: -1
+Timestamp: 1245 Size of core queues: 10 0 0 0 0 
+36
+Timestamp: 1245 Size of core queues: 10 0 0 0 0 
+36
+Ind: 0
+Timestamp: 1259 Size of core queues: 10 0 0 0 0 
+37
+Timestamp: 1259 Size of core queues: 10 0 0 0 0 
+36
+Timestamp: 1260 Size of core queues: 10 0 0 0 0 
+36
+Ind: -1
+Timestamp: 1265 Size of core queues: 10 0 0 0 0 
+36
+Timestamp: 1265 Size of core queues: 10 0 0 0 0 
+35
+Ind: -1
+Timestamp: 1274 Size of core queues: 10 0 0 0 0 
+35
+Timestamp: 1274 Size of core queues: 10 0 0 0 0 
+35
+Ind: -1
+Timestamp: 1284 Size of core queues: 10 0 0 0 0 
+35
+Timestamp: 1284 Size of core queues: 10 0 0 0 0 
+35
+Ind: 0
+Timestamp: 1310 Size of core queues: 10 0 0 0 0 
+36
+Timestamp: 1310 Size of core queues: 10 0 0 0 0 
+35
+Timestamp: 1311 Size of core queues: 10 0 0 0 0 
+35
+Ind: -1
+Timestamp: 1350 Size of core queues: 10 0 0 0 0 
+35
+Timestamp: 1350 Size of core queues: 10 0 0 0 0 
+34
+Ind: 0
+Timestamp: 1361 Size of core queues: 10 0 0 0 0 
+35
+Timestamp: 1361 Size of core queues: 10 0 0 0 0 
+34
+Timestamp: 1362 Size of core queues: 10 0 0 0 0 
+34
+Ind: -1
+Timestamp: 1378 Size of core queues: 10 0 0 0 0 
+34
+Timestamp: 1378 Size of core queues: 10 0 0 0 0 
+33
+Timestamp: 1412 Size of core queues: 10 0 0 0 0 
+33
+Timestamp: 1413 Size of core queues: 10 0 0 0 0 
+33
+Timestamp: 1414 Size of core queues: 10 0 0 0 0 
+33
+Timestamp: 1459 Size of core queues: 10 0 0 0 0 
+33
+Ind: 0
+Timestamp: 1459 Size of core queues: 10 0 0 0 0 
+35
+Timestamp: 1459 Size of core queues: 10 0 0 0 0 
+34
+Timestamp: 1460 Size of core queues: 10 0 0 0 0 
+34
+Ind: -1
+Timestamp: 1462 Size of core queues: 10 0 0 0 0 
+34
+Timestamp: 1462 Size of core queues: 10 0 0 0 0 
+33
+Ind: -1
+Timestamp: 1468 Size of core queues: 10 0 0 0 0 
+33
+Timestamp: 1468 Size of core queues: 10 0 0 0 0 
+33
+Ind: -1
+Timestamp: 1468 Size of core queues: 10 0 0 0 0 
+33
+Timestamp: 1468 Size of core queues: 10 0 0 0 0 
+33
+Ind: 0
+Timestamp: 1510 Size of core queues: 10 0 0 0 0 
+34
+Timestamp: 1510 Size of core queues: 10 0 0 0 0 
+33
+Timestamp: 1511 Size of core queues: 10 0 0 0 0 
+33
+Timestamp: 1522 Size of core queues: 10 0 0 0 0 
+33
+Ind: 0
+Timestamp: 1522 Size of core queues: 10 0 0 0 0 
+35
+Timestamp: 1522 Size of core queues: 10 0 0 0 0 
+34
+Timestamp: 1523 Size of core queues: 10 0 0 0 0 
+34
+Ind: 0
+Timestamp: 1532 Size of core queues: 10 0 0 0 0 
+35
+Timestamp: 1532 Size of core queues: 10 0 0 0 0 
+34
+Timestamp: 1533 Size of core queues: 10 0 0 0 0 
+34
+Timestamp: 1541 Size of core queues: 10 0 0 0 0 
+34
+Ind: 0
+Timestamp: 1541 Size of core queues: 10 0 0 0 0 
+36
+Timestamp: 1541 Size of core queues: 10 0 0 0 0 
+35
+Timestamp: 1542 Size of core queues: 10 0 0 0 0 
+35
+Ind: -1
+Timestamp: 1562 Size of core queues: 10 0 0 0 0 
+35
+Timestamp: 1562 Size of core queues: 10 0 0 0 0 
+34
+Ind: -1
+Timestamp: 1562 Size of core queues: 10 0 0 0 0 
+34
+Timestamp: 1562 Size of core queues: 10 0 0 0 0 
+33
+Ind: -1
+Timestamp: 1568 Size of core queues: 10 0 0 0 0 
+33
+Timestamp: 1568 Size of core queues: 10 0 0 0 0 
+32
+Ind: 0
+Timestamp: 1592 Size of core queues: 10 0 0 0 0 
+33
+Timestamp: 1592 Size of core queues: 10 0 0 0 0 
+32
+Timestamp: 1593 Size of core queues: 10 0 0 0 0 
+32
+Ind: -1
+Timestamp: 1610 Size of core queues: 10 0 0 0 0 
+32
+Timestamp: 1610 Size of core queues: 10 0 0 0 0 
+31
+Ind: 0
+Timestamp: 1621 Size of core queues: 10 0 0 0 0 
+32
+Timestamp: 1621 Size of core queues: 10 0 0 0 0 
+31
+Timestamp: 1622 Size of core queues: 10 0 0 0 0 
+31
+Ind: 0
+Timestamp: 1624 Size of core queues: 10 0 0 0 0 
+32
+Timestamp: 1624 Size of core queues: 10 0 0 0 0 
+31
+Timestamp: 1625 Size of core queues: 10 0 0 0 0 
+31
+Ind: -1
+Timestamp: 1661 Size of core queues: 10 0 0 0 0 
+31
+Timestamp: 1661 Size of core queues: 10 0 0 0 0 
+30
+Ind: 0
+Timestamp: 1675 Size of core queues: 10 0 0 0 0 
+31
+Timestamp: 1675 Size of core queues: 10 0 0 0 0 
+30
+Timestamp: 1676 Size of core queues: 10 0 0 0 0 
+30
+Ind: -1
+Timestamp: 1682 Size of core queues: 10 0 0 0 0 
+30
+Timestamp: 1682 Size of core queues: 10 0 0 0 0 
+29
+Ind: 0
+Timestamp: 1726 Size of core queues: 10 0 0 0 0 
+30
+Timestamp: 1726 Size of core queues: 10 0 0 0 0 
+29
+Timestamp: 1727 Size of core queues: 10 0 0 0 0 
+29
+Ind: 0
+Timestamp: 1742 Size of core queues: 10 0 0 0 0 
+30
+Timestamp: 1742 Size of core queues: 10 0 0 0 0 
+29
+Timestamp: 1743 Size of core queues: 10 0 0 0 0 
+29
+Ind: 0
+Timestamp: 1751 Size of core queues: 10 0 0 0 0 
+30
+Timestamp: 1751 Size of core queues: 10 0 0 0 0 
+29
+Timestamp: 1752 Size of core queues: 10 0 0 0 0 
+29
+Timestamp: 1760 Size of core queues: 10 0 0 0 0 
+29
+Ind: 0
+Timestamp: 1760 Size of core queues: 10 0 0 0 0 
+31
+Timestamp: 1760 Size of core queues: 10 0 0 0 0 
+30
+Ind: -1
+Timestamp: 1760 Size of core queues: 10 0 0 0 0 
+30
+Timestamp: 1760 Size of core queues: 10 0 0 0 0 
+29
+Timestamp: 1761 Size of core queues: 10 0 0 0 0 
+29
+Ind: 0
+Timestamp: 1763 Size of core queues: 10 0 0 0 0 
+30
+Timestamp: 1763 Size of core queues: 10 0 0 0 0 
+29
+Timestamp: 1764 Size of core queues: 10 0 0 0 0 
+29
+Ind: -1
+Timestamp: 1782 Size of core queues: 10 0 0 0 0 
+29
+Timestamp: 1782 Size of core queues: 10 0 0 0 0 
+28
+Timestamp: 1790 Size of core queues: 10 0 0 0 0 
+28
+Ind: 0
+Timestamp: 1790 Size of core queues: 10 0 0 0 0 
+30
+Timestamp: 1790 Size of core queues: 10 0 0 0 0 
+29
+Timestamp: 1791 Size of core queues: 10 0 0 0 0 
+29
+Ind: -1
+Timestamp: 1809 Size of core queues: 10 0 0 0 0 
+29
+Timestamp: 1809 Size of core queues: 10 0 0 0 0 
+28
+Ind: -1
+Timestamp: 1824 Size of core queues: 10 0 0 0 0 
+28
+Timestamp: 1824 Size of core queues: 10 0 0 0 0 
+27
+Ind: 0
+Timestamp: 1833 Size of core queues: 10 0 0 0 0 
+28
+Timestamp: 1833 Size of core queues: 10 0 0 0 0 
+27
+Timestamp: 1834 Size of core queues: 10 0 0 0 0 
+27
+Ind: 0
+Timestamp: 1884 Size of core queues: 10 0 0 0 0 
+28
+Timestamp: 1884 Size of core queues: 10 0 0 0 0 
+27
+Timestamp: 1885 Size of core queues: 10 0 0 0 0 
+27
+Ind: 0
+Timestamp: 1935 Size of core queues: 10 0 0 0 0 
+28
+Timestamp: 1935 Size of core queues: 10 0 0 0 0 
+27
+Timestamp: 1936 Size of core queues: 10 0 0 0 0 
+27
+Ind: -1
+Timestamp: 1936 Size of core queues: 10 0 0 0 0 
+27
+Timestamp: 1936 Size of core queues: 10 0 0 0 0 
+26
+Ind: -1
+Timestamp: 1937 Size of core queues: 10 0 0 0 0 
+26
+Timestamp: 1937 Size of core queues: 10 0 0 0 0 
+25
+Ind: 0
+Timestamp: 1962 Size of core queues: 10 0 0 0 0 
+26
+Timestamp: 1962 Size of core queues: 10 0 0 0 0 
+25
+Timestamp: 1963 Size of core queues: 10 0 0 0 0 
+25
+Ind: -1
+Timestamp: 1988 Size of core queues: 10 0 0 0 0 
+25
+Timestamp: 1988 Size of core queues: 10 0 0 0 0 
+24
+Ind: 0
+Timestamp: 2013 Size of core queues: 10 0 0 0 0 
+25
+Timestamp: 2013 Size of core queues: 10 0 0 0 0 
+24
+Timestamp: 2014 Size of core queues: 10 0 0 0 0 
+24
+Timestamp: 2034 Size of core queues: 10 0 0 0 0 
+24
+Ind: 0
+Timestamp: 2034 Size of core queues: 10 0 0 0 0 
+26
+Timestamp: 2034 Size of core queues: 10 0 0 0 0 
+25
+Timestamp: 2035 Size of core queues: 10 0 0 0 0 
+25
+Ind: -1
+Timestamp: 2053 Size of core queues: 10 0 0 0 0 
+25
+Timestamp: 2053 Size of core queues: 10 0 0 0 0 
+24
+Ind: 0
+Timestamp: 2056 Size of core queues: 10 0 0 0 0 
+25
+Timestamp: 2056 Size of core queues: 10 0 0 0 0 
+24
+Timestamp: 2057 Size of core queues: 10 0 0 0 0 
+24
+Ind: -1
+Timestamp: 2092 Size of core queues: 10 0 0 0 0 
+24
+Timestamp: 2092 Size of core queues: 10 0 0 0 0 
+23
+Ind: -1
+Timestamp: 2097 Size of core queues: 10 0 0 0 0 
+23
+Timestamp: 2097 Size of core queues: 10 0 0 0 0 
+22
+Ind: 0
+Timestamp: 2107 Size of core queues: 10 0 0 0 0 
+23
+Timestamp: 2107 Size of core queues: 10 0 0 0 0 
+22
+Timestamp: 2108 Size of core queues: 10 0 0 0 0 
+22
+Ind: 0
+Timestamp: 2158 Size of core queues: 10 0 0 0 0 
+23
+Timestamp: 2158 Size of core queues: 10 0 0 0 0 
+22
+Ind: -1
+Timestamp: 2158 Size of core queues: 10 0 0 0 0 
+22
+Timestamp: 2158 Size of core queues: 10 0 0 0 0 
+21
+Timestamp: 2159 Size of core queues: 10 0 0 0 0 
+21
+Ind: 0
+Timestamp: 2209 Size of core queues: 10 0 0 0 0 
+22
+Timestamp: 2209 Size of core queues: 10 0 0 0 0 
+21
+Timestamp: 2210 Size of core queues: 10 0 0 0 0 
+21
+Ind: 0
+Timestamp: 2249 Size of core queues: 10 0 0 0 0 
+22
+Timestamp: 2249 Size of core queues: 10 0 0 0 0 
+21
+Timestamp: 2250 Size of core queues: 10 0 0 0 0 
+21
+Ind: -1
+Timestamp: 2256 Size of core queues: 10 0 0 0 0 
+21
+Timestamp: 2256 Size of core queues: 10 0 0 0 0 
+20
+Ind: 0
+Timestamp: 2271 Size of core queues: 10 0 0 0 0 
+21
+Timestamp: 2271 Size of core queues: 10 0 0 0 0 
+20
+Timestamp: 2272 Size of core queues: 10 0 0 0 0 
+20
+Ind: -1
+Timestamp: 2281 Size of core queues: 10 0 0 0 0 
+20
+Timestamp: 2281 Size of core queues: 10 0 0 0 0 
+19
+Ind: -1
+Timestamp: 2287 Size of core queues: 10 0 0 0 0 
+19
+Timestamp: 2287 Size of core queues: 10 0 0 0 0 
+18
+Timestamp: 2306 Size of core queues: 10 0 0 0 0 
+18
+Ind: 0
+Timestamp: 2306 Size of core queues: 10 0 0 0 0 
+20
+Timestamp: 2306 Size of core queues: 10 0 0 0 0 
+19
+Timestamp: 2307 Size of core queues: 10 0 0 0 0 
+19
+Ind: -1
+Timestamp: 2336 Size of core queues: 10 0 0 0 0 
+19
+Timestamp: 2336 Size of core queues: 10 0 0 0 0 
+18
+Timestamp: 2337 Size of core queues: 10 0 0 0 0 
+18
+Ind: 0
+Timestamp: 2337 Size of core queues: 10 0 0 0 0 
+20
+Timestamp: 2337 Size of core queues: 10 0 0 0 0 
+19
+Timestamp: 2338 Size of core queues: 10 0 0 0 0 
+19
+Ind: -1
+Timestamp: 2342 Size of core queues: 10 0 0 0 0 
+19
+Timestamp: 2342 Size of core queues: 10 0 0 0 0 
+18
+Ind: 0
+Timestamp: 2352 Size of core queues: 10 0 0 0 0 
+19
+Timestamp: 2352 Size of core queues: 10 0 0 0 0 
+18
+Timestamp: 2353 Size of core queues: 10 0 0 0 0 
+18
+Ind: 0
+Timestamp: 2397 Size of core queues: 10 0 0 0 0 
+19
+Timestamp: 2397 Size of core queues: 10 0 0 0 0 
+18
+Timestamp: 2398 Size of core queues: 10 0 0 0 0 
+18
+Ind: 0
+Timestamp: 2443 Size of core queues: 10 0 0 0 0 
+19
+Timestamp: 2443 Size of core queues: 10 0 0 0 0 
+18
+Timestamp: 2444 Size of core queues: 10 0 0 0 0 
+18
+Ind: -1
+Timestamp: 2477 Size of core queues: 10 0 0 0 0 
+18
+Timestamp: 2477 Size of core queues: 10 0 0 0 0 
+17
+Timestamp: 2478 Size of core queues: 10 0 0 0 0 
+17
+Ind: 0
+Timestamp: 2478 Size of core queues: 10 0 0 0 0 
+19
+Timestamp: 2478 Size of core queues: 10 0 0 0 0 
+18
+Timestamp: 2479 Size of core queues: 10 0 0 0 0 
+18
+Ind: 0
+Timestamp: 2523 Size of core queues: 10 0 0 0 0 
+19
+Timestamp: 2523 Size of core queues: 10 0 0 0 0 
+18
+Timestamp: 2524 Size of core queues: 10 0 0 0 0 
+18
+Ind: 0
+Timestamp: 2525 Size of core queues: 10 0 0 0 0 
+19
+Timestamp: 2525 Size of core queues: 10 0 0 0 0 
+18
+Timestamp: 2526 Size of core queues: 10 0 0 0 0 
+18
+Ind: -1
+Timestamp: 2566 Size of core queues: 10 0 0 0 0 
+18
+Timestamp: 2566 Size of core queues: 10 0 0 0 0 
+17
+Ind: -1
+Timestamp: 2567 Size of core queues: 10 0 0 0 0 
+17
+Timestamp: 2567 Size of core queues: 10 0 0 0 0 
+16
+Timestamp: 2575 Size of core queues: 10 0 0 0 0 
+16
+Ind: 0
+Timestamp: 2575 Size of core queues: 10 0 0 0 0 
+18
+Timestamp: 2575 Size of core queues: 10 0 0 0 0 
+17
+Timestamp: 2576 Size of core queues: 10 0 0 0 0 
+17
+Ind: -1
+Timestamp: 2592 Size of core queues: 10 0 0 0 0 
+17
+Timestamp: 2592 Size of core queues: 10 0 0 0 0 
+16
+Ind: 0
+Timestamp: 2622 Size of core queues: 10 0 0 0 0 
+17
+Timestamp: 2622 Size of core queues: 10 0 0 0 0 
+16
+Timestamp: 2623 Size of core queues: 10 0 0 0 0 
+16
+Ind: 0
+Timestamp: 2673 Size of core queues: 10 0 0 0 0 
+17
+Timestamp: 2673 Size of core queues: 10 0 0 0 0 
+16
+Timestamp: 2674 Size of core queues: 10 0 0 0 0 
+16
+Ind: -1
+Timestamp: 2681 Size of core queues: 10 0 0 0 0 
+16
+Timestamp: 2681 Size of core queues: 10 0 0 0 0 
+15
+Ind: -1
+Timestamp: 2686 Size of core queues: 10 0 0 0 0 
+15
+Timestamp: 2686 Size of core queues: 10 0 0 0 0 
+14
+Timestamp: 2724 Size of core queues: 10 0 0 0 0 
+14
+Timestamp: 2725 Size of core queues: 10 0 0 0 0 
+14
+Timestamp: 2726 Size of core queues: 10 0 0 0 0 
+14
+Ind: 0
+Timestamp: 2736 Size of core queues: 10 0 0 0 0 
+15
+Timestamp: 2736 Size of core queues: 10 0 0 0 0 
+14
+Timestamp: 2737 Size of core queues: 10 0 0 0 0 
+14
+Ind: 0
+Timestamp: 2787 Size of core queues: 10 0 0 0 0 
+15
+Timestamp: 2787 Size of core queues: 10 0 0 0 0 
+14
+Timestamp: 2788 Size of core queues: 10 0 0 0 0 
+14
+Ind: 0
+Timestamp: 2815 Size of core queues: 10 0 0 0 0 
+15
+Timestamp: 2815 Size of core queues: 10 0 0 0 0 
+14
+Timestamp: 2816 Size of core queues: 10 0 0 0 0 
+14
+Timestamp: 2866 Size of core queues: 10 0 0 0 0 
+14
+Timestamp: 2867 Size of core queues: 10 0 0 0 0 
+14
+Timestamp: 2868 Size of core queues: 10 0 0 0 0 
+14
+Ind: 0
+Timestamp: 2918 Size of core queues: 10 0 0 0 0 
+15
+Timestamp: 2918 Size of core queues: 10 0 0 0 0 
+14
+Timestamp: 2919 Size of core queues: 10 0 0 0 0 
+14
+Ind: 0
+Timestamp: 2922 Size of core queues: 10 0 0 0 0 
+15
+Timestamp: 2922 Size of core queues: 10 0 0 0 0 
+14
+Timestamp: 2923 Size of core queues: 10 0 0 0 0 
+14
+Ind: 0
+Timestamp: 2927 Size of core queues: 10 0 0 0 0 
+15
+Timestamp: 2927 Size of core queues: 10 0 0 0 0 
+14
+Timestamp: 2928 Size of core queues: 10 0 0 0 0 
+14
+Ind: -1
+Timestamp: 2957 Size of core queues: 10 0 0 0 0 
+14
+Timestamp: 2957 Size of core queues: 10 0 0 0 0 
+13
+Timestamp: 2972 Size of core queues: 10 0 0 0 0 
+13
+Ind: 0
+Timestamp: 2972 Size of core queues: 10 0 0 0 0 
+15
+Timestamp: 2972 Size of core queues: 10 0 0 0 0 
+14
+Timestamp: 2973 Size of core queues: 10 0 0 0 0 
+14
+Ind: -1
+Timestamp: 2989 Size of core queues: 10 0 0 0 0 
+14
+Timestamp: 2989 Size of core queues: 10 0 0 0 0 
+13
+Ind: 0
+Timestamp: 3023 Size of core queues: 10 0 0 0 0 
+14
+Timestamp: 3023 Size of core queues: 10 0 0 0 0 
+13
+Timestamp: 3024 Size of core queues: 10 0 0 0 0 
+13
+Ind: -1
+Timestamp: 3056 Size of core queues: 10 0 0 0 0 
+13
+Timestamp: 3056 Size of core queues: 10 0 0 0 0 
+12
+Ind: 0
+Timestamp: 3062 Size of core queues: 10 0 0 0 0 
+13
+Timestamp: 3062 Size of core queues: 10 0 0 0 0 
+12
+Timestamp: 3063 Size of core queues: 10 0 0 0 0 
+12
+Timestamp: 3113 Size of core queues: 10 0 0 0 0 
+12
+Timestamp: 3114 Size of core queues: 10 0 0 0 0 
+12
+Timestamp: 3115 Size of core queues: 10 0 0 0 0 
+12
+Ind: 0
+Timestamp: 3120 Size of core queues: 10 0 0 0 0 
+13
+Timestamp: 3120 Size of core queues: 10 0 0 0 0 
+12
+Timestamp: 3121 Size of core queues: 10 0 0 0 0 
+12
+Ind: 0
+Timestamp: 3152 Size of core queues: 10 0 0 0 0 
+13
+Timestamp: 3152 Size of core queues: 10 0 0 0 0 
+12
+Timestamp: 3153 Size of core queues: 10 0 0 0 0 
+12
+Timestamp: 3198 Size of core queues: 10 0 0 0 0 
+12
+Ind: 0
+Timestamp: 3198 Size of core queues: 10 0 0 0 0 
+14
+Timestamp: 3198 Size of core queues: 10 0 0 0 0 
+13
+Timestamp: 3199 Size of core queues: 10 0 0 0 0 
+13
+Ind: -1
+Timestamp: 3219 Size of core queues: 10 0 0 0 0 
+13
+Timestamp: 3219 Size of core queues: 10 0 0 0 0 
+12
+Timestamp: 3249 Size of core queues: 10 0 0 0 0 
+12
+Timestamp: 3250 Size of core queues: 10 0 0 0 0 
+12
+Timestamp: 3251 Size of core queues: 10 0 0 0 0 
+12
+Ind: -1
+Timestamp: 3264 Size of core queues: 10 0 0 0 0 
+12
+Timestamp: 3264 Size of core queues: 10 0 0 0 0 
+11
+Ind: 0
+Timestamp: 3275 Size of core queues: 10 0 0 0 0 
+12
+Timestamp: 3275 Size of core queues: 10 0 0 0 0 
+11
+Timestamp: 3276 Size of core queues: 10 0 0 0 0 
+11
+Timestamp: 3319 Size of core queues: 10 0 0 0 0 
+11
+Ind: 0
+Timestamp: 3319 Size of core queues: 10 0 0 0 0 
+13
+Timestamp: 3319 Size of core queues: 10 0 0 0 0 
+12
+Timestamp: 3320 Size of core queues: 10 0 0 0 0 
+12
+Ind: 0
+Timestamp: 3322 Size of core queues: 10 0 0 0 0 
+13
+Timestamp: 3322 Size of core queues: 10 0 0 0 0 
+12
+Timestamp: 3323 Size of core queues: 10 0 0 0 0 
+12
+Ind: 0
+Timestamp: 3328 Size of core queues: 10 0 0 0 0 
+13
+Timestamp: 3328 Size of core queues: 10 0 0 0 0 
+12
+Timestamp: 3329 Size of core queues: 10 0 0 0 0 
+12
+Ind: 0
+Timestamp: 3331 Size of core queues: 10 0 0 0 0 
+13
+Timestamp: 3331 Size of core queues: 10 0 0 0 0 
+12
+Timestamp: 3332 Size of core queues: 10 0 0 0 0 
+12
+Ind: -1
+Timestamp: 3346 Size of core queues: 10 0 0 0 0 
+12
+Timestamp: 3346 Size of core queues: 10 0 0 0 0 
+11
+Ind: 0
+Timestamp: 3382 Size of core queues: 10 0 0 0 0 
+12
+Timestamp: 3382 Size of core queues: 10 0 0 0 0 
+11
+Timestamp: 3383 Size of core queues: 10 0 0 0 0 
+11
+Ind: 0
+Timestamp: 3384 Size of core queues: 10 0 0 0 0 
+12
+Timestamp: 3384 Size of core queues: 10 0 0 0 0 
+11
+Timestamp: 3385 Size of core queues: 10 0 0 0 0 
+11
+Ind: 0
+Timestamp: 3418 Size of core queues: 10 0 0 0 0 
+12
+Timestamp: 3418 Size of core queues: 10 0 0 0 0 
+11
+Timestamp: 3419 Size of core queues: 10 0 0 0 0 
+11
+Ind: 0
+Timestamp: 3469 Size of core queues: 10 0 0 0 0 
+12
+Timestamp: 3469 Size of core queues: 10 0 0 0 0 
+11
+Timestamp: 3470 Size of core queues: 10 0 0 0 0 
+11
+Timestamp: 3492 Size of core queues: 10 0 0 0 0 
+11
+Ind: 0
+Timestamp: 3492 Size of core queues: 10 0 0 0 0 
+13
+Timestamp: 3492 Size of core queues: 10 0 0 0 0 
+12
+Timestamp: 3493 Size of core queues: 10 0 0 0 0 
+12
+Ind: 0
+Timestamp: 3511 Size of core queues: 10 0 0 0 0 
+13
+Timestamp: 3511 Size of core queues: 10 0 0 0 0 
+12
+Timestamp: 3512 Size of core queues: 10 0 0 0 0 
+12
+Timestamp: 3547 Size of core queues: 10 0 0 0 0 
+12
+Ind: 0
+Timestamp: 3547 Size of core queues: 10 0 0 0 0 
+14
+Timestamp: 3547 Size of core queues: 10 0 0 0 0 
+13
+Timestamp: 3548 Size of core queues: 10 0 0 0 0 
+13
+Ind: -1
+Timestamp: 3563 Size of core queues: 10 0 0 0 0 
+13
+Timestamp: 3563 Size of core queues: 10 0 0 0 0 
+12
+Ind: -1
+Timestamp: 3570 Size of core queues: 10 0 0 0 0 
+12
+Timestamp: 3570 Size of core queues: 10 0 0 0 0 
+11
+Ind: -1
+Timestamp: 3583 Size of core queues: 10 0 0 0 0 
+11
+Timestamp: 3583 Size of core queues: 10 0 0 0 0 
+10
+Ind: 0
+Timestamp: 3598 Size of core queues: 10 0 0 0 0 
+11
+Timestamp: 3598 Size of core queues: 10 0 0 0 0 
+10
+Timestamp: 3599 Size of core queues: 10 0 0 0 0 
+10
+Timestamp: 3600 Size of core queues: 10 0 0 0 0 
+10
+Ind: 0
+Timestamp: 3600 Size of core queues: 10 0 0 0 0 
+12
+Timestamp: 3600 Size of core queues: 10 0 0 0 0 
+11
+Timestamp: 3601 Size of core queues: 10 0 0 0 0 
+11
+Ind: -1
+Timestamp: 3625 Size of core queues: 10 0 0 0 0 
+11
+Timestamp: 3625 Size of core queues: 10 0 0 0 0 
+10
+Timestamp: 3641 Size of core queues: 10 0 0 0 0 
+10
+Ind: 0
+Timestamp: 3641 Size of core queues: 10 0 0 0 0 
+12
+Timestamp: 3641 Size of core queues: 10 0 0 0 0 
+11
+Timestamp: 3642 Size of core queues: 10 0 0 0 0 
+11
+Ind: -1
+Timestamp: 3665 Size of core queues: 10 0 0 0 0 
+11
+Timestamp: 3665 Size of core queues: 10 0 0 0 0 
+10
+Ind: 0
+Timestamp: 3686 Size of core queues: 10 0 0 0 0 
+11
+Timestamp: 3686 Size of core queues: 10 0 0 0 0 
+10
+Timestamp: 3687 Size of core queues: 10 0 0 0 0 
+10
+Ind: -1
+Timestamp: 3694 Size of core queues: 10 0 0 0 0 
+10
+Timestamp: 3694 Size of core queues: 10 0 0 0 0 
+9
+Timestamp: 3697 Size of core queues: 10 0 0 0 0 
+9
+Ind: 0
+Timestamp: 3697 Size of core queues: 10 0 0 0 0 
+11
+Timestamp: 3697 Size of core queues: 10 0 0 0 0 
+10
+Timestamp: 3698 Size of core queues: 10 0 0 0 0 
+10
+Ind: -1
+Timestamp: 3715 Size of core queues: 10 0 0 0 0 
+10
+Timestamp: 3715 Size of core queues: 10 0 0 0 0 
+9
+Ind: 0
+Timestamp: 3734 Size of core queues: 10 0 0 0 0 
+10
+Timestamp: 3734 Size of core queues: 10 0 0 0 0 
+9
+Timestamp: 3735 Size of core queues: 10 0 0 0 0 
+9
+Ind: 0
+Timestamp: 3785 Size of core queues: 10 0 0 0 0 
+10
+Timestamp: 3785 Size of core queues: 10 0 0 0 0 
+9
+Timestamp: 3786 Size of core queues: 10 0 0 0 0 
+9
+Ind: 0
+Timestamp: 3809 Size of core queues: 10 0 0 0 0 
+10
+Timestamp: 3809 Size of core queues: 10 0 0 0 0 
+9
+Timestamp: 3810 Size of core queues: 10 0 0 0 0 
+9
+Ind: 0
+Timestamp: 3860 Size of core queues: 10 0 0 0 0 
+10
+Timestamp: 3860 Size of core queues: 10 0 0 0 0 
+9
+Timestamp: 3861 Size of core queues: 10 0 0 0 0 
+9
+Ind: 0
+Timestamp: 3894 Size of core queues: 10 0 0 0 0 
+10
+Timestamp: 3894 Size of core queues: 10 0 0 0 0 
+9
+Timestamp: 3895 Size of core queues: 10 0 0 0 0 
+9
+Ind: 0
+Timestamp: 3945 Size of core queues: 10 0 0 0 0 
+10
+Timestamp: 3945 Size of core queues: 10 0 0 0 0 
+9
+Timestamp: 3946 Size of core queues: 10 0 0 0 0 
+9
+Ind: 0
+Timestamp: 3994 Size of core queues: 10 0 0 0 0 
+10
+Timestamp: 3994 Size of core queues: 10 0 0 0 0 
+9
+Timestamp: 3995 Size of core queues: 10 0 0 0 0 
+9
+Ind: 0
+Timestamp: 4004 Size of core queues: 10 0 0 0 0 
+10
+Timestamp: 4004 Size of core queues: 10 0 0 0 0 
+9
+Timestamp: 4005 Size of core queues: 10 0 0 0 0 
+9
+Ind: 0
+Timestamp: 4017 Size of core queues: 10 0 0 0 0 
+10
+Timestamp: 4017 Size of core queues: 10 0 0 0 0 
+9
+Timestamp: 4018 Size of core queues: 10 0 0 0 0 
+9
+Timestamp: 4058 Size of core queues: 10 0 0 0 0 
+9
+Ind: 0
+Timestamp: 4058 Size of core queues: 10 0 0 0 0 
+11
+Timestamp: 4058 Size of core queues: 10 0 0 0 0 
+10
+Timestamp: 4059 Size of core queues: 10 0 0 0 0 
+10
+Ind: -1
+Timestamp: 4071 Size of core queues: 10 0 0 0 0 
+10
+Timestamp: 4071 Size of core queues: 10 0 0 0 0 
+9
+Ind: 0
+Timestamp: 4089 Size of core queues: 10 0 0 0 0 
+10
+Timestamp: 4089 Size of core queues: 10 0 0 0 0 
+9
+Timestamp: 4090 Size of core queues: 10 0 0 0 0 
+9
+Ind: 0
+Timestamp: 4140 Size of core queues: 10 0 0 0 0 
+10
+Timestamp: 4140 Size of core queues: 10 0 0 0 0 
+9
+Timestamp: 4141 Size of core queues: 10 0 0 0 0 
+9
+Ind: 0
+Timestamp: 4183 Size of core queues: 10 0 0 0 0 
+10
+Timestamp: 4183 Size of core queues: 10 0 0 0 0 
+9
+Timestamp: 4184 Size of core queues: 10 0 0 0 0 
+9
+Ind: 0
+Timestamp: 4190 Size of core queues: 10 0 0 0 0 
+10
+Timestamp: 4190 Size of core queues: 10 0 0 0 0 
+9
+Timestamp: 4191 Size of core queues: 10 0 0 0 0 
+9
+Ind: 0
+Timestamp: 4241 Size of core queues: 10 0 0 0 0 
+10
+Timestamp: 4241 Size of core queues: 10 0 0 0 0 
+9
+Timestamp: 4242 Size of core queues: 10 0 0 0 0 
+9
+Timestamp: 4292 Size of core queues: 10 0 0 0 0 
+9
+Timestamp: 4293 Size of core queues: 10 0 0 0 0 
+9
+Timestamp: 4294 Size of core queues: 10 0 0 0 0 
+9
+Ind: 0
+Timestamp: 4296 Size of core queues: 10 0 0 0 0 
+10
+Timestamp: 4296 Size of core queues: 10 0 0 0 0 
+9
+Timestamp: 4297 Size of core queues: 10 0 0 0 0 
+9
+Ind: 0
+Timestamp: 4310 Size of core queues: 10 0 0 0 0 
+10
+Timestamp: 4310 Size of core queues: 10 0 0 0 0 
+9
+Timestamp: 4311 Size of core queues: 10 0 0 0 0 
+9
+Ind: 0
+Timestamp: 4354 Size of core queues: 10 0 0 0 0 
+10
+Timestamp: 4354 Size of core queues: 10 0 0 0 0 
+9
+Timestamp: 4355 Size of core queues: 10 0 0 0 0 
+9
+Ind: 0
+Timestamp: 4362 Size of core queues: 10 0 0 0 0 
+10
+Timestamp: 4362 Size of core queues: 10 0 0 0 0 
+9
+Timestamp: 4363 Size of core queues: 10 0 0 0 0 
+9
+Ind: 0
+Timestamp: 4413 Size of core queues: 10 0 0 0 0 
+10
+Timestamp: 4413 Size of core queues: 10 0 0 0 0 
+9
+Timestamp: 4414 Size of core queues: 10 0 0 0 0 
+9
+Ind: 0
+Timestamp: 4438 Size of core queues: 10 0 0 0 0 
+10
+Timestamp: 4438 Size of core queues: 10 0 0 0 0 
+9
+Timestamp: 4439 Size of core queues: 10 0 0 0 0 
+9
+Ind: 0
+Timestamp: 4441 Size of core queues: 10 0 0 0 0 
+10
+Timestamp: 4441 Size of core queues: 10 0 0 0 0 
+9
+Timestamp: 4442 Size of core queues: 10 0 0 0 0 
+9
+Ind: 0
+Timestamp: 4492 Size of core queues: 10 0 0 0 0 
+10
+Timestamp: 4492 Size of core queues: 10 0 0 0 0 
+9
+Timestamp: 4493 Size of core queues: 10 0 0 0 0 
+9
+Ind: -1
+Timestamp: 4522 Size of core queues: 10 0 0 0 0 
+9
+Timestamp: 4522 Size of core queues: 10 0 0 0 0 
+8
+Ind: -1
+Timestamp: 4528 Size of core queues: 10 0 0 0 0 
+8
+Timestamp: 4528 Size of core queues: 10 0 0 0 0 
+7
+Ind: 0
+Timestamp: 4543 Size of core queues: 10 0 0 0 0 
+8
+Timestamp: 4543 Size of core queues: 10 0 0 0 0 
+7
+Timestamp: 4544 Size of core queues: 10 0 0 0 0 
+7
+Timestamp: 4548 Size of core queues: 10 0 0 0 0 
+7
+Ind: 0
+Timestamp: 4548 Size of core queues: 10 0 0 0 0 
+9
+Timestamp: 4548 Size of core queues: 10 0 0 0 0 
+8
+Timestamp: 4549 Size of core queues: 10 0 0 0 0 
+8
+Ind: 0
+Timestamp: 4599 Size of core queues: 10 0 0 0 0 
+9
+Timestamp: 4599 Size of core queues: 10 0 0 0 0 
+8
+Timestamp: 4600 Size of core queues: 10 0 0 0 0 
+8
+Ind: 0
+Timestamp: 4650 Size of core queues: 10 0 0 0 0 
+9
+Timestamp: 4650 Size of core queues: 10 0 0 0 0 
+8
+Timestamp: 4651 Size of core queues: 10 0 0 0 0 
+8
+Ind: 0
+Timestamp: 4662 Size of core queues: 10 0 0 0 0 
+9
+Timestamp: 4662 Size of core queues: 10 0 0 0 0 
+8
+Timestamp: 4663 Size of core queues: 10 0 0 0 0 
+8
+Ind: 0
+Timestamp: 4676 Size of core queues: 10 0 0 0 0 
+9
+Timestamp: 4676 Size of core queues: 10 0 0 0 0 
+8
+Timestamp: 4677 Size of core queues: 10 0 0 0 0 
+8
+Ind: 0
+Timestamp: 4697 Size of core queues: 10 0 0 0 0 
+9
+Timestamp: 4697 Size of core queues: 10 0 0 0 0 
+8
+Timestamp: 4698 Size of core queues: 10 0 0 0 0 
+8
+Ind: -1
+Timestamp: 4700 Size of core queues: 10 0 0 0 0 
+8
+Timestamp: 4700 Size of core queues: 10 0 0 0 0 
+7
+Ind: 0
+Timestamp: 4733 Size of core queues: 10 0 0 0 0 
+8
+Timestamp: 4733 Size of core queues: 10 0 0 0 0 
+7
+Timestamp: 4734 Size of core queues: 10 0 0 0 0 
+7
+Ind: 0
+Timestamp: 4762 Size of core queues: 10 0 0 0 0 
+8
+Timestamp: 4762 Size of core queues: 10 0 0 0 0 
+7
+Timestamp: 4763 Size of core queues: 10 0 0 0 0 
+7
+Ind: -1
+Timestamp: 4772 Size of core queues: 10 0 0 0 0 
+7
+Timestamp: 4772 Size of core queues: 10 0 0 0 0 
+6
+Ind: 0
+Timestamp: 4813 Size of core queues: 10 0 0 0 0 
+7
+Timestamp: 4813 Size of core queues: 10 0 0 0 0 
+6
+Timestamp: 4814 Size of core queues: 10 0 0 0 0 
+6
+Ind: 0
+Timestamp: 4834 Size of core queues: 10 0 0 0 0 
+7
+Timestamp: 4834 Size of core queues: 10 0 0 0 0 
+6
+Timestamp: 4835 Size of core queues: 10 0 0 0 0 
+6
+Ind: 0
+Timestamp: 4885 Size of core queues: 10 0 0 0 0 
+7
+Timestamp: 4885 Size of core queues: 10 0 0 0 0 
+6
+Timestamp: 4886 Size of core queues: 10 0 0 0 0 
+6
+Ind: 0
+Timestamp: 4936 Size of core queues: 10 0 0 0 0 
+7
+Timestamp: 4936 Size of core queues: 10 0 0 0 0 
+6
+Timestamp: 4937 Size of core queues: 10 0 0 0 0 
+6
+Ind: 0
+Timestamp: 4973 Size of core queues: 10 0 0 0 0 
+7
+Timestamp: 4973 Size of core queues: 10 0 0 0 0 
+6
+Timestamp: 4974 Size of core queues: 10 0 0 0 0 
+6
+Ind: 0
+Timestamp: 4978 Size of core queues: 10 0 0 0 0 
+7
+Timestamp: 4978 Size of core queues: 10 0 0 0 0 
+6
+Timestamp: 4979 Size of core queues: 10 0 0 0 0 
+6
+Ind: 0
+Timestamp: 5010 Size of core queues: 10 0 0 0 0 
+7
+Timestamp: 5010 Size of core queues: 10 0 0 0 0 
+6
+Timestamp: 5011 Size of core queues: 10 0 0 0 0 
+6
+Ind: 0
+Timestamp: 5027 Size of core queues: 10 0 0 0 0 
+7
+Timestamp: 5027 Size of core queues: 10 0 0 0 0 
+6
+Timestamp: 5028 Size of core queues: 10 0 0 0 0 
+6
+Ind: 0
+Timestamp: 5031 Size of core queues: 10 0 0 0 0 
+7
+Timestamp: 5031 Size of core queues: 10 0 0 0 0 
+6
+Timestamp: 5032 Size of core queues: 10 0 0 0 0 
+6
+Ind: 0
+Timestamp: 5082 Size of core queues: 10 0 0 0 0 
+7
+Timestamp: 5082 Size of core queues: 10 0 0 0 0 
+6
+Timestamp: 5083 Size of core queues: 10 0 0 0 0 
+6
+Ind: 0
+Timestamp: 5109 Size of core queues: 10 0 0 0 0 
+7
+Timestamp: 5109 Size of core queues: 10 0 0 0 0 
+6
+Timestamp: 5110 Size of core queues: 10 0 0 0 0 
+6
+Ind: 0
+Timestamp: 5145 Size of core queues: 10 0 0 0 0 
+7
+Timestamp: 5145 Size of core queues: 10 0 0 0 0 
+6
+Timestamp: 5146 Size of core queues: 10 0 0 0 0 
+6
+Ind: 0
+Timestamp: 5180 Size of core queues: 10 0 0 0 0 
+7
+Timestamp: 5180 Size of core queues: 10 0 0 0 0 
+6
+Timestamp: 5181 Size of core queues: 10 0 0 0 0 
+6
+Timestamp: 5186 Size of core queues: 10 0 0 0 0 
+6
+Ind: 0
+Timestamp: 5186 Size of core queues: 10 0 0 0 0 
+8
+Timestamp: 5186 Size of core queues: 10 0 0 0 0 
+7
+Timestamp: 5187 Size of core queues: 10 0 0 0 0 
+7
+Ind: -1
+Timestamp: 5221 Size of core queues: 10 0 0 0 0 
+7
+Timestamp: 5221 Size of core queues: 10 0 0 0 0 
+6
+Ind: -1
+Timestamp: 5230 Size of core queues: 10 0 0 0 0 
+6
+Timestamp: 5230 Size of core queues: 10 0 0 0 0 
+5
+Ind: -1
+Timestamp: 5234 Size of core queues: 10 0 0 0 0 
+5
+Timestamp: 5234 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 5237 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 5238 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 5239 Size of core queues: 10 0 0 0 0 
+4
+Ind: -1
+Timestamp: 5280 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 5280 Size of core queues: 10 0 0 0 0 
+3
+Ind: 0
+Timestamp: 5289 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 5289 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 5290 Size of core queues: 10 0 0 0 0 
+3
+Ind: 0
+Timestamp: 5331 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 5331 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 5332 Size of core queues: 10 0 0 0 0 
+3
+Ind: 0
+Timestamp: 5349 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 5349 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 5350 Size of core queues: 10 0 0 0 0 
+3
+Ind: 0
+Timestamp: 5390 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 5390 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 5391 Size of core queues: 10 0 0 0 0 
+3
+Ind: 0
+Timestamp: 5398 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 5398 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 5399 Size of core queues: 10 0 0 0 0 
+3
+Ind: 0
+Timestamp: 5405 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 5405 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 5406 Size of core queues: 10 0 0 0 0 
+3
+Ind: 0
+Timestamp: 5456 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 5456 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 5457 Size of core queues: 10 0 0 0 0 
+3
+Ind: 0
+Timestamp: 5475 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 5475 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 5476 Size of core queues: 10 0 0 0 0 
+3
+Ind: 0
+Timestamp: 5492 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 5492 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 5493 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 5543 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 5544 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 5545 Size of core queues: 10 0 0 0 0 
+3
+Ind: 0
+Timestamp: 5547 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 5547 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 5548 Size of core queues: 10 0 0 0 0 
+3
+Ind: 0
+Timestamp: 5551 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 5551 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 5552 Size of core queues: 10 0 0 0 0 
+3
+Ind: 0
+Timestamp: 5576 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 5576 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 5577 Size of core queues: 10 0 0 0 0 
+3
+Ind: 0
+Timestamp: 5627 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 5627 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 5628 Size of core queues: 10 0 0 0 0 
+3
+Ind: 0
+Timestamp: 5678 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 5678 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 5679 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 5691 Size of core queues: 10 0 0 0 0 
+3
+Ind: 0
+Timestamp: 5691 Size of core queues: 10 0 0 0 0 
+5
+Timestamp: 5691 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 5692 Size of core queues: 10 0 0 0 0 
+4
+Ind: 0
+Timestamp: 5697 Size of core queues: 10 0 0 0 0 
+5
+Timestamp: 5697 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 5698 Size of core queues: 10 0 0 0 0 
+4
+Ind: 0
+Timestamp: 5699 Size of core queues: 10 0 0 0 0 
+5
+Timestamp: 5699 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 5700 Size of core queues: 10 0 0 0 0 
+4
+Ind: -1
+Timestamp: 5739 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 5739 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 5750 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 5751 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 5752 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 5754 Size of core queues: 10 0 0 0 0 
+3
+Ind: 0
+Timestamp: 5754 Size of core queues: 10 0 0 0 0 
+5
+Timestamp: 5754 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 5755 Size of core queues: 10 0 0 0 0 
+4
+Ind: 0
+Timestamp: 5805 Size of core queues: 10 0 0 0 0 
+5
+Timestamp: 5805 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 5806 Size of core queues: 10 0 0 0 0 
+4
+Ind: -1
+Timestamp: 5825 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 5825 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 5834 Size of core queues: 10 0 0 0 0 
+3
+Ind: 0
+Timestamp: 5834 Size of core queues: 10 0 0 0 0 
+5
+Timestamp: 5834 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 5835 Size of core queues: 10 0 0 0 0 
+4
+Ind: 0
+Timestamp: 5872 Size of core queues: 10 0 0 0 0 
+5
+Timestamp: 5872 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 5873 Size of core queues: 10 0 0 0 0 
+4
+Ind: -1
+Timestamp: 5882 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 5882 Size of core queues: 10 0 0 0 0 
+3
+Ind: 0
+Timestamp: 5923 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 5923 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 5924 Size of core queues: 10 0 0 0 0 
+3
+Ind: 0
+Timestamp: 5948 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 5948 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 5949 Size of core queues: 10 0 0 0 0 
+3
+Ind: 0
+Timestamp: 5975 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 5975 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 5976 Size of core queues: 10 0 0 0 0 
+3
+Ind: 0
+Timestamp: 5977 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 5977 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 5978 Size of core queues: 10 0 0 0 0 
+3
+Ind: 0
+Timestamp: 5983 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 5983 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 5984 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 6016 Size of core queues: 10 0 0 0 0 
+3
+Ind: 0
+Timestamp: 6016 Size of core queues: 10 0 0 0 0 
+5
+Timestamp: 6016 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 6017 Size of core queues: 10 0 0 0 0 
+4
+Ind: -1
+Timestamp: 6058 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 6058 Size of core queues: 10 0 0 0 0 
+3
+Ind: 0
+Timestamp: 6067 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 6067 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 6068 Size of core queues: 10 0 0 0 0 
+3
+Ind: -1
+Timestamp: 6089 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 6089 Size of core queues: 10 0 0 0 0 
+2
+Ind: 0
+Timestamp: 6091 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 6091 Size of core queues: 10 0 0 0 0 
+2
+Timestamp: 6092 Size of core queues: 10 0 0 0 0 
+2
+Ind: 0
+Timestamp: 6139 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 6139 Size of core queues: 10 0 0 0 0 
+2
+Timestamp: 6140 Size of core queues: 10 0 0 0 0 
+2
+Ind: 0
+Timestamp: 6190 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 6190 Size of core queues: 10 0 0 0 0 
+2
+Timestamp: 6191 Size of core queues: 10 0 0 0 0 
+2
+Timestamp: 6216 Size of core queues: 10 0 0 0 0 
+2
+Ind: 0
+Timestamp: 6216 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 6216 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 6217 Size of core queues: 10 0 0 0 0 
+3
+Ind: 0
+Timestamp: 6267 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 6267 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 6268 Size of core queues: 10 0 0 0 0 
+3
+Ind: -1
+Timestamp: 6283 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 6283 Size of core queues: 10 0 0 0 0 
+2
+Ind: 0
+Timestamp: 6318 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 6318 Size of core queues: 10 0 0 0 0 
+2
+Timestamp: 6319 Size of core queues: 10 0 0 0 0 
+2
+Ind: 0
+Timestamp: 6327 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 6327 Size of core queues: 10 0 0 0 0 
+2
+Timestamp: 6328 Size of core queues: 10 0 0 0 0 
+2
+Timestamp: 6335 Size of core queues: 10 0 0 0 0 
+2
+Ind: 0
+Timestamp: 6335 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 6335 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 6336 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 6345 Size of core queues: 10 0 0 0 0 
+3
+Ind: 0
+Timestamp: 6345 Size of core queues: 10 0 0 0 0 
+5
+Timestamp: 6345 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 6346 Size of core queues: 10 0 0 0 0 
+4
+Ind: -1
+Timestamp: 6349 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 6349 Size of core queues: 10 0 0 0 0 
+3
+Ind: -1
+Timestamp: 6353 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 6353 Size of core queues: 10 0 0 0 0 
+2
+Ind: 0
+Timestamp: 6396 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 6396 Size of core queues: 10 0 0 0 0 
+2
+Timestamp: 6397 Size of core queues: 10 0 0 0 0 
+2
+Ind: 0
+Timestamp: 6447 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 6447 Size of core queues: 10 0 0 0 0 
+2
+Timestamp: 6448 Size of core queues: 10 0 0 0 0 
+2
+Timestamp: 6477 Size of core queues: 10 0 0 0 0 
+2
+Ind: 0
+Timestamp: 6477 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 6477 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 6478 Size of core queues: 10 0 0 0 0 
+3
+Ind: -1
+Timestamp: 6496 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 6496 Size of core queues: 10 0 0 0 0 
+2
+Ind: 0
+Timestamp: 6528 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 6528 Size of core queues: 10 0 0 0 0 
+2
+Timestamp: 6529 Size of core queues: 10 0 0 0 0 
+2
+Timestamp: 6572 Size of core queues: 10 0 0 0 0 
+2
+Ind: 0
+Timestamp: 6572 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 6572 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 6573 Size of core queues: 10 0 0 0 0 
+3
+Ind: 0
+Timestamp: 6578 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 6578 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 6579 Size of core queues: 10 0 0 0 0 
+3
+Ind: 0
+Timestamp: 6618 Size of core queues: 10 0 0 0 0 
+4
+Timestamp: 6618 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 6619 Size of core queues: 10 0 0 0 0 
+3
+Ind: -1
+Timestamp: 6629 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 6629 Size of core queues: 10 0 0 0 0 
+2
+Ind: 0
+Timestamp: 6669 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 6669 Size of core queues: 10 0 0 0 0 
+2
+Timestamp: 6670 Size of core queues: 10 0 0 0 0 
+2
+Ind: 0
+Timestamp: 6720 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 6720 Size of core queues: 10 0 0 0 0 
+2
+Timestamp: 6721 Size of core queues: 10 0 0 0 0 
+2
+Ind: 0
+Timestamp: 6771 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 6771 Size of core queues: 10 0 0 0 0 
+2
+Timestamp: 6772 Size of core queues: 10 0 0 0 0 
+2
+Ind: 0
+Timestamp: 6800 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 6800 Size of core queues: 10 0 0 0 0 
+2
+Timestamp: 6801 Size of core queues: 10 0 0 0 0 
+2
+Timestamp: 6825 Size of core queues: 10 0 0 0 0 
+2
+Timestamp: 6825 Size of core queues: 9 0 0 0 0 
+3
+Timestamp: 6826 Size of core queues: 9 0 0 0 0 
+3
+Ind: 0
+Timestamp: 6874 Size of core queues: 10 0 0 0 0 
+3
+Timestamp: 6874 Size of core queues: 10 0 0 0 0 
+2
+Timestamp: 6876 Size of core queues: 9 0 0 0 0 
+2
+Timestamp: 6877 Size of core queues: 9 0 0 0 0 
+2
+Timestamp: 6927 Size of core queues: 9 0 0 0 0 
+2
+Timestamp: 6928 Size of core queues: 9 0 0 0 0 
+2
+Timestamp: 6929 Size of core queues: 9 0 0 0 0 
+2
+Timestamp: 6979 Size of core queues: 8 0 0 0 0 
+2
+Timestamp: 6980 Size of core queues: 8 0 0 0 0 
+2
+Timestamp: 7030 Size of core queues: 7 0 0 0 0 
+2
+Timestamp: 7031 Size of core queues: 7 0 0 0 0 
+2
+Timestamp: 7057 Size of core queues: 7 0 0 0 0 
+2
+Timestamp: 7057 Size of core queues: 6 0 0 0 0 
+3
+Timestamp: 7058 Size of core queues: 6 0 0 0 0 
+3
+Timestamp: 7064 Size of core queues: 6 0 0 0 0 
+3
+Timestamp: 7064 Size of core queues: 5 0 0 0 0 
+4
+Timestamp: 7065 Size of core queues: 5 0 0 0 0 
+4
+Timestamp: 7066 Size of core queues: 4 0 0 0 0 
+4
+Timestamp: 7067 Size of core queues: 4 0 0 0 0 
+4
+Timestamp: 7083 Size of core queues: 4 0 0 0 0 
+4
+Timestamp: 7083 Size of core queues: 3 0 0 0 0 
+5
+Timestamp: 7084 Size of core queues: 3 0 0 0 0 
+5
+Timestamp: 7085 Size of core queues: 2 0 0 0 0 
+5
+Timestamp: 7086 Size of core queues: 2 0 0 0 0 
+5
+Ind: 0
+Timestamp: 7099 Size of core queues: 3 0 0 0 0 
+5
+Timestamp: 7099 Size of core queues: 3 0 0 0 0 
+4
+Ind: -1
+Timestamp: 7106 Size of core queues: 3 0 0 0 0 
+4
+Timestamp: 7106 Size of core queues: 3 0 0 0 0 
+3
+Ind: -1
+Timestamp: 7121 Size of core queues: 3 0 0 0 0 
+3
+Timestamp: 7121 Size of core queues: 3 0 0 0 0 
+2
+Timestamp: 7127 Size of core queues: 3 0 0 0 0 
+2
+Ind: 0
+Timestamp: 7127 Size of core queues: 3 0 0 0 0 
+4
+Timestamp: 7127 Size of core queues: 3 0 0 0 0 
+3
+Timestamp: 7128 Size of core queues: 3 0 0 0 0 
+3
+Timestamp: 7129 Size of core queues: 3 0 0 0 0 
+3
+Ind: 0
+Timestamp: 7129 Size of core queues: 3 0 0 0 0 
+5
+Timestamp: 7129 Size of core queues: 3 0 0 0 0 
+4
+Timestamp: 7130 Size of core queues: 3 0 0 0 0 
+4
+Ind: -1
+Timestamp: 7140 Size of core queues: 3 0 0 0 0 
+4
+Timestamp: 7140 Size of core queues: 3 0 0 0 0 
+3
+Ind: -1
+Timestamp: 7147 Size of core queues: 3 0 0 0 0 
+3
+Timestamp: 7147 Size of core queues: 3 0 0 0 0 
+2
+Timestamp: 7180 Size of core queues: 3 0 0 0 0 
+2
+Timestamp: 7181 Size of core queues: 3 0 0 0 0 
+2
+Timestamp: 7182 Size of core queues: 3 0 0 0 0 
+2
+Timestamp: 7232 Size of core queues: 3 0 0 0 0 
+2
+Timestamp: 7233 Size of core queues: 3 0 0 0 0 
+2
+Timestamp: 7234 Size of core queues: 3 0 0 0 0 
+2
+Timestamp: 7284 Size of core queues: 3 0 0 0 0 
+2
+Timestamp: 7285 Size of core queues: 3 0 0 0 0 
+2
+Timestamp: 7286 Size of core queues: 3 0 0 0 0 
+2
+Timestamp: 7336 Size of core queues: 3 0 0 0 0 
+2
+Timestamp: 7337 Size of core queues: 3 0 0 0 0 
+2
+Timestamp: 7338 Size of core queues: 3 0 0 0 0 
+2
+Timestamp: 7354 Size of core queues: 3 0 0 0 0 
+2
+Ind: 0
+Timestamp: 7354 Size of core queues: 3 0 0 0 0 
+4
+Timestamp: 7354 Size of core queues: 3 0 0 0 0 
+3
+Timestamp: 7355 Size of core queues: 3 0 0 0 0 
+3
+Ind: -1
+Timestamp: 7377 Size of core queues: 3 0 0 0 0 
+3
+Timestamp: 7377 Size of core queues: 3 0 0 0 0 
+2
+Timestamp: 7391 Size of core queues: 3 0 0 0 0 
+2
+Ind: 0
+Timestamp: 7391 Size of core queues: 3 0 0 0 0 
+4
+Timestamp: 7391 Size of core queues: 3 0 0 0 0 
+3
+Timestamp: 7392 Size of core queues: 3 0 0 0 0 
+3
+Ind: -1
+Timestamp: 7429 Size of core queues: 3 0 0 0 0 
+3
+Timestamp: 7429 Size of core queues: 3 0 0 0 0 
+2
+Timestamp: 7440 Size of core queues: 3 0 0 0 0 
+2
+Ind: 0
+Timestamp: 7440 Size of core queues: 3 0 0 0 0 
+4
+Timestamp: 7440 Size of core queues: 3 0 0 0 0 
+3
+Timestamp: 7441 Size of core queues: 3 0 0 0 0 
+3
+Timestamp: 7491 Size of core queues: 3 0 0 0 0 
+3
+Timestamp: 7492 Size of core queues: 3 0 0 0 0 
+3
+Timestamp: 7493 Size of core queues: 3 0 0 0 0 
+3
+Timestamp: 7494 Size of core queues: 3 0 0 0 0 
+3
+Ind: 0
+Timestamp: 7494 Size of core queues: 3 0 0 0 0 
+5
+Timestamp: 7494 Size of core queues: 3 0 0 0 0 
+4
+Timestamp: 7495 Size of core queues: 3 0 0 0 0 
+4
+Ind: -1
+Timestamp: 7503 Size of core queues: 3 0 0 0 0 
+4
+Timestamp: 7503 Size of core queues: 3 0 0 0 0 
+3
+Timestamp: 7523 Size of core queues: 3 0 0 0 0 
+3
+Ind: 0
+Timestamp: 7523 Size of core queues: 3 0 0 0 0 
+5
+Timestamp: 7523 Size of core queues: 3 0 0 0 0 
+4
+Timestamp: 7524 Size of core queues: 3 0 0 0 0 
+4
+Ind: -1
+Timestamp: 7553 Size of core queues: 3 0 0 0 0 
+4
+Timestamp: 7553 Size of core queues: 3 0 0 0 0 
+3
+Ind: -1
+Timestamp: 7556 Size of core queues: 3 0 0 0 0 
+3
+Timestamp: 7556 Size of core queues: 3 0 0 0 0 
+2
+Timestamp: 7574 Size of core queues: 3 0 0 0 0 
+2
+Timestamp: 7575 Size of core queues: 3 0 0 0 0 
+2
+Timestamp: 7576 Size of core queues: 3 0 0 0 0 
+2
+Timestamp: 7592 Size of core queues: 3 0 0 0 0 
+2
+Ind: 0
+Timestamp: 7592 Size of core queues: 3 0 0 0 0 
+4
+Timestamp: 7592 Size of core queues: 3 0 0 0 0 
+3
+Timestamp: 7593 Size of core queues: 3 0 0 0 0 
+3
+Ind: -1
+Timestamp: 7596 Size of core queues: 3 0 0 0 0 
+3
+Timestamp: 7596 Size of core queues: 3 0 0 0 0 
+2
+Timestamp: 7610 Size of core queues: 3 0 0 0 0 
+2
+Ind: 0
+Timestamp: 7610 Size of core queues: 3 0 0 0 0 
+4
+Timestamp: 7610 Size of core queues: 3 0 0 0 0 
+3
+Timestamp: 7611 Size of core queues: 3 0 0 0 0 
+3
+Timestamp: 7623 Size of core queues: 3 0 0 0 0 
+3
+Ind: 0
+Timestamp: 7623 Size of core queues: 3 0 0 0 0 
+5
+Timestamp: 7623 Size of core queues: 3 0 0 0 0 
+4
+Timestamp: 7624 Size of core queues: 3 0 0 0 0 
+4
+Ind: -1
+Timestamp: 7625 Size of core queues: 3 0 0 0 0 
+4
+Timestamp: 7625 Size of core queues: 3 0 0 0 0 
+3
+Timestamp: 7635 Size of core queues: 3 0 0 0 0 
+3
+Ind: 0
+Timestamp: 7635 Size of core queues: 3 0 0 0 0 
+5
+Timestamp: 7635 Size of core queues: 3 0 0 0 0 
+4
+Timestamp: 7636 Size of core queues: 3 0 0 0 0 
+4
+Ind: -1
+Timestamp: 7645 Size of core queues: 3 0 0 0 0 
+4
+Timestamp: 7645 Size of core queues: 3 0 0 0 0 
+3
+Timestamp: 7686 Size of core queues: 3 0 0 0 0 
+3
+Timestamp: 7687 Size of core queues: 3 0 0 0 0 
+3
+Timestamp: 7688 Size of core queues: 3 0 0 0 0 
+3
+Ind: 0
+Timestamp: 7708 Size of core queues: 3 0 0 0 0 
+4
+Timestamp: 7708 Size of core queues: 3 0 0 0 0 
+3
+Timestamp: 7709 Size of core queues: 3 0 0 0 0 
+3
+Timestamp: 7747 Size of core queues: 3 0 0 0 0 
+3
+Timestamp: 7747 Size of core queues: 2 0 0 0 0 
+4
+Timestamp: 7748 Size of core queues: 2 0 0 0 0 
+4
+Timestamp: 7752 Size of core queues: 2 0 0 0 0 
+4
+Timestamp: 7752 Size of core queues: 1 0 0 0 0 
+5
+Timestamp: 7753 Size of core queues: 1 0 0 0 0 
+5
+Ind: 0
+Timestamp: 7764 Size of core queues: 2 0 0 0 0 
+5
+Timestamp: 7764 Size of core queues: 2 0 0 0 0 
+4
+Ind: -1
+Timestamp: 7799 Size of core queues: 2 0 0 0 0 
+4
+Timestamp: 7799 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 7803 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 7804 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 7805 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 7812 Size of core queues: 2 0 0 0 0 
+3
+Ind: 0
+Timestamp: 7812 Size of core queues: 2 0 0 0 0 
+5
+Timestamp: 7812 Size of core queues: 2 0 0 0 0 
+4
+Timestamp: 7813 Size of core queues: 2 0 0 0 0 
+4
+Ind: -1
+Timestamp: 7824 Size of core queues: 2 0 0 0 0 
+4
+Timestamp: 7824 Size of core queues: 2 0 0 0 0 
+3
+Ind: -1
+Timestamp: 7825 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 7825 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 7863 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 7864 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 7865 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 7886 Size of core queues: 2 0 0 0 0 
+2
+Ind: 0
+Timestamp: 7886 Size of core queues: 2 0 0 0 0 
+4
+Timestamp: 7886 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 7887 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 7937 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 7938 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 7939 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 7964 Size of core queues: 2 0 0 0 0 
+3
+Ind: 0
+Timestamp: 7964 Size of core queues: 2 0 0 0 0 
+5
+Timestamp: 7964 Size of core queues: 2 0 0 0 0 
+4
+Timestamp: 7965 Size of core queues: 2 0 0 0 0 
+4
+Timestamp: 8015 Size of core queues: 2 0 0 0 0 
+4
+Timestamp: 8016 Size of core queues: 2 0 0 0 0 
+4
+Timestamp: 8017 Size of core queues: 2 0 0 0 0 
+4
+Ind: -1
+Timestamp: 8019 Size of core queues: 2 0 0 0 0 
+4
+Timestamp: 8019 Size of core queues: 2 0 0 0 0 
+3
+Ind: -1
+Timestamp: 8019 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 8019 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8037 Size of core queues: 2 0 0 0 0 
+2
+Ind: 0
+Timestamp: 8037 Size of core queues: 2 0 0 0 0 
+4
+Timestamp: 8037 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 8038 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 8088 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 8089 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 8090 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 8117 Size of core queues: 2 0 0 0 0 
+3
+Ind: 0
+Timestamp: 8117 Size of core queues: 2 0 0 0 0 
+5
+Timestamp: 8117 Size of core queues: 2 0 0 0 0 
+4
+Timestamp: 8118 Size of core queues: 2 0 0 0 0 
+4
+Ind: -1
+Timestamp: 8141 Size of core queues: 2 0 0 0 0 
+4
+Timestamp: 8141 Size of core queues: 2 0 0 0 0 
+3
+Ind: -1
+Timestamp: 8164 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 8164 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8168 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8169 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8170 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8184 Size of core queues: 2 0 0 0 0 
+2
+Ind: 0
+Timestamp: 8184 Size of core queues: 2 0 0 0 0 
+4
+Timestamp: 8184 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 8185 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 8201 Size of core queues: 2 0 0 0 0 
+3
+Ind: 0
+Timestamp: 8201 Size of core queues: 2 0 0 0 0 
+5
+Timestamp: 8201 Size of core queues: 2 0 0 0 0 
+4
+Timestamp: 8202 Size of core queues: 2 0 0 0 0 
+4
+Ind: -1
+Timestamp: 8209 Size of core queues: 2 0 0 0 0 
+4
+Timestamp: 8209 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 8210 Size of core queues: 2 0 0 0 0 
+3
+Ind: 0
+Timestamp: 8210 Size of core queues: 2 0 0 0 0 
+5
+Timestamp: 8210 Size of core queues: 2 0 0 0 0 
+4
+Timestamp: 8211 Size of core queues: 2 0 0 0 0 
+4
+Ind: -1
+Timestamp: 8231 Size of core queues: 2 0 0 0 0 
+4
+Timestamp: 8231 Size of core queues: 2 0 0 0 0 
+3
+Ind: -1
+Timestamp: 8241 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 8241 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8261 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8262 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8263 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8313 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8314 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8315 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8316 Size of core queues: 2 0 0 0 0 
+2
+Ind: 0
+Timestamp: 8316 Size of core queues: 2 0 0 0 0 
+4
+Timestamp: 8316 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 8317 Size of core queues: 2 0 0 0 0 
+3
+Ind: -1
+Timestamp: 8327 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 8327 Size of core queues: 2 0 0 0 0 
+2
+Ind: 0
+Timestamp: 8367 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 8367 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8368 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8379 Size of core queues: 2 0 0 0 0 
+2
+Ind: 0
+Timestamp: 8379 Size of core queues: 2 0 0 0 0 
+4
+Timestamp: 8379 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 8380 Size of core queues: 2 0 0 0 0 
+3
+Ind: -1
+Timestamp: 8396 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 8396 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8430 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8431 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8432 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8482 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8483 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8484 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8499 Size of core queues: 2 0 0 0 0 
+2
+Ind: 0
+Timestamp: 8499 Size of core queues: 2 0 0 0 0 
+4
+Timestamp: 8499 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 8500 Size of core queues: 2 0 0 0 0 
+3
+Ind: -1
+Timestamp: 8524 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 8524 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8550 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8551 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8552 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8556 Size of core queues: 2 0 0 0 0 
+2
+Ind: 0
+Timestamp: 8556 Size of core queues: 2 0 0 0 0 
+4
+Timestamp: 8556 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 8557 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 8560 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 8560 Size of core queues: 1 0 0 0 0 
+4
+Timestamp: 8561 Size of core queues: 1 0 0 0 0 
+4
+Ind: 0
+Timestamp: 8570 Size of core queues: 2 0 0 0 0 
+4
+Timestamp: 8570 Size of core queues: 2 0 0 0 0 
+3
+Ind: -1
+Timestamp: 8581 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 8581 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8611 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8612 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8613 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8628 Size of core queues: 2 0 0 0 0 
+2
+Ind: 0
+Timestamp: 8628 Size of core queues: 2 0 0 0 0 
+4
+Timestamp: 8628 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 8629 Size of core queues: 2 0 0 0 0 
+3
+Ind: -1
+Timestamp: 8631 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 8631 Size of core queues: 2 0 0 0 0 
+2
+Ind: -1
+Timestamp: 8650 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8650 Size of core queues: 2 0 0 0 0 
+1
+Timestamp: 8679 Size of core queues: 2 0 0 0 0 
+1
+Timestamp: 8680 Size of core queues: 2 0 0 0 0 
+1
+Timestamp: 8681 Size of core queues: 2 0 0 0 0 
+1
+Timestamp: 8731 Size of core queues: 2 0 0 0 0 
+1
+Timestamp: 8732 Size of core queues: 2 0 0 0 0 
+1
+Timestamp: 8733 Size of core queues: 2 0 0 0 0 
+1
+Timestamp: 8783 Size of core queues: 2 0 0 0 0 
+1
+Timestamp: 8784 Size of core queues: 2 0 0 0 0 
+1
+Timestamp: 8785 Size of core queues: 2 0 0 0 0 
+1
+Timestamp: 8787 Size of core queues: 2 0 0 0 0 
+1
+Ind: 0
+Timestamp: 8787 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 8787 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8788 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8838 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8839 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8840 Size of core queues: 2 0 0 0 0 
+2
+Ind: -1
+Timestamp: 8857 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8857 Size of core queues: 2 0 0 0 0 
+1
+Timestamp: 8870 Size of core queues: 2 0 0 0 0 
+1
+Ind: 0
+Timestamp: 8870 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 8870 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8871 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8878 Size of core queues: 2 0 0 0 0 
+2
+Ind: 0
+Timestamp: 8878 Size of core queues: 2 0 0 0 0 
+4
+Timestamp: 8878 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 8879 Size of core queues: 2 0 0 0 0 
+3
+Ind: -1
+Timestamp: 8928 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 8928 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8929 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8930 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8931 Size of core queues: 2 0 0 0 0 
+2
+Ind: -1
+Timestamp: 8949 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8949 Size of core queues: 2 0 0 0 0 
+1
+Timestamp: 8969 Size of core queues: 2 0 0 0 0 
+1
+Ind: 0
+Timestamp: 8969 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 8969 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8970 Size of core queues: 2 0 0 0 0 
+2
+Ind: -1
+Timestamp: 8975 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8975 Size of core queues: 2 0 0 0 0 
+1
+Timestamp: 8997 Size of core queues: 2 0 0 0 0 
+1
+Ind: 0
+Timestamp: 8997 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 8997 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 8998 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 9048 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 9049 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 9050 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 9053 Size of core queues: 2 0 0 0 0 
+2
+Ind: 0
+Timestamp: 9053 Size of core queues: 2 0 0 0 0 
+4
+Timestamp: 9053 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 9054 Size of core queues: 2 0 0 0 0 
+3
+Ind: -1
+Timestamp: 9068 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 9068 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 9072 Size of core queues: 2 0 0 0 0 
+2
+Ind: 0
+Timestamp: 9072 Size of core queues: 2 0 0 0 0 
+4
+Timestamp: 9072 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 9073 Size of core queues: 2 0 0 0 0 
+3
+Ind: -1
+Timestamp: 9081 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 9081 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 9123 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 9124 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 9125 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 9148 Size of core queues: 2 0 0 0 0 
+2
+Ind: 0
+Timestamp: 9148 Size of core queues: 2 0 0 0 0 
+4
+Timestamp: 9148 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 9149 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 9154 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 9154 Size of core queues: 1 0 0 0 0 
+4
+Timestamp: 9155 Size of core queues: 1 0 0 0 0 
+4
+Ind: 0
+Timestamp: 9169 Size of core queues: 2 0 0 0 0 
+4
+Timestamp: 9169 Size of core queues: 2 0 0 0 0 
+3
+Ind: -1
+Timestamp: 9179 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 9179 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 9180 Size of core queues: 2 0 0 0 0 
+2
+Ind: 0
+Timestamp: 9180 Size of core queues: 2 0 0 0 0 
+4
+Timestamp: 9180 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 9181 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 9190 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 9190 Size of core queues: 1 0 0 0 0 
+4
+Timestamp: 9191 Size of core queues: 1 0 0 0 0 
+4
+Ind: 0
+Timestamp: 9193 Size of core queues: 2 0 0 0 0 
+4
+Timestamp: 9193 Size of core queues: 2 0 0 0 0 
+3
+Ind: -1
+Timestamp: 9210 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 9210 Size of core queues: 2 0 0 0 0 
+2
+Timestamp: 9223 Size of core queues: 2 0 0 0 0 
+2
+Ind: 0
+Timestamp: 9223 Size of core queues: 2 0 0 0 0 
+4
+Timestamp: 9223 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 9224 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 9248 Size of core queues: 2 0 0 0 0 
+3
+Timestamp: 9248 Size of core queues: 1 0 0 0 0 
+4
+Timestamp: 9249 Size of core queues: 1 0 0 0 0 
+4
+Timestamp: 9261 Size of core queues: 1 0 0 0 0 
+4
+Timestamp: 9261 Size of core queues: 0 0 0 0 0 
+4
+Ind: 0
+Timestamp: 9293 Size of core queues: 1 0 0 0 0 
+4
+Timestamp: 9293 Size of core queues: 1 0 0 0 0 
+4
+Timestamp: 9293 Size of core queues: 1 0 0 0 0 
+4
+Ind: -1
+Timestamp: 9297 Size of core queues: 1 0 0 0 0 
+4
+Timestamp: 9297 Size of core queues: 1 0 0 0 0 
+3
+Ind: -1
+Timestamp: 9307 Size of core queues: 1 0 0 0 0 
+3
+Timestamp: 9307 Size of core queues: 1 0 0 0 0 
+2
+Ind: 0
+Timestamp: 9326 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 9326 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 9326 Size of core queues: 1 0 0 0 0 
+2
+Ind: -1
+Timestamp: 9334 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 9334 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 9376 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 9377 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 9378 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 9428 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 9429 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 9430 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 9476 Size of core queues: 1 0 0 0 0 
+1
+Ind: 0
+Timestamp: 9476 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 9476 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 9476 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 9477 Size of core queues: 1 0 0 0 0 
+2
+Ind: 0
+Timestamp: 9477 Size of core queues: 1 0 0 0 0 
+3
+Timestamp: 9477 Size of core queues: 1 0 0 0 0 
+3
+Timestamp: 9477 Size of core queues: 1 0 0 0 0 
+3
+Ind: -1
+Timestamp: 9515 Size of core queues: 1 0 0 0 0 
+3
+Timestamp: 9515 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 9527 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 9528 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 9529 Size of core queues: 1 0 0 0 0 
+2
+Ind: -1
+Timestamp: 9553 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 9553 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 9579 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 9580 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 9581 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 9588 Size of core queues: 1 0 0 0 0 
+1
+Ind: 0
+Timestamp: 9588 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 9588 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 9588 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 9638 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 9639 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 9640 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 9641 Size of core queues: 1 0 0 0 0 
+2
+Ind: 0
+Timestamp: 9641 Size of core queues: 1 0 0 0 0 
+3
+Timestamp: 9641 Size of core queues: 1 0 0 0 0 
+3
+Timestamp: 9641 Size of core queues: 1 0 0 0 0 
+3
+Timestamp: 9660 Size of core queues: 1 0 0 0 0 
+3
+Timestamp: 9660 Size of core queues: 0 0 0 0 0 
+3
+Ind: 0
+Timestamp: 9665 Size of core queues: 1 0 0 0 0 
+3
+Timestamp: 9665 Size of core queues: 1 0 0 0 0 
+3
+Timestamp: 9665 Size of core queues: 1 0 0 0 0 
+3
+Ind: -1
+Timestamp: 9668 Size of core queues: 1 0 0 0 0 
+3
+Timestamp: 9668 Size of core queues: 1 0 0 0 0 
+2
+Ind: -1
+Timestamp: 9698 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 9698 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 9715 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 9716 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 9717 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 9767 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 9768 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 9769 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 9792 Size of core queues: 1 0 0 0 0 
+1
+Ind: 0
+Timestamp: 9792 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 9792 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 9792 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 9842 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 9843 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 9844 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 9894 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 9895 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 9896 Size of core queues: 1 0 0 0 0 
+2
+Ind: -1
+Timestamp: 9906 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 9906 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 9935 Size of core queues: 1 0 0 0 0 
+1
+Ind: 0
+Timestamp: 9935 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 9935 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 9935 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 9985 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 9986 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 9987 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10032 Size of core queues: 1 0 0 0 0 
+2
+Ind: 0
+Timestamp: 10032 Size of core queues: 1 0 0 0 0 
+3
+Timestamp: 10032 Size of core queues: 1 0 0 0 0 
+3
+Timestamp: 10032 Size of core queues: 1 0 0 0 0 
+3
+Ind: -1
+Timestamp: 10039 Size of core queues: 1 0 0 0 0 
+3
+Timestamp: 10039 Size of core queues: 1 0 0 0 0 
+2
+Ind: 0
+Timestamp: 10046 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10046 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10046 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10056 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10056 Size of core queues: 0 0 0 0 0 
+2
+Ind: 0
+Timestamp: 10070 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10070 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10070 Size of core queues: 1 0 0 0 0 
+2
+Ind: -1
+Timestamp: 10084 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10084 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 10090 Size of core queues: 1 0 0 0 0 
+1
+Ind: 0
+Timestamp: 10090 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10090 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10090 Size of core queues: 1 0 0 0 0 
+2
+Ind: -1
+Timestamp: 10106 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10106 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 10140 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 10141 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 10142 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 10176 Size of core queues: 1 0 0 0 0 
+1
+Ind: 0
+Timestamp: 10176 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10176 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10176 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10226 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10227 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10228 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10230 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10230 Size of core queues: 0 0 0 0 0 
+2
+Ind: 0
+Timestamp: 10261 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10261 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10261 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10279 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10279 Size of core queues: 0 0 0 0 0 
+2
+Ind: 0
+Timestamp: 10281 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10281 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10281 Size of core queues: 1 0 0 0 0 
+2
+Ind: -1
+Timestamp: 10293 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10293 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 10331 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 10332 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 10333 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 10356 Size of core queues: 1 0 0 0 0 
+1
+Ind: 0
+Timestamp: 10356 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10356 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10356 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10398 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10398 Size of core queues: 0 0 0 0 0 
+2
+Ind: 0
+Timestamp: 10444 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10444 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10444 Size of core queues: 1 0 0 0 0 
+2
+Ind: -1
+Timestamp: 10446 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10446 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 10447 Size of core queues: 1 0 0 0 0 
+1
+Ind: 0
+Timestamp: 10447 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10447 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10447 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10462 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10462 Size of core queues: 0 0 0 0 0 
+2
+Ind: 0
+Timestamp: 10511 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10511 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10511 Size of core queues: 1 0 0 0 0 
+2
+Ind: -1
+Timestamp: 10514 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10514 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 10542 Size of core queues: 1 0 0 0 0 
+1
+Ind: 0
+Timestamp: 10542 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10542 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10542 Size of core queues: 1 0 0 0 0 
+2
+Ind: -1
+Timestamp: 10577 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10577 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 10592 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 10593 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 10594 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 10618 Size of core queues: 1 0 0 0 0 
+1
+Ind: 0
+Timestamp: 10618 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10618 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10618 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10648 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10648 Size of core queues: 0 0 0 0 0 
+2
+Ind: 0
+Timestamp: 10710 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10710 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10710 Size of core queues: 1 0 0 0 0 
+2
+Ind: -1
+Timestamp: 10715 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10715 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 10733 Size of core queues: 1 0 0 0 0 
+1
+Ind: 0
+Timestamp: 10733 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10733 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10733 Size of core queues: 1 0 0 0 0 
+2
+Ind: -1
+Timestamp: 10772 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10772 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 10783 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 10784 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 10785 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 10835 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 10836 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 10837 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 10838 Size of core queues: 1 0 0 0 0 
+1
+Ind: 0
+Timestamp: 10838 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10838 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10838 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10888 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10889 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10890 Size of core queues: 1 0 0 0 0 
+2
+Ind: -1
+Timestamp: 10918 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10918 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 10925 Size of core queues: 1 0 0 0 0 
+1
+Ind: 0
+Timestamp: 10925 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10925 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10925 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10965 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10965 Size of core queues: 0 0 0 0 0 
+2
+Ind: 0
+Timestamp: 10971 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10971 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10971 Size of core queues: 1 0 0 0 0 
+2
+Ind: -1
+Timestamp: 10972 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 10972 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 11021 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 11022 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 11023 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 11073 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 11074 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 11075 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 11125 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 11126 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 11127 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 11177 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 11178 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 11179 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 11189 Size of core queues: 1 0 0 0 0 
+1
+Ind: 0
+Timestamp: 11189 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11189 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11189 Size of core queues: 1 0 0 0 0 
+2
+Ind: -1
+Timestamp: 11198 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11198 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 11239 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 11240 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 11241 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 11242 Size of core queues: 1 0 0 0 0 
+1
+Ind: 0
+Timestamp: 11242 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11242 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11242 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11253 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11253 Size of core queues: 0 0 0 0 0 
+2
+Ind: 0
+Timestamp: 11274 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11274 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11274 Size of core queues: 1 0 0 0 0 
+2
+Ind: -1
+Timestamp: 11279 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11279 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 11324 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 11325 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 11326 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 11362 Size of core queues: 1 0 0 0 0 
+1
+Ind: 0
+Timestamp: 11362 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11362 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11362 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11369 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11369 Size of core queues: 0 0 0 0 0 
+2
+Ind: 0
+Timestamp: 11379 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11379 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11379 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11402 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11402 Size of core queues: 0 0 0 0 0 
+2
+Ind: 0
+Timestamp: 11413 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11413 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11413 Size of core queues: 1 0 0 0 0 
+2
+Ind: -1
+Timestamp: 11447 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11447 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 11463 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 11464 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 11465 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 11515 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 11516 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 11517 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 11524 Size of core queues: 1 0 0 0 0 
+1
+Ind: 0
+Timestamp: 11524 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11524 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11524 Size of core queues: 1 0 0 0 0 
+2
+Ind: -1
+Timestamp: 11552 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11552 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 11574 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 11575 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 11576 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 11580 Size of core queues: 1 0 0 0 0 
+1
+Ind: 0
+Timestamp: 11580 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11580 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11580 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11629 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11629 Size of core queues: 0 0 0 0 0 
+2
+Ind: 0
+Timestamp: 11636 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11636 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11636 Size of core queues: 1 0 0 0 0 
+2
+Ind: -1
+Timestamp: 11642 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11642 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 11662 Size of core queues: 1 0 0 0 0 
+1
+Ind: 0
+Timestamp: 11662 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11662 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11662 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11712 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11713 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11714 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11764 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11765 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11766 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11816 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11817 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11818 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11868 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11869 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11870 Size of core queues: 1 0 0 0 0 
+2
+Ind: -1
+Timestamp: 11911 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11911 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 11920 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 11921 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 11922 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 11972 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 11973 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 11974 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 11995 Size of core queues: 1 0 0 0 0 
+1
+Ind: 0
+Timestamp: 11995 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11995 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 11995 Size of core queues: 1 0 0 0 0 
+2
+Ind: -1
+Timestamp: 12037 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12037 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 12045 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 12046 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 12047 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 12062 Size of core queues: 1 0 0 0 0 
+1
+Ind: 0
+Timestamp: 12062 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12062 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12062 Size of core queues: 1 0 0 0 0 
+2
+Ind: -1
+Timestamp: 12078 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12078 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 12112 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 12113 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 12114 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 12129 Size of core queues: 1 0 0 0 0 
+1
+Ind: 0
+Timestamp: 12129 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12129 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12129 Size of core queues: 1 0 0 0 0 
+2
+Ind: -1
+Timestamp: 12137 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12137 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 12140 Size of core queues: 1 0 0 0 0 
+1
+Ind: 0
+Timestamp: 12140 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12140 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12140 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12172 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12172 Size of core queues: 0 0 0 0 0 
+2
+Ind: 0
+Timestamp: 12179 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12179 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12179 Size of core queues: 1 0 0 0 0 
+2
+Ind: -1
+Timestamp: 12195 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12195 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 12199 Size of core queues: 1 0 0 0 0 
+1
+Ind: 0
+Timestamp: 12199 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12199 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12199 Size of core queues: 1 0 0 0 0 
+2
+Ind: -1
+Timestamp: 12208 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12208 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 12209 Size of core queues: 1 0 0 0 0 
+1
+Ind: 0
+Timestamp: 12209 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12209 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12209 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12212 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12212 Size of core queues: 0 0 0 0 0 
+2
+Ind: 0
+Timestamp: 12227 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12227 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12227 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12234 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12234 Size of core queues: 0 0 0 0 0 
+2
+Ind: 0
+Timestamp: 12284 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12284 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12284 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12292 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12292 Size of core queues: 0 0 0 0 0 
+2
+Ind: 0
+Timestamp: 12386 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12386 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12386 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12407 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12407 Size of core queues: 0 0 0 0 0 
+2
+Ind: 0
+Timestamp: 12414 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12414 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12414 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12464 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12465 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12466 Size of core queues: 1 0 0 0 0 
+2
+Ind: -1
+Timestamp: 12467 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12467 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 12516 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 12517 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 12518 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 12519 Size of core queues: 1 0 0 0 0 
+1
+Ind: 0
+Timestamp: 12519 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12519 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12519 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12558 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12558 Size of core queues: 0 0 0 0 0 
+2
+Ind: 0
+Timestamp: 12590 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12590 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12590 Size of core queues: 1 0 0 0 0 
+2
+Ind: -1
+Timestamp: 12590 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12590 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 12640 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 12641 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 12642 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 12692 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 12693 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 12694 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 12744 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 12745 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 12746 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 12773 Size of core queues: 1 0 0 0 0 
+1
+Ind: 0
+Timestamp: 12773 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12773 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12773 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12780 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12780 Size of core queues: 0 0 0 0 0 
+2
+Ind: 0
+Timestamp: 12802 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12802 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12802 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12825 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12825 Size of core queues: 0 0 0 0 0 
+2
+Ind: 0
+Timestamp: 12826 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12826 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12826 Size of core queues: 1 0 0 0 0 
+2
+Ind: -1
+Timestamp: 12852 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12852 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 12857 Size of core queues: 1 0 0 0 0 
+1
+Ind: 0
+Timestamp: 12857 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12857 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12857 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12863 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12863 Size of core queues: 0 0 0 0 0 
+2
+Ind: 0
+Timestamp: 12896 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12896 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12896 Size of core queues: 1 0 0 0 0 
+2
+Ind: -1
+Timestamp: 12913 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12913 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 12914 Size of core queues: 1 0 0 0 0 
+1
+Ind: 0
+Timestamp: 12914 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12914 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12914 Size of core queues: 1 0 0 0 0 
+2
+Ind: -1
+Timestamp: 12920 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12920 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 12931 Size of core queues: 1 0 0 0 0 
+1
+Ind: 0
+Timestamp: 12931 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12931 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12931 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12975 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 12975 Size of core queues: 0 0 0 0 0 
+2
+Ind: 0
+Timestamp: 13009 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 13009 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 13009 Size of core queues: 1 0 0 0 0 
+2
+Ind: -1
+Timestamp: 13040 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 13040 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13059 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13060 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13061 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13111 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13112 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13113 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13163 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13164 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13165 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13213 Size of core queues: 1 0 0 0 0 
+1
+Ind: 0
+Timestamp: 13213 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 13213 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 13213 Size of core queues: 1 0 0 0 0 
+2
+Timestamp: 13258 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 13325 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13325 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13325 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13375 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13376 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13377 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13385 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13385 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 13428 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13428 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13428 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13435 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13435 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 13481 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13481 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13481 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13495 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13495 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 13512 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13512 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13512 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13562 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13563 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13564 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13614 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13615 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13616 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13666 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13667 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13668 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13678 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13678 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 13776 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13776 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13776 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13826 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13827 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13828 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13878 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13879 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13880 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13891 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13891 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 13971 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13971 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 13971 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14013 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14013 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 14079 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14079 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14079 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14129 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14130 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14131 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14181 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14182 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14183 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14215 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14215 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 14248 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14248 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14248 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14289 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14289 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 14323 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14323 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14323 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14373 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14374 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14375 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14381 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14381 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 14423 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14423 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14423 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14463 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14463 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 14474 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14474 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14474 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14524 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14525 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14526 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14558 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14558 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 14603 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14603 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14603 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14642 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14642 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 14651 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14651 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14651 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14661 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14661 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 14707 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14707 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14707 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14757 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14758 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14759 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14775 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14775 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 14878 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14878 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14878 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14926 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14926 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 14995 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14995 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14995 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14997 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 14997 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 15006 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15006 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15006 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15056 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15057 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15058 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15108 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15109 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15110 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15146 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15146 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 15152 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15152 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15152 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15178 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15178 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 15212 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15212 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15212 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15262 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15263 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15264 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15314 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15315 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15316 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15366 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15367 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15368 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15384 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15384 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 15449 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15449 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15449 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15452 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15452 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 15663 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15663 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15663 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15681 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15681 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 15695 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15695 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15695 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15745 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15746 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15747 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15797 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15798 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15799 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15849 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15850 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15851 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15897 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15897 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 15926 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15926 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15926 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15976 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15977 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15978 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15988 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 15988 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 16019 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16019 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16019 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16066 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16066 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 16133 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16133 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16133 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16139 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16139 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 16256 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16256 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16256 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16258 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16258 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 16283 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16283 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16283 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16290 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16290 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 16310 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16310 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16310 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16332 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16332 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 16376 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16376 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16376 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16384 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16384 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 16399 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16399 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16399 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16419 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16419 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 16478 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16478 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16478 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16522 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16522 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 16546 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16546 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16546 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16561 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16561 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 16636 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16636 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16636 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16682 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16682 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 16689 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16689 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16689 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16739 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16740 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16741 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16771 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16771 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 16785 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16785 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16785 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16832 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16832 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 16971 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16971 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16971 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16980 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16980 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 16989 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16989 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16989 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16999 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 16999 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 17036 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17036 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17036 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17075 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17075 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 17165 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17165 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17165 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17184 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17184 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 17192 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17192 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17192 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17242 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17243 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17244 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17247 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17247 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 17261 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17261 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17261 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17311 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17312 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17313 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17340 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17340 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 17383 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17383 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17383 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17433 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17434 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17435 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17460 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17460 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 17478 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17478 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17478 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17528 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17529 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17530 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17539 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17539 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 17561 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17561 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17561 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17571 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17571 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 17618 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17618 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17618 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17621 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17621 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 17631 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17631 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17631 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17681 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17682 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17683 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17690 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17690 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 17704 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17704 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17704 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17754 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17754 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 17769 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17769 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17769 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17819 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17820 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17821 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17838 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17838 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 17870 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17870 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17870 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17879 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17879 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 17914 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17914 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17914 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17964 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17965 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 17966 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 18016 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 18017 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 18018 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 18024 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 18024 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 18044 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 18044 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 18044 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 18058 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 18058 Size of core queues: 0 0 0 0 0 
+1
+Ind: 0
+Timestamp: 18208 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 18208 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 18208 Size of core queues: 1 0 0 0 0 
+1
+Timestamp: 18247 Size of core queues: 0 0 0 0 0 
+0
