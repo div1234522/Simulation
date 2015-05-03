@@ -156,7 +156,7 @@ def main():
 		length = len(r)+1
 		r[length] = Request()
 		r[length].setTimeOutDistribution(ttype,tmean,thigh)
-		timeout[i] = r[length].getTimeOut()
+		timeout[length] = r[length].getTimeOut()
 		r[length].setArrivalTimeDistribution(atype,amean,ahigh)
 		r[length].clientId = r[ev.requestId].clientId
 		thinkTime = c[r[length].clientId].getThinkTimeValue()
@@ -350,6 +350,7 @@ def main():
 		total = 0
 		init_time = 0
 		while(init_time < sm.stop): #Stopping criteria for simulation
+			print(ev_list.getsize())
 			# if ev_list.getsize() == 0:
 				# print("Simulation ended")
 				# break
