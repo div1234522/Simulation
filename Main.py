@@ -73,9 +73,9 @@ def main():
 		r[length].setTimeOutDistribution(ttype,tmean,)
 		r[length].setArrivalTimeDistribution(atype,amean,ahigh)
 		r[length].clientId = r[ev.requestId].clientId
-		timeout[length] = r[ev.requestId].getTimeOut()
+		timeout[length] = r[length].getTimeOut()
 		
-		r[length].timestamp = ev.timestamp + r[length].getArrivalTime() + timeout[length]
+		r[length].timestamp = ev.timestamp + r[length].getArrivalTime() + timeout[ev.requestId]
 		r[length].setServiceTimeDistribution(stype,smean,shigh)
 		serv_time = r[length].getServiceTime()
 		r[length].remainingServiceTime = serv_time
@@ -104,7 +104,21 @@ def main():
 			#print('here4')
 			re.timestamp = ev.timestamp
 			timestampTrue[re.requestId] = ev.timestamp
-			pushArrival(re)
+			
+			re.inCoreQueue = True
+			thread[x][1] = 'busy'
+			t[x+1].requestId = re.requestId
+			t[1].setNoOfBusyThreads(1)
+			coreId = (x % s.noOfCores) + 1
+			cq[coreId].enqueue(re)
+			waitTime[re.requestId] = ev.timestamp - timestamp[re.requestId]
+			timestampTrue[re.requestId] = ev.timestamp
+			#print("Core id: " + str(coreId) + ' for request: ' + str(req.requestId))
+			
+			e = Event(re.timestamp, coreId, re.requestId)
+			#Core Id: 1-5 - CoreQueue Number
+			e.setEventType('arrival')
+			ev_list.insert(e)
 	
 	def process_arrival_if_threads_free(): #Function for Handling arrivals if some threads are free
 		ci = ev.coreId
@@ -142,6 +156,7 @@ def main():
 		length = len(r)+1
 		r[length] = Request()
 		r[length].setTimeOutDistribution(ttype,tmean,thigh)
+		timeout[i] = r[length].getTimeOut()
 		r[length].setArrivalTimeDistribution(atype,amean,ahigh)
 		r[length].clientId = r[ev.requestId].clientId
 		thinkTime = c[r[length].clientId].getThinkTimeValue()
@@ -203,7 +218,7 @@ def main():
 		
 	def pushArrival(req): #Function to push a new arrival
 		x = Ind() #Return index of free thread
-		#print('Ind: ' + str(x))
+		print('Ind: ' + str(x))
 		if x == -1: #No free thread found
 			if sq.getsize() >= 100:
 				#print('here7')
@@ -316,6 +331,7 @@ def main():
 		for i in range(1, noOfClients+1): #Generate requests by clients
 			r[i] = Request()
 			r[i].setTimeOutDistribution(ttype,tmean,thigh)
+			timeout[i] = r[i].getTimeOut()
 			r[i].setArrivalTimeDistribution(atype,amean,ahigh)
 			r[i].timestamp = r[i].getArrivalTime()
 			r[i].setServiceTimeDistribution(stype,smean,shigh)
