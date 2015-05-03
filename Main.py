@@ -99,6 +99,7 @@ def main():
 	def push_from_server_queue():
 		#if tp.getNoOfBusyThreads() != s.noOfThread:
 		x = Ind() #Return index of free thread
+		print('Ind: ' + str(x))
 		if x != -1: #Free thread found
 			re = sq.dequeue()
 			#print('here4')
@@ -167,7 +168,7 @@ def main():
 		serv_time = r[length].getServiceTime()
 		r[length].remainingServiceTime = serv_time
 		r[length].totalServiceTime = serv_time
-		thread[r[ev.requestId].threadId][1] = 'free'			
+		thread[r[ev.requestId].threadId - 1][1] = 'free'			
 		t[1].setNoOfBusyThreads(-1)
 		
 		e = Event(r[length].timestamp, str(0), r[length].requestId) #Set event for arrival after thinking
@@ -185,7 +186,7 @@ def main():
 			#print(bad_put)
 			#print('Req ' + str(ev.requestId) + ' timedout.')
 			rr = cq[int(ev.coreId)].dequeue()
-			thread[r[ev.requestId].threadId][1] = 'free'			
+			thread[r[ev.requestId].threadId - 1][1] = 'free'			
 			t[1].setNoOfBusyThreads(-1)
 			if cq[int(ev.coreId)].getsize() > 0:
 				r_next = cq[int(ev.coreId)].getTopElement()
@@ -425,7 +426,7 @@ def main():
 				# print('Server queue size: ' + str(sq.getsize()))
 			#if ev.eventType not in ['arrival', 'scheduleArrival']:
 			#print('Size of server queue: ' + str(sq.getsize()))
-			print('Timestamp: ' + str(ev.timestamp) + ' Size of core queues: ' + str(cq[1].getsize()) + ' ' + str(cq[2].getsize()) + ' ' + str(cq[3].getsize()) + ' ' + str(cq[4].getsize()) + ' ' + str(cq[5].getsize()) + ' ')
+			print('Timestamp: ' + str(ev.timestamp) + ' Size of core queues: ' + str(cq[1].getsize()) + ' ' + str(cq[2].getsize()) + ' ' + str(cq[3].getsize()) + ' ' + str(cq[4].getsize()) + ' ' + str(cq[5].getsize()) + ' Size of server queue: ' + str(sq.getsize()))
 				#print('Processing event: ' + ev.eventType + ' timestamp: ' +str(ev.timestamp) + ' requestId: ' +str(ev.requestId) +' coreId: '+ str(ev.coreId))
 			# print('Size of event list: ' + str(ev_list.getsize()))
 			# print('no of busy thread: '+str(tp.getNoOfBusyThreads()))
