@@ -7,5 +7,5 @@ Service Time Distribution=exponential,150,1
 Arrival Time Distribution=exponential,100, 1
 Thinking Time Distribution=uniform,5,10
 Timeout Distribution=exponential,1500, 1
-No. of simulation runs=10
+No. of simulation runs=1
 Stopping criteria for runs(time)=1000000

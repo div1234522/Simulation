@@ -73,9 +73,9 @@ def main():
 		r[length].setTimeOutDistribution(ttype,tmean,)
 		r[length].setArrivalTimeDistribution(atype,amean,ahigh)
 		r[length].clientId = r[ev.requestId].clientId
-		timeout = r[ev.requestId].getTimeOut()
+		timeout[length] = r[ev.requestId].getTimeOut()
 		
-		r[length].timestamp = r[length-1].timestamp + r[length].getArrivalTime() + timeout
+		r[length].timestamp = ev.timestamp + r[length].getArrivalTime() + timeout[length]
 		r[length].setServiceTimeDistribution(stype,smean,shigh)
 		serv_time = r[length].getServiceTime()
 		r[length].remainingServiceTime = serv_time
@@ -114,7 +114,7 @@ def main():
 				e = Event(ev.timestamp, ci, ev.requestId)
 				e.setEventType('service')
 				ev_list.insert(e)
-		
+
 	def process_service(): #CPU Processing
 		#print('Processing req: ' + str(ev.requestId) +  ' Time: ' + str(ev.timestamp) + ' remaining Service: ' + str(r[ev.requestId].remainingServiceTime) + ' (before)')
 		if r[ev.requestId].remainingServiceTime < s.quantumSize:
@@ -146,7 +146,7 @@ def main():
 		r[length].clientId = r[ev.requestId].clientId
 		thinkTime = c[r[length].clientId].getThinkTimeValue()
 		
-		r[length].timestamp = r[length-1].timestamp + r[length].getArrivalTime() + thinkTime
+		r[length].timestamp = ev.timestamp + r[length].getArrivalTime() + thinkTime
 		timestamp[length] = r[length].timestamp
 		r[length].setServiceTimeDistribution(stype,smean,shigh)
 		serv_time = r[length].getServiceTime()
@@ -164,7 +164,7 @@ def main():
 			push_from_server_queue() #Push a new element from server queue to core queue empty place
 			
 	def process_quantumDone(): #Function for Handling quantumDone
-		if r[ev.requestId].getTimeOut() + timestamp[ev.requestId] < ev.timestamp:
+		if timeout[ev.requestId] + timestamp[ev.requestId] < ev.timestamp:
 			global bad_put
 			bad_put += 1
 			#print(bad_put)
@@ -177,7 +177,8 @@ def main():
 				e = Event(ev.timestamp + s.switchingDelay, ev.coreId, r_next.requestId)
 				e.setEventType('service')
 				ev_list.insert(e)
-			process_arrival_if_queues_full()
+			if sq.getsize() > 0:
+				push_from_server_queue()
 		else:
 			if r[ev.requestId].remainingServiceTime == 0:
 				e = Event(ev.timestamp, ev.coreId, ev.requestId)
@@ -267,6 +268,7 @@ def main():
 		departure = {}
 		resTime = {}
 		waitTime = {}
+		timeout = {}
 		timestampTrue ={}
 		serviceTime= {}
 		switchCounter = 0
@@ -332,84 +334,84 @@ def main():
 		total = 0
 		init_time = 0
 		while(init_time < sm.stop): #Stopping criteria for simulation
-			if ev_list.getsize() == 0:
-				print("Simulation ended")
-				break
-			else: #Call appropriate event handler
-				ev = ev_list.extract()
-				total += ((ev.timestamp-oldTimestamp)*tp.getNoOfBusyThreads())
-				oldTimestamp = ev.timestamp
-				if cq[1].getsize() == 0 and cq[2].getsize() == 0 and cq[3].getsize() == 0 and cq[4].getsize() == 0 and cq[5].getsize() == 0:
-					last_cpu_busy_time = ev.timestamp
-				else:
-					cpu_util += ev.timestamp - last_cpu_busy_time
-					last_cpu_busy_time = ev.timestamp
+			# if ev_list.getsize() == 0:
+				# print("Simulation ended")
+				# break
+			# else: #Call appropriate event handler
+			ev = ev_list.extract()
+			total += ((ev.timestamp-oldTimestamp)*tp.getNoOfBusyThreads())
+			oldTimestamp = ev.timestamp
+			if cq[1].getsize() == 0 and cq[2].getsize() == 0 and cq[3].getsize() == 0 and cq[4].getsize() == 0 and cq[5].getsize() == 0:
+				last_cpu_busy_time = ev.timestamp
+			else:
+				cpu_util += ev.timestamp - last_cpu_busy_time
+				last_cpu_busy_time = ev.timestamp
+			
+			if ev.eventType == 'arrival':
+				counter += 1
+				reqInServerQueue += sq.getsize()
+				for i in range(s.noOfCores):
+					reqInCoreQueue[i+1] += cq[i+1].getsize()
 				
-				if ev.eventType == 'arrival':
-					counter += 1
-					reqInServerQueue += sq.getsize()
-					for i in range(s.noOfCores):
-						reqInCoreQueue[i+1] += cq[i+1].getsize()
-					
-					if ev.coreId == -2: #'discarded': #Request Discarded
-						process_arrival_if_queues_full()
-						req_drop += 1
-					elif ev.coreId == -1: #'serverQueue': #In Server Queue
-						process_arrival_if_threads_busy()
-					else: #In Core Queue
-						process_arrival_if_threads_free()
-					
-				if ev.eventType == 'quantumDone':
-					counter += 1
-					reqInServerQueue += sq.getsize()
-					for i in range(s.noOfCores):
-						reqInCoreQueue[i+1] += cq[i+1].getsize()
-						
-					process_quantumDone()
-					
-				if ev.eventType == 'switchingDone':
-					counter += 1
-					reqInServerQueue += sq.getsize()
-					switchCounter += 1
-					for i in range(s.noOfCores):
-						reqInCoreQueue[i+1] += cq[i+1].getsize()
-					process_switchingDone()
-					
-				if ev.eventType == 'departure':
-					counter += 1
-					reqInServerQueue += sq.getsize()
-					for i in range(s.noOfCores):
-						reqInCoreQueue[i+1] += cq[i+1].getsize()
-					process_departure()
-					good_put += 1
-					# if depart_limit == sm.stop:
-						# print('departure time of last departure for run ' + str(runs) + ' : ' + str(ev.timestamp))			
-					#print('Time of departure ' + str(depart_limit) + ' for run ' + str(runs) + ' : ' + str(ev.timestamp))			
-					
-				if ev.eventType == 'scheduleArrival':
-					counter += 1
-					reqInServerQueue += sq.getsize()
-					for i in range(s.noOfCores):
-						reqInCoreQueue[i+1] += cq[i+1].getsize()
-					process_scheduleArrival()
-					
-				if ev.eventType == 'service':
-					counter += 1
-					reqInServerQueue += sq.getsize()
-					for i in range(s.noOfCores):
-						reqInCoreQueue[i+1] += cq[i+1].getsize()
-					process_service()
+				if ev.coreId == -2: #'discarded': #Request Discarded
+					process_arrival_if_queues_full()
+					req_drop += 1
+				elif ev.coreId == -1: #'serverQueue': #In Server Queue
+					process_arrival_if_threads_busy()
+				else: #In Core Queue
+					process_arrival_if_threads_free()
 				
-				init_time = ev.timestamp
-				# if sq.getsize() in range(2,60): #!= prev_size: 
-					# prev_size = sq.getsize()
-					# print('Server queue size: ' + str(sq.getsize()))
-				#if ev.eventType not in ['arrival', 'scheduleArrival']:
-				#print('Size of server queue: ' + str(sq.getsize()))
-				#print('Size of core queues: ' + str(cq[1].getsize()) + ' ' + str(cq[2].getsize()) + ' ' + str(cq[3].getsize()) + ' ' + str(cq[4].getsize()) + ' ' + str(cq[5].getsize()) + ' ')
-					#print('Processing event: ' + ev.eventType + ' timestamp: ' +str(ev.timestamp) + ' requestId: ' +str(ev.requestId) +' coreId: '+ str(ev.coreId))
-				# print('Size of event list: ' + str(ev_list.getsize()))
-				# print('no of busy thread: '+str(tp.getNoOfBusyThreads()))
+			if ev.eventType == 'quantumDone':
+				counter += 1
+				reqInServerQueue += sq.getsize()
+				for i in range(s.noOfCores):
+					reqInCoreQueue[i+1] += cq[i+1].getsize()
+					
+				process_quantumDone()
+				
+			if ev.eventType == 'switchingDone':
+				counter += 1
+				reqInServerQueue += sq.getsize()
+				switchCounter += 1
+				for i in range(s.noOfCores):
+					reqInCoreQueue[i+1] += cq[i+1].getsize()
+				process_switchingDone()
+				
+			if ev.eventType == 'departure':
+				counter += 1
+				reqInServerQueue += sq.getsize()
+				for i in range(s.noOfCores):
+					reqInCoreQueue[i+1] += cq[i+1].getsize()
+				process_departure()
+				good_put += 1
+				# if depart_limit == sm.stop:
+					# print('departure time of last departure for run ' + str(runs) + ' : ' + str(ev.timestamp))			
+				#print('Time of departure ' + str(depart_limit) + ' for run ' + str(runs) + ' : ' + str(ev.timestamp))			
+				
+			if ev.eventType == 'scheduleArrival':
+				counter += 1
+				reqInServerQueue += sq.getsize()
+				for i in range(s.noOfCores):
+					reqInCoreQueue[i+1] += cq[i+1].getsize()
+				process_scheduleArrival()
+				
+			if ev.eventType == 'service':
+				counter += 1
+				reqInServerQueue += sq.getsize()
+				for i in range(s.noOfCores):
+					reqInCoreQueue[i+1] += cq[i+1].getsize()
+				process_service()
+			
+			init_time = ev.timestamp
+			# if sq.getsize() in range(2,60): #!= prev_size: 
+				# prev_size = sq.getsize()
+				# print('Server queue size: ' + str(sq.getsize()))
+			#if ev.eventType not in ['arrival', 'scheduleArrival']:
+			#print('Size of server queue: ' + str(sq.getsize()))
+			print('Timestamp: ' + str(ev.timestamp) + ' Size of core queues: ' + str(cq[1].getsize()) + ' ' + str(cq[2].getsize()) + ' ' + str(cq[3].getsize()) + ' ' + str(cq[4].getsize()) + ' ' + str(cq[5].getsize()) + ' ')
+				#print('Processing event: ' + ev.eventType + ' timestamp: ' +str(ev.timestamp) + ' requestId: ' +str(ev.requestId) +' coreId: '+ str(ev.coreId))
+			# print('Size of event list: ' + str(ev_list.getsize()))
+			# print('no of busy thread: '+str(tp.getNoOfBusyThreads()))
 		print(80*'-')
 		print('RUN NO: ' + str(runs))
 		print('Total number of requests: ' + str(len(waitTime)))
@@ -473,7 +475,7 @@ def main():
 	print('AVERAGE METRICS FOR ALL RUNS:')
 	print('Total number of requests: ' + str(global_no_of_reqs/sm.no_of_runs))
 	print('Total time of simulation: ' + str(global_total_time_of_sim/(1000*sm.no_of_runs)))
-	print('Good put: ' + str((1000*global_bad_put)/sm.no_of_runs) + ' reqs/sec')
+	print('Good put: ' + str((1000*global_good_put)/sm.no_of_runs) + ' reqs/sec')
 	print('Bad put: ' + str((1000*global_bad_put)/sm.no_of_runs) + ' reqs/sec')
 	print('Throughput: ' + str((1000*(global_good_put + global_bad_put))/sm.no_of_runs))
 	print('Avg number of busy threads: '+ str(global_no_of_busy_threads/sm.no_of_runs) + ' out of max ' + str(s.noOfThread))
