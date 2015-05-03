@@ -107,6 +107,7 @@ def main():
 			timestampTrue[re.requestId] = ev.timestamp
 			
 			re.inCoreQueue = True
+			re.threadId = x+1
 			thread[x][1] = 'busy'
 			t[x+1].requestId = re.requestId
 			t[1].setNoOfBusyThreads(1)
@@ -219,7 +220,7 @@ def main():
 		
 	def pushArrival(req): #Function to push a new arrival
 		x = Ind() #Return index of free thread
-		print('Ind: ' + str(x))
+		#print('Ind: ' + str(x))
 		if x == -1: #No free thread found
 			if sq.getsize() >= 100:
 				#print('here7')
@@ -230,6 +231,7 @@ def main():
 				coreId = -1 #'serverQueue'
 		else:
 			req.inCoreQueue = True
+			req.threadId = x+1
 			thread[x][1] = 'busy'
 			t[x+1].requestId = req.requestId
 			t[x+1].setNoOfBusyThreads(1)
@@ -323,7 +325,7 @@ def main():
 			co[i] = Cores(str(i),10)
 			for j in range(1,(int(s.noOfThread/s.noOfCores))+1):
 				count += 1
-				t[count] = ThreadPool(count,str((count%s.noOfCores)+1),-1)
+				t[count] = ThreadPool(count,str(((count-1)%s.noOfCores)+1),-1)
 				a = [count,'free']
 				thread.append(a)
 		
@@ -351,7 +353,7 @@ def main():
 		total = 0
 		init_time = 0
 		while(init_time < sm.stop): #Stopping criteria for simulation
-			print(ev_list.getsize())
+			#print(ev_list.getsize())
 			# if ev_list.getsize() == 0:
 				# print("Simulation ended")
 				# break
@@ -426,6 +428,10 @@ def main():
 				# print('Server queue size: ' + str(sq.getsize()))
 			#if ev.eventType not in ['arrival', 'scheduleArrival']:
 			#print('Size of server queue: ' + str(sq.getsize()))
+			print("threadID: "+str(r[ev.requestId].threadId))
+			print(Ind())
+			print(thread)
+			print(ev.eventType)
 			print('Timestamp: ' + str(ev.timestamp) + ' Size of core queues: ' + str(cq[1].getsize()) + ' ' + str(cq[2].getsize()) + ' ' + str(cq[3].getsize()) + ' ' + str(cq[4].getsize()) + ' ' + str(cq[5].getsize()) + ' Size of server queue: ' + str(sq.getsize()))
 				#print('Processing event: ' + ev.eventType + ' timestamp: ' +str(ev.timestamp) + ' requestId: ' +str(ev.requestId) +' coreId: '+ str(ev.coreId))
 			# print('Size of event list: ' + str(ev_list.getsize()))
