@@ -1,0 +1,34 @@
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+No of clients: 70
+No of threads: 50
+Switching delay: 0.001 sec
+Quantum size: 0.05 sec
+Service Time Mean: 0.1 sec
+Arrival Time Mean: 0.1 sec
+Thinking Time Mean: 0.005 sec
+Timeout Mean: 10.0 sec
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+AVERAGE METRICS FOR ALL RUNS:
+Total number of requests: 12437.1
+Total time of simulation: 100.0064
+Good put: 10.996304690541372 reqs/sec
+Bad put: 112.66679245975062 reqs/sec
+Throughput: 123.66309715029199
+Avg number of busy threads: 49.98101320870286 out of max 50
+avg no of request in server queue: 19.760504062998177 out of max 100
+avg no of request in core queue 1 : 9.990582663817111 out of max 10
+avg no of request in core queue 2 : 9.990157976525122 out of max 10
+avg no of request in core queue 3 : 9.989745924990876 out of max 10
+avg no of request in core queue 4 : 9.989276723640396 out of max 10
+avg no of request in core queue 5 : 9.988903217985834 out of max 10
+Number of reqs dropped: 0.0
+Number of reqs timedout: 11267.4
+waiting time: 6.19906527699152 secs
+service time: 5.863697870066368 secs
+response time: 12.062763147057888 secs
+Time spent in switching: 0.5701 secs
+CPU Util: 0.9989733301391869
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------

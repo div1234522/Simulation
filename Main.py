@@ -1,7 +1,3 @@
-#cpu util
-#waiting
-#sercvice
-
 from Client import Client
 from CoreQueue import CoreQueue
 from Event import Event
@@ -13,7 +9,9 @@ from System import System
 from ThreadPool import ThreadPool
 from Cores import Cores
 good_put = 0
+req_timeout = 0
 bad_put = 0
+no_of_depart = 0
 def main():
 	#prev_size = 0
 	# no of clients, thread pool, stream/seed
@@ -74,12 +72,12 @@ def main():
 	def process_arrival_if_queues_full(): #Function for Handling arrivals if queues are full
 		length = len(r)+1
 		r[length] = Request()
-		r[length].setTimeOutDistribution(ttype,tmean,)
+		r[length].setTimeOutDistribution(ttype,tmean,thigh)
 		r[length].setArrivalTimeDistribution(atype,amean,ahigh)
 		r[length].clientId = r[ev.requestId].clientId
 		timeout[length] = r[length].getTimeOut()
 		
-		r[length].timestamp = ev.timestamp + r[length].getArrivalTime() + timeout[ev.requestId]
+		r[length].timestamp = r[ev.requestId].timestamp + r[length].getArrivalTime() + timeout[ev.requestId]
 		#print('Request: ' + str(r[length].requestId) + ' scheduled at ' + str(r[length].timestamp) + ' because of drop.')
 		r[length].setServiceTimeDistribution(stype,smean,shigh)
 		serv_time = r[length].getServiceTime()
@@ -106,8 +104,6 @@ def main():
 			re = sq.dequeue()
 			#print('here4')
 			re.timestamp = ev.timestamp
-			timestampTrue[re.requestId] = ev.timestamp
-			
 			re.inCoreQueue = True
 			re.threadId = x+1
 			thread[x][1] = 'busy'
@@ -153,6 +149,8 @@ def main():
 						
 	def process_departure(): #Function for Handling departures
 		r_old = cq[int(ev.coreId)].dequeue()
+		global no_of_depart
+		no_of_depart += 1
 		if cq[int(ev.coreId)].getsize() != 0:
 			r_next = cq[int(ev.coreId)].getTopElement()
 			e = Event(ev.timestamp + s.switchingDelay, ev.coreId, r_next.requestId)
@@ -161,6 +159,7 @@ def main():
 		
 		#print('Depart for Req: ' + str(r_old.requestId) + ' Time: ' + str(ev.timestamp) + ' remaining Service: ' + str(r_old.remainingServiceTime))
 		serviceTime[ev.requestId] = ev.timestamp - timestampTrue[ev.requestId]
+		resTime[ev.requestId] = ev.timestamp - timestamp[ev.requestId]
 		length = len(r)+1
 		r[length] = Request()
 		r[length].setTimeOutDistribution(ttype,tmean,thigh)
@@ -169,7 +168,7 @@ def main():
 		r[length].clientId = r[ev.requestId].clientId
 		thinkTime = c[r[length].clientId].getThinkTimeValue()
 		
-		r[length].timestamp = ev.timestamp + r[length].getArrivalTime() + thinkTime
+		r[length].timestamp = r[ev.requestId].timestamp + r[length].getArrivalTime() + thinkTime
 		#print('Request: ' + str(r[length].requestId) + ' scheduled at ' + str(r[length].timestamp) + ' because of completion.')
 		timestamp[length] = r[length].timestamp
 		r[length].setServiceTimeDistribution(stype,smean,shigh)
@@ -188,7 +187,7 @@ def main():
 			push_from_server_queue() #Push a new element from server queue to core queue empty place
 			
 	def process_quantumDone(): #Function for Handling quantumDone
-		if timeout[ev.requestId] + timestamp[ev.requestId] < ev.timestamp:
+		if timeout[ev.requestId] + timestamp[ev.requestId] >= ev.timestamp:
 			global bad_put
 			bad_put += 1
 			#print(bad_put)
@@ -203,8 +202,10 @@ def main():
 			r[length].clientId = r[ev.requestId].clientId
 			timeout[length] = r[length].getTimeOut()
 			
-			r[length].timestamp = ev.timestamp + r[length].getArrivalTime()
+			r[length].timestamp = r[ev.requestId].timestamp + r[length].getArrivalTime()
 			#print('Request: ' + str(r[length].requestId) + ' scheduled at ' + str(r[length].timestamp) + ' because of timeout.')
+			global req_timeout
+			req_timeout += 1
 			r[length].setServiceTimeDistribution(stype,smean,shigh)
 			serv_time = r[length].getServiceTime()
 			r[length].remainingServiceTime = serv_time
@@ -226,7 +227,6 @@ def main():
 				e = Event(ev.timestamp, ev.coreId, ev.requestId)
 				e.setEventType('departure')
 				ev_list.insert(e)
-				resTime[ev.requestId] = ev.timestamp - timestamp[ev.requestId]
 			else:
 				e = Event(ev.timestamp + s.switchingDelay, ev.coreId, ev.requestId)
 				e.setEventType('switchingDone')
@@ -299,6 +299,7 @@ def main():
 	for i in range(s.noOfCores):
 		global_no_of_reqs_in_core_queue[i+1] = 0
 	global_no_of_reqs_dropped = 0
+	global_no_of_reqs_timeout = 0
 	global_waiting_time = 0
 	global_service_time = 0
 	global_response_time = 0
@@ -309,12 +310,15 @@ def main():
 		#metrics 
 		timestamp = {}
 		counter = 0
+		no_of_depart = 0
 		req_drop = 0
+		global req_timeout
+		req_timeout = 0
 		reqInServerQueue = 0
 		reqInCoreQueue = {}
 		departure = {}
-		resTime = {}
 		waitTime = {}
+		resTime = {}
 		timeout = {}
 		timestampTrue ={}
 		serviceTime= {}
@@ -325,7 +329,6 @@ def main():
 		
 		for i in range(s.noOfCores):
 			reqInCoreQueue[i+1] = 0
-		last_cpu_busy_time = 0
 		cpu_util = 0
 		#metrics 
 		
@@ -390,11 +393,6 @@ def main():
 				ev = ev_list.extract()
 				total += ((ev.timestamp-oldTimestamp)*tp.getNoOfBusyThreads())
 				oldTimestamp = ev.timestamp
-				if cq[1].getsize() == 0 and cq[2].getsize() == 0 and cq[3].getsize() == 0 and cq[4].getsize() == 0 and cq[5].getsize() == 0:
-					last_cpu_busy_time = ev.timestamp
-				else:
-					cpu_util += ev.timestamp - last_cpu_busy_time
-					last_cpu_busy_time = ev.timestamp
 				
 				if ev.eventType == 'arrival':
 					counter += 1
@@ -464,39 +462,52 @@ def main():
 				print('Timestamp: ' + str(ev.timestamp) + ' Size of core queues: ' + str(cq[1].getsize()) + ' ' + str(cq[2].getsize()) + ' ' + str(cq[3].getsize()) + ' ' + str(cq[4].getsize()) + ' ' + str(cq[5].getsize()) + ' Size of server queue: ' + str(sq.getsize()))'''
 				#print('Processing event: ' + ev.eventType + ' timestamp: ' +str(ev.timestamp) + ' requestId: ' +str(ev.requestId) +' coreId: '+ str(ev.coreId))
 				# print('Size of event list: ' + str(ev_list.getsize()))
-				# print('no of busy thread: '+str(tp.getNoOfBusyThreads()))
-		print(80*'-')
-		print('RUN NO: ' + str(runs))
-		print('Total number of requests: ' + str(len(waitTime)))
-		print('Total time of simulation: ' + str(ev.timestamp/1000) + ' secs')
-		print('Good Put: ' + str((1000*good_put)/ev.timestamp) + ' reqs/sec') #For msec to sec
+				# print('no of busy thread: '+str(tp.getNoOfBusyThreads()))		
+		# print(80*'-')
+		# #print(timestamp)
+		# #print(timestampTrue)
+		# print('RUN NO: ' + str(runs))
+		# print('Total number of requests: ' + str(len(r)))
+		# global no_of_depart
+		# print('Total number of departures: ' + str(no_of_depart))
+		# print('Total time of simulation: ' + str(ev.timestamp/1000) + ' secs')
+		# print('Good Put: ' + str((1000*good_put)/ev.timestamp) + ' reqs/sec') #For msec to sec
 		global bad_put
 		bad = bad_put
-		print('Bad Put: ' + str((1000*bad)/ev.timestamp) + ' reqs/sec') #For msec to sec
-		print('Throughput: ' + str((1000*(good_put + bad))/ev.timestamp) + ' reqs/sec') #For msec to sec
-		print('Avg number of busy threads:'+ str(float(total)/ev.timestamp) + ' out of max ' + str(s.noOfThread))
-		print('avg no of request in server queue: '+str(float(reqInServerQueue/counter)) + ' out of max ' + str(sq.queueLength))
-				
-		avg_wait = sum(waitTime)/len(waitTime)
-		avg_res = sum(resTime)/len(resTime)
-		avg_serv = sum(serviceTime)/len(serviceTime)
+		# print('Bad Put: ' + str((1000*bad)/ev.timestamp) + ' reqs/sec') #For msec to sec
+		# print('Throughput: ' + str((1000*(good_put + bad))/ev.timestamp) + ' reqs/sec') #For msec to sec
+		# print('Avg number of busy threads:'+ str(float(total)/ev.timestamp) + ' out of max ' + str(s.noOfThread))
+		# print('avg no of request in server queue: '+str(float(reqInServerQueue/counter)) + ' out of max ' + str(sq.queueLength))
+		
+		len1 = len(r) - req_drop
+		global req_timeout
+		len2 = len(r) - req_drop - req_timeout
+		# print('len1: ' + str(len1) + ' len2: ' + str(len2))
+		avg_wait = sum(waitTime)/len1
+		avg_serv = sum(serviceTime)/len2
+		global no_of_depart
+		avg_res = sum(resTime)/len2
+		#print('sum_serv_time: ' + str(sum(serviceTime)) + 'sum_res_time: ' + str(sum(resTime)))
 		
 		for i in range(s.noOfCores):
-			print('avg no of request in core queue '+str(i+1)+ ' : '+str(float(reqInCoreQueue[i+1]/counter)) + ' out of max ' + str(cq[i+1].queueLength))
+			# print('avg no of request in core queue '+str(i+1)+ ' : '+str(float(reqInCoreQueue[i+1]/counter)) + ' out of max ' + str(cq[i+1].queueLength))
+			cpu_util += reqInCoreQueue[i+1]/counter
 	
-		print('Number of reqs dropped: ' + str(req_drop))
-		print("waiting time: ", end = '')
-		print(str(avg_wait/1000) + ' secs')
-		print("service time: ", end = '')
-		print(str(avg_serv/1000) + ' secs')
-		print("response time: ", end = '')
-		print(str((avg_wait+avg_serv)/1000) + ' secs')
-		print("Time spent in switching: ", end= '')
-		print(str((switchCounter*s.switchingDelay)/1000) + ' secs')
-		print('CPU Util: ' + str(cpu_util/ev.timestamp))
+		# print('Number of reqs dropped: ' + str(req_drop))
+		# global req_timeout
+		# print('Number of reqs timedout: ' + str(req_timeout))
+		# print("waiting time: ", end = '')
+		# print(str(avg_wait/1000) + ' secs')
+		# print("service time: ", end = '')
+		# print(str(avg_serv/1000) + ' secs')
+		# print("response time: ", end = '')
+		# print(str((avg_wait+avg_serv)/1000) + ' secs')
+		# print("Time spent in switching: ", end= '')
+		# print(str((switchCounter*s.switchingDelay)/1000) + ' secs')
+		# print('CPU Util: ' + str(cpu_util/(cq[1].queueLength*s.noOfCores)))
 		
 		
-		global_no_of_reqs += len(waitTime)
+		global_no_of_reqs += len(r)
 		global_total_time_of_sim += ev.timestamp
 		global bad_put
 		bad = bad_put
@@ -507,11 +518,12 @@ def main():
 		for i in range(s.noOfCores):
 			global_no_of_reqs_in_core_queue[i+1] += float(reqInCoreQueue[i+1]/counter)
 		global_no_of_reqs_dropped += req_drop
+		global_no_of_reqs_timeout += req_timeout
 		global_waiting_time += avg_wait
 		global_service_time += avg_serv
-		global_response_time += avg_wait+avg_serv
+		global_response_time += avg_res
 		global_time_spent_in_switching += switchCounter*s.switchingDelay
-		global_cpu_util += cpu_util/ev.timestamp
+		global_cpu_util += cpu_util/(cq[1].queueLength*s.noOfCores)
 		
 	print(80*'-')
 	print(80*'-')
@@ -538,12 +550,13 @@ def main():
 		print('avg no of request in core queue '+str(i+1)+ ' : '+str(global_no_of_reqs_in_core_queue[i+1]/sm.no_of_runs) + ' out of max ' + str(cq[i+1].queueLength))
 
 	print('Number of reqs dropped: ' + str(global_no_of_reqs_dropped/sm.no_of_runs))
+	print('Number of reqs timedout: ' + str(global_no_of_reqs_timeout/sm.no_of_runs))
 	print("waiting time: ", end = '')
 	print(str(global_waiting_time/(1000*sm.no_of_runs)) + ' secs')
 	print("service time: ", end = '')
 	print(str(global_service_time/(1000*sm.no_of_runs)) + ' secs')
 	print("response time: ", end = '')
-	print(str(global_response_time/(1000*sm.no_of_runs)) + ' secs')
+	print(str((global_waiting_time+global_service_time)/(1000*sm.no_of_runs)) + ' secs')
 	print("Time spent in switching: ", end= '')
 	print(str(global_time_spent_in_switching/(1000*sm.no_of_runs)) + ' secs')
 	print('CPU Util: ' + str(global_cpu_util/sm.no_of_runs))		
